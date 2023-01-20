@@ -1,11 +1,16 @@
 import React from "react";
+import SeasonSelect from "./components/SeasonSelect";
+import MatchesResultsTable from "./components/MatchesResultsTable";
+import SingleMatchInfo from "./components/SingleMatchInfo";
 
 function App() {
-  const test = process.env.REACT_APP_KEY;
-
-  console.log(test);
-
-  return <div className="App">hello</div>;
+  return (
+    <>
+      <SeasonSelect />
+      <MatchesResultsTable />
+      <SingleMatchInfo />
+    </>
+  );
 }
 
 export default App;
