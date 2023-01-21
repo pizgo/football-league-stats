@@ -1,4 +1,4 @@
-export interface MatchesDetails {
+export interface MatchDetails {
   competitorName1: string;
   competitorName2: string;
   away_score: number;

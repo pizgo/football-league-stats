@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { fetchingSchedulesData } from "../utils/api";
 import { extractingMatchesResults } from "../utils/dataOperations";
 import { errorMessage } from "../consts/strings";
-import { MatchesDetails } from "../types/types";
+import { MatchDetails } from "../types/types";
 
 export const useFetchMatchesResults = () => {
-  const [matchesState, setMatchesState] = useState<MatchesDetails[]>();
+  const [matchesState, setMatchesState] = useState<MatchDetails[]>([]);
 
   const callForSchedulesData = () => {
     fetchingSchedulesData()
@@ -27,5 +27,9 @@ export const useFetchMatchesResults = () => {
     }
   };
 
-  return { matchesState, callForSchedulesData };
+  useEffect((): void => {
+    callForSchedulesData();
+  }, []);
+
+  return { matchesState: matchesState };
 };
