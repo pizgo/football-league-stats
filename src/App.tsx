@@ -8,12 +8,12 @@ import { useFetchMatchesResults } from "./hooks/useFetchMatchesResults";
 const App: React.FC = () => {
   const { matchesState, callForSchedulesData } = useFetchMatchesResults();
 
-  useFetchMatchesResults();
+  callForSchedulesData();
 
   return (
     <>
       <SeasonSelect />
-      <MatchesResultsTable matchesResults={matchesState} />
+      {/*<MatchesResultsTable matchesResults={matchesState} />*/}
       <SingleMatchInfo />
     </>
   );

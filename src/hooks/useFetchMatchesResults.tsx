@@ -4,13 +4,14 @@ import { ApiSchedule, MatchesDetails } from "../types/types";
 import { errorMessage } from "../consts/strings";
 
 export const useFetchMatchesResults = () => {
-  const [matchesState, setMatchesState] = useState<MatchesDetails>();
+  const [matchesState, setMatchesState] = useState<MatchesDetails[]>();
 
   const callForSchedulesData = () => {
     fetchingSchedulesData()
       .then(checkError)
       .then((response) => {
-        extractingMatchesResults(response.schedules);
+        const results = extractingMatchesResults(response.schedules);
+        setMatchesState(results);
       })
       .catch((error) => {
         console.log(error);
@@ -18,19 +19,22 @@ export const useFetchMatchesResults = () => {
   };
 
   const extractingMatchesResults = (array: ApiSchedule[]) => {
-    let arrayObjects = array.map((el) => {
+    let arrayOfResults = array.map((el) => {
       let competitorName1 = el.sport_event.competitors[0].name;
       let competitorName2 = el.sport_event.competitors[1].name;
       let result1 = el.sport_event_status.away_score;
       let result2 = el.sport_event_status.home_score;
+      let id = el.sport_event.id;
+
       return {
-        name1: competitorName1,
-        name2: competitorName2,
-        result1: result1,
-        result2: result2,
+        competitorName1: competitorName1,
+        competitorName2: competitorName2,
+        away_score: result1,
+        home_score: result2,
+        id: id,
       };
     });
-    console.log(arrayObjects);
+    return arrayOfResults;
   };
 
   const checkError = (response: Response) => {
