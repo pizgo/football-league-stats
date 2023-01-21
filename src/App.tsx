@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "semantic-ui-css/semantic.min.css";
 import SeasonSelect from "./components/SeasonSelect";
 import MatchesResultsTable from "./components/MatchesResultsTable";
@@ -8,7 +8,9 @@ import { useFetchMatchesResults } from "./hooks/useFetchMatchesResults";
 const App: React.FC = () => {
   const { matchesState, callForSchedulesData } = useFetchMatchesResults();
 
-  callForSchedulesData();
+  useEffect((): void => {
+    callForSchedulesData();
+  }, []);
 
   return (
     <>
