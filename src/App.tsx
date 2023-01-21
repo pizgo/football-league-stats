@@ -1,16 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
+import "semantic-ui-css/semantic.min.css";
 import SeasonSelect from "./components/SeasonSelect";
 import MatchesResultsTable from "./components/MatchesResultsTable";
 import SingleMatchInfo from "./components/SingleMatchInfo";
+import { useFetchMatchesResults } from "./hooks/useFetchMatchesResults";
 
-function App() {
+const App: React.FC = () => {
+  const { matchesState, callForSchedulesData } = useFetchMatchesResults();
+
+  useFetchMatchesResults();
+
   return (
     <>
       <SeasonSelect />
-      <MatchesResultsTable />
+      <MatchesResultsTable matchesResults={matchesState} />
       <SingleMatchInfo />
     </>
   );
-}
+};
 
 export default App;
