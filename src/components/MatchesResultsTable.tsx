@@ -18,18 +18,19 @@ const MatchesResultsTable: React.FC<MatchesResultsTableProps> = ({
             <Table.HeaderCell>Match Result</Table.HeaderCell>
           </TableRow>
         </Table.Header>
-        <Table.Body>
-          {matchesResults.map((game, key) => (
-            <TableRow key={game.id}>
-              <Table.Cell>
-                {game.competitorName1}, {game.competitorName2}
-              </Table.Cell>
-              <Table.Cell>
-                {game.away_score} - {game.home_score}
-              </Table.Cell>
-            </TableRow>
-          ))}
-        </Table.Body>
+        {/*<Table.Body>*/}
+        {/*  {matchesResults.map((game, key) => (*/}
+        {/*    <TableRow key={game.matchID}>*/}
+        {/*      <Table.Cell>{game.firstCompetitorName}</Table.Cell>*/}
+        {/*      <Table.Cell>{game.secondCompetitorName}</Table.Cell>*/}
+        {/*      <Table.Cell>{game.stadiumName}</Table.Cell>*/}
+        {/*      <Table.Cell>{game.matchDate}</Table.Cell>*/}
+        {/*      <Table.Cell>*/}
+        {/*        {game.awayScore} - {game.homeScore}*/}
+        {/*      </Table.Cell>*/}
+        {/*    </TableRow>*/}
+        {/*  ))}*/}
+        {/*</Table.Body>*/}
       </Table>
     </>
   );

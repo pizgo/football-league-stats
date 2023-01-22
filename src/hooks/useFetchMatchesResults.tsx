@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchingSchedulesData } from "../utils/api";
-import { extractingMatchesResults } from "../utils/dataOperations";
+import { extractingMatchesResults } from "../utils/dataTransformation";
 import { errorMessage } from "../consts/strings";
 import { MatchDetails } from "../types/types";
 
@@ -12,7 +12,8 @@ export const useFetchMatchesResults = () => {
       .then(checkError)
       .then((response) => {
         const results = extractingMatchesResults(response.schedules);
-        setMatchesState(results);
+        console.log(response);
+        // setMatchesState(results);
       })
       .catch((error) => {
         console.log(error);
