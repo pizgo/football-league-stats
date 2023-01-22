@@ -36,6 +36,7 @@ export interface MatchDetails {
   matchDate: string;
   stadiumName: string;
   winnerID: string | undefined;
+  status: string;
 }
 
 export interface CompetitorInfo {

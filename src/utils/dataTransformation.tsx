@@ -9,6 +9,7 @@ export const extractingMatchesResults = (array: ApiSchedule[]) => {
     let matchDate = el.sport_event.start_time.slice(0, 10);
     let venue = el.sport_event.venue.name;
     let winnerID = el.sport_event_status.winner_id;
+    let status = el.sport_event_status.status;
 
     return {
       homeCompetitor: homeCompetitor,
@@ -17,6 +18,7 @@ export const extractingMatchesResults = (array: ApiSchedule[]) => {
       matchDate: matchDate,
       stadiumName: venue,
       winnerID: winnerID,
+      status: status,
     };
   });
   return arrayOfResults;

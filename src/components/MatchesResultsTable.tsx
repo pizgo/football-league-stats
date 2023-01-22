@@ -15,6 +15,22 @@ interface MatchesResultsTableProps {
 const MatchesResultsTable: React.FC<MatchesResultsTableProps> = ({
   matchesResults,
 }) => {
+  const colorBackgroundSetting = (
+    gameStatus: string,
+    winnerId: string | undefined,
+    competitorId: string
+  ): {} => {
+    if (gameStatus === "postponed") {
+      return { backgroundColor: "none" };
+    } else if (!winnerId) {
+      return { backgroundColor: orange };
+    } else if (winnerId && winnerId === competitorId) {
+      return { backgroundColor: green };
+    } else {
+      return { backgroundColor: red };
+    }
+  };
+
   return (
     <>
       <Table celled>
@@ -28,8 +44,24 @@ const MatchesResultsTable: React.FC<MatchesResultsTableProps> = ({
         <Table.Body>
           {matchesResults.map((game, key) => (
             <TableRow key={game.matchID}>
-              <Table.Cell style={{}}>{game.homeCompetitor.name}</Table.Cell>
-              <Table.Cell>{game.awayCompetitor.name}</Table.Cell>
+              <Table.Cell
+                style={colorBackgroundSetting(
+                  game.status,
+                  game.winnerID,
+                  game.homeCompetitor.id
+                )}
+              >
+                {game.homeCompetitor.name}
+              </Table.Cell>
+              <Table.Cell
+                style={colorBackgroundSetting(
+                  game.status,
+                  game.winnerID,
+                  game.awayCompetitor.id
+                )}
+              >
+                {game.awayCompetitor.name}
+              </Table.Cell>
               <Table.Cell>
                 {game.homeCompetitor.result} - {game.awayCompetitor.result}
               </Table.Cell>
