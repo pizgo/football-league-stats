@@ -1,7 +1,7 @@
-const seasonId: string = "sr:season:77453";
+const season1ID: string = "sr:season:77453";
 export const APIKey = process.env.REACT_APP_API_KEY;
-export const APISeasonSchedule: string = `/soccer/trial/v4/en/seasons/${seasonId}/schedules.json?api_key=${APIKey}`;
+export const APISeasonSchedule: string = `/soccer/trial/v4/en/seasons/${season1ID}/schedules.json?api_key=${APIKey}`;
 
-export const fetchingSchedulesData = () => {
+export const getSchedulesData = () => {
   return fetch(APISeasonSchedule);
 };

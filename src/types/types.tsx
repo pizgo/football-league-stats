@@ -8,10 +8,12 @@ export interface ApiSchedule {
   sport_event_status: {
     away_score: number;
     home_score: number;
-    winner_id: number;
+    winner_id: string;
+    status: string;
     period_scores: APIPeriodScores[];
   };
 }
+
 interface APICompetitorInfo {
   name: string;
   id: string;
@@ -19,7 +21,7 @@ interface APICompetitorInfo {
 }
 
 interface APIPeriodScores {
-  home_scores: number;
+  home_score: number;
   away_score: number;
 }
 
@@ -33,12 +35,43 @@ export interface MatchDetails {
   matchID: string;
   matchDate: string;
   stadiumName: string;
-  winnerID?: number;
+  winnerID: string | undefined;
 }
 
-interface CompetitorInfo {
+export interface CompetitorInfo {
   name: string;
   id: string;
-  // halfScore: number;
+  halfScore: number | undefined;
   result: number;
 }
+
+export const buildCompetitorInfo = (
+  schedule: ApiSchedule,
+  isHome: boolean
+): CompetitorInfo => {
+  let index = isHome
+    ? schedule.sport_event.competitors[0].qualifier === "home"
+      ? 0
+      : 1
+    : schedule.sport_event.competitors[0].qualifier === "away"
+    ? 0
+    : 1;
+
+  let halfScoreCompetitor = undefined;
+  if (schedule.sport_event_status.status !== "postponed") {
+    halfScoreCompetitor = isHome
+      ? schedule.sport_event_status.period_scores[0].home_score
+      : schedule.sport_event_status.period_scores[0].away_score;
+  }
+
+  let result = isHome
+    ? schedule.sport_event_status.home_score
+    : schedule.sport_event_status.away_score;
+
+  return {
+    name: schedule.sport_event.competitors[index].name,
+    id: schedule.sport_event.competitors[index].id,
+    halfScore: halfScoreCompetitor,
+    result: result,
+  };
+};

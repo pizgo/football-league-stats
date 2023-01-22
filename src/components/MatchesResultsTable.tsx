@@ -2,6 +2,11 @@ import React from "react";
 import { Table, TableHeaderCell, TableRow } from "semantic-ui-react";
 import { MatchDetails } from "../types/types";
 import { tableHeadersContent } from "../consts/consts";
+import { match } from "assert";
+
+const green = "#5aa13d";
+const red = "#ba2929";
+const orange = "#db611a";
 
 interface MatchesResultsTableProps {
   matchesResults: MatchDetails[];
@@ -23,13 +28,16 @@ const MatchesResultsTable: React.FC<MatchesResultsTableProps> = ({
         <Table.Body>
           {matchesResults.map((game, key) => (
             <TableRow key={game.matchID}>
-              <Table.Cell>{game.homeCompetitor.name}</Table.Cell>
+              <Table.Cell style={{}}>{game.homeCompetitor.name}</Table.Cell>
               <Table.Cell>{game.awayCompetitor.name}</Table.Cell>
               <Table.Cell>
                 {game.homeCompetitor.result} - {game.awayCompetitor.result}
               </Table.Cell>
               <Table.Cell>{game.matchDate}</Table.Cell>
-              <Table.Cell> </Table.Cell>
+              <Table.Cell>
+                {game.homeCompetitor.halfScore} -{" "}
+                {game.awayCompetitor.halfScore}
+              </Table.Cell>
               <Table.Cell>{game.stadiumName}</Table.Cell>
             </TableRow>
           ))}
