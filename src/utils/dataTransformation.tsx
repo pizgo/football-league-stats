@@ -38,7 +38,7 @@ export const extractingMatchesResults = (array: ApiSchedule[]) => {
 
     return {
       homeCompetitor: homeCompetitor,
-      awayCompetitorName: awayCompetitor,
+      awayCompetitor: awayCompetitor,
       matchID: matchID,
       matchDate: matchDate,
       stadiumName: venue,
