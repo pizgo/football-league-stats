@@ -2,7 +2,6 @@ import React from "react";
 import { Table, TableHeaderCell, TableRow } from "semantic-ui-react";
 import { MatchDetails } from "../types/types";
 import { tableHeadersContent } from "../consts/consts";
-import { match } from "assert";
 
 const green = "#5aa13d";
 const red = "#ba2929";
