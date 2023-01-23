@@ -42,7 +42,7 @@ export interface MatchDetails {
 export interface CompetitorInfo {
   name: string;
   id: string;
-  halfScore: number | undefined;
+  // halfScore: number | undefined;
   result: number;
 }
 
@@ -58,12 +58,12 @@ export const buildCompetitorInfo = (
     ? 0
     : 1;
 
-  let halfScoreCompetitor = undefined;
-  if (schedule.sport_event_status.status !== "postponed") {
-    halfScoreCompetitor = isHome
-      ? schedule.sport_event_status.period_scores[0].home_score
-      : schedule.sport_event_status.period_scores[0].away_score;
-  }
+  // let halfScoreCompetitor = undefined;
+  // if (schedule.sport_event_status.status !== "postponed") {
+  //   halfScoreCompetitor = isHome
+  //     ? schedule.sport_event_status.period_scores[0].home_score
+  //     : schedule.sport_event_status.period_scores[0].away_score;
+  // }
 
   let result = isHome
     ? schedule.sport_event_status.home_score
@@ -72,7 +72,7 @@ export const buildCompetitorInfo = (
   return {
     name: schedule.sport_event.competitors[index].name,
     id: schedule.sport_event.competitors[index].id,
-    halfScore: halfScoreCompetitor,
+    // halfScore: halfScoreCompetitor,
     result: result,
   };
 };

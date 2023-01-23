@@ -1,14 +1,26 @@
-import React, { useState } from "react";
-import { season1, season2, season3 } from "../consts/consts";
+import React from "react";
+import { seasons } from "../consts/consts";
 
-const SeasonSelect: React.FC = () => {
+interface SeasonSelectProps {
+  onChangeSelect: (chosenSeasonID: string) => void;
+  value: string;
+}
+
+const SeasonSelect: React.FC<SeasonSelectProps> = ({
+  onChangeSelect,
+  value,
+}) => {
+  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const chosenSeasonID = e.target.value;
+    onChangeSelect(chosenSeasonID);
+    value = chosenSeasonID;
+  };
   return (
     <form>
-      <label>Choose season</label>
-      <select>
-        <option value={season1.seasonID}>{season1.seasonName}</option>
-        <option value={season2.seasonID}>{season2.seasonName}</option>
-        <option value={season3.seasonID}>{season3.seasonName}</option>
+      <select value={value} onChange={handleChange}>
+        {seasons.map((el, key) => (
+          <option value={el.seasonID} key={el.seasonID} label={el.seasonName} />
+        ))}
       </select>
     </form>
   );

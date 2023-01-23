@@ -65,10 +65,10 @@ const MatchesResultsTable: React.FC<MatchesResultsTableProps> = ({
                 {game.homeCompetitor.result} - {game.awayCompetitor.result}
               </Table.Cell>
               <Table.Cell>{game.matchDate}</Table.Cell>
-              <Table.Cell>
-                {game.homeCompetitor.halfScore} -{" "}
-                {game.awayCompetitor.halfScore}
-              </Table.Cell>
+              {/*<Table.Cell>*/}
+              {/*  {game.homeCompetitor.halfScore} -{" "}*/}
+              {/*  {game.awayCompetitor.halfScore}*/}
+              {/*</Table.Cell>*/}
               <Table.Cell>{game.stadiumName}</Table.Cell>
             </TableRow>
           ))}

@@ -3,14 +3,25 @@ import "semantic-ui-css/semantic.min.css";
 import SeasonSelect from "./components/SeasonSelect";
 import MatchesResultsTable from "./components/MatchesResultsTable";
 import SingleMatchInfo from "./components/SingleMatchInfo";
-import { useFetchMatchesResults } from "./hooks/useFetchMatchesResults";
+import { useGetMatchesResults } from "./hooks/useGetMatchesResults";
+import { seasons } from "./consts/consts";
 
 const App: React.FC = () => {
-  const { matchesState } = useFetchMatchesResults();
+  let initialSeasonID = seasons[2].seasonID;
+  const { matchesState, callForSchedulesData } =
+    useGetMatchesResults(initialSeasonID);
+
+  const handleSelectSeasonID = (chosenSeasonID: string): void => {
+    callForSchedulesData(chosenSeasonID);
+    console.log("handleSelectSeasonID");
+  };
 
   return (
     <>
-      <SeasonSelect />
+      <SeasonSelect
+        onChangeSelect={handleSelectSeasonID}
+        value={initialSeasonID}
+      />
       <MatchesResultsTable matchesResults={matchesState} />
       <SingleMatchInfo />
     </>

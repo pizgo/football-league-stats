@@ -8,17 +8,17 @@ export const tableHeadersContent = [
   "Stadium name",
 ];
 
-export const season1 = {
-  seasonID: "sr:season:67233",
-  seasonName: "Ekstraklasa 19/20",
-};
-
-export const season2 = {
-  seasonID: "sr:season:77453",
-  seasonName: "Ekstraklasa 20/21",
-};
-
-export const season3 = {
-  seasonID: "sr:season:84320",
-  seasonName: "Ekstraklasa 21/22",
-};
+export const seasons = [
+  {
+    seasonID: "67233",
+    seasonName: "Ekstraklasa 19/20",
+  },
+  {
+    seasonID: "77453",
+    seasonName: "Ekstraklasa 20/21",
+  },
+  {
+    seasonID: "84320",
+    seasonName: "Ekstraklasa 21/22",
+  },
+];
