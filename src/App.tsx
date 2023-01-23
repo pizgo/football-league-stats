@@ -8,11 +8,10 @@ import { seasons } from "./consts/consts";
 import { useGetSeasonsID } from "./hooks/useGetSeasonsID";
 
 const App: React.FC = () => {
-  let initialSeasonID = seasons[2].seasonID;
+  const { seasonsDetails } = useGetSeasonsID();
+  let initialSeasonID = "sr:season:77453";
   const { matchesState, callForSchedulesData } =
     useGetMatchesResults(initialSeasonID);
-
-  const { seasonsID } = useGetSeasonsID();
 
   const handleSelectSeasonID = (chosenSeasonID: string): void => {
     callForSchedulesData(chosenSeasonID);
@@ -22,6 +21,7 @@ const App: React.FC = () => {
     <>
       <SeasonSelect
         onChangeSelect={handleSelectSeasonID}
+        seasonsDetails={seasonsDetails}
         value={initialSeasonID}
       />
       <MatchesResultsTable matchesResults={matchesState} />

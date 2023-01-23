@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { getSeasonsData } from "../utils/api";
-import { APISeasons, SeasonIDConstructor } from "../types/types";
+import { APISeasons, SeasonDetailConstructor } from "../types/types";
 import { extractingSeasonsDetails } from "../utils/dataTransformation";
 import { errorMessage } from "../consts/consts";
 
 export const useGetSeasonsID = () => {
-  const [seasonsID, setSeasonsID] = useState<SeasonIDConstructor[]>([]);
+  const [seasonsID, setSeasonsID] = useState<SeasonDetailConstructor[]>([]);
 
   const callForSeasonsData = () => {
     getSeasonsData()
@@ -13,7 +13,6 @@ export const useGetSeasonsID = () => {
       .then((response) => {
         const result = extractingSeasonsDetails(response.seasons);
         setSeasonsID(result);
-        console.log(result);
       });
   };
   const checkError = (response: Response) => {
@@ -28,5 +27,5 @@ export const useGetSeasonsID = () => {
     callForSeasonsData();
   }, []);
 
-  return { seasonsID };
+  return { seasonsDetails: seasonsID };
 };

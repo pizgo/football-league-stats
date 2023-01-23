@@ -1,13 +1,16 @@
 import React from "react";
 import { seasons } from "../consts/consts";
+import { SeasonDetailConstructor } from "../types/types";
 
 interface SeasonSelectProps {
   onChangeSelect: (chosenSeasonID: string) => void;
+  seasonsDetails: SeasonDetailConstructor[];
   value: string;
 }
 
 const SeasonSelect: React.FC<SeasonSelectProps> = ({
   onChangeSelect,
+  seasonsDetails,
   value,
 }) => {
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -18,7 +21,7 @@ const SeasonSelect: React.FC<SeasonSelectProps> = ({
   return (
     <form>
       <select value={value} onChange={handleChange}>
-        {seasons.map((el, key) => (
+        {seasonsDetails.map((el, key) => (
           <option value={el.seasonID} key={el.seasonID} label={el.seasonName} />
         ))}
       </select>
