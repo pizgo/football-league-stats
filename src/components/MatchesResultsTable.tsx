@@ -1,6 +1,6 @@
 import React from "react";
 import { Table, TableHeaderCell, TableRow } from "semantic-ui-react";
-import { MatchDetailsConstructor } from "../types/types";
+import { MatchSchema } from "../types/types";
 import { tableHeadersContent } from "../consts/consts";
 
 const green = "#5aa13d";
@@ -8,7 +8,7 @@ const red = "#ba2929";
 const orange = "#db611a";
 
 interface MatchesResultsTableProps {
-  matchesResults: MatchDetailsConstructor[];
+  matchesResults: MatchSchema[];
 }
 
 const MatchesResultsTable: React.FC<MatchesResultsTableProps> = ({

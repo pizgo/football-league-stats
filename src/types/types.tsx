@@ -3,7 +3,7 @@ export interface APISeasons {
   name: string;
 }
 
-export interface SeasonDetailConstructor {
+export interface SeasonDetailBuilder {
   seasonID: string;
   seasonName: string;
 }
@@ -38,7 +38,7 @@ interface APIVenue {
   name: string;
 }
 
-export interface MatchDetailsConstructor {
+export interface MatchSchema {
   homeCompetitor: CompetitorInfo;
   awayCompetitor: CompetitorInfo;
   matchID: string;
@@ -48,7 +48,7 @@ export interface MatchDetailsConstructor {
   status: string;
 }
 
-export interface CompetitorInfo {
+interface CompetitorInfo {
   name: string;
   id: string;
   halfScore: number | undefined;

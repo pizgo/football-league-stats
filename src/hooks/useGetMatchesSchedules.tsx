@@ -2,12 +2,10 @@ import { useEffect, useState } from "react";
 import { getSchedulesData } from "../utils/api";
 import { extractingMatchesResults } from "../utils/dataTransformation";
 import { errorMessage } from "../consts/consts";
-import { MatchDetailsConstructor } from "../types/types";
+import { MatchSchema } from "../types/types";
 
-export const useGetMatchesResults = (initialSeasonID: string) => {
-  const [matchesState, setMatchesState] = useState<MatchDetailsConstructor[]>(
-    []
-  );
+export const useGetMatchesSchedules = (initialSeasonID: string) => {
+  const [matchesState, setMatchesState] = useState<MatchSchema[]>([]);
 
   const callForSchedulesData = (seasonID: string) => {
     getSchedulesData(seasonID)
@@ -15,7 +13,7 @@ export const useGetMatchesResults = (initialSeasonID: string) => {
       .then((response) => {
         const results = extractingMatchesResults(response.schedules);
         // console.log(response.schedules);
-        console.log(results);
+        // console.log(results);
         setMatchesState(results);
       })
       .catch((error) => {
