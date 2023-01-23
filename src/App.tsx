@@ -5,15 +5,17 @@ import MatchesResultsTable from "./components/MatchesResultsTable";
 import SingleMatchInfo from "./components/SingleMatchInfo";
 import { useGetMatchesResults } from "./hooks/useGetMatchesResults";
 import { seasons } from "./consts/consts";
+import { useGetSeasonsID } from "./hooks/useGetSeasonsID";
 
 const App: React.FC = () => {
   let initialSeasonID = seasons[2].seasonID;
   const { matchesState, callForSchedulesData } =
     useGetMatchesResults(initialSeasonID);
 
+  const { seasonsID } = useGetSeasonsID();
+
   const handleSelectSeasonID = (chosenSeasonID: string): void => {
     callForSchedulesData(chosenSeasonID);
-    console.log("handleSelectSeasonID");
   };
 
   return (

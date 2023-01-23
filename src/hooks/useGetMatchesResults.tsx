@@ -1,24 +1,21 @@
 import { useEffect, useState } from "react";
-import { APIKey, getSchedulesData } from "../utils/api";
+import { getSchedulesData } from "../utils/api";
 import { extractingMatchesResults } from "../utils/dataTransformation";
 import { errorMessage } from "../consts/consts";
-import { MatchDetails } from "../types/types";
+import { MatchDetailsConstructor } from "../types/types";
 
 export const useGetMatchesResults = (initialSeasonID: string) => {
-  const [matchesState, setMatchesState] = useState<MatchDetails[]>([]);
+  const [matchesState, setMatchesState] = useState<MatchDetailsConstructor[]>(
+    []
+  );
 
   const callForSchedulesData = (seasonID: string) => {
     getSchedulesData(seasonID)
       .then(checkError)
       .then((response) => {
-        console.log(
-          console.log(
-            `/soccer/trial/v4/en/seasons/sr:season:${seasonID}/schedules.json?api_key=${APIKey}`
-          )
-        );
         const results = extractingMatchesResults(response.schedules);
-        console.log(response.schedules);
-        console.log(results);
+        // console.log(response.schedules);
+        // console.log(results);
         setMatchesState(results);
       })
       .catch((error) => {

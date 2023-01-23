@@ -1,4 +1,13 @@
-export interface ApiSchedule {
+export interface APISeasons {
+  id: string;
+  name: string;
+}
+
+export interface SeasonIDConstructor {
+  seasonID: string;
+  seasonName: string;
+}
+export interface APISchedule {
   sport_event: {
     competitors: APICompetitorInfo[];
     id: string;
@@ -29,7 +38,7 @@ interface APIVenue {
   name: string;
 }
 
-export interface MatchDetails {
+export interface MatchDetailsConstructor {
   homeCompetitor: CompetitorInfo;
   awayCompetitor: CompetitorInfo;
   matchID: string;
@@ -47,7 +56,7 @@ export interface CompetitorInfo {
 }
 
 export const buildCompetitorInfo = (
-  schedule: ApiSchedule,
+  schedule: APISchedule,
   isHome: boolean
 ): CompetitorInfo => {
   let index = isHome

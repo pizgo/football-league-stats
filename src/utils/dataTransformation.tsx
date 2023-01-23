@@ -1,6 +1,6 @@
-import { ApiSchedule, buildCompetitorInfo } from "../types/types";
+import { APISchedule, APISeasons, buildCompetitorInfo } from "../types/types";
 
-export const extractingMatchesResults = (array: ApiSchedule[]) => {
+export const extractingMatchesResults = (array: APISchedule[]) => {
   let arrayOfResults = array.map((el) => {
     let homeCompetitor = buildCompetitorInfo(el, true);
     let awayCompetitor = buildCompetitorInfo(el, false);
@@ -19,6 +19,19 @@ export const extractingMatchesResults = (array: ApiSchedule[]) => {
       stadiumName: venue,
       winnerID: winnerID,
       status: status,
+    };
+  });
+  return arrayOfResults;
+};
+
+export const extractingSeasonsDetails = (array: APISeasons[]) => {
+  let arrayOfResults = array.map((el) => {
+    let seasonID = el.id;
+    let seasonName = el.name;
+
+    return {
+      seasonID: seasonID,
+      seasonName: seasonName,
     };
   });
   return arrayOfResults;
