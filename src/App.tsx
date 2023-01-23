@@ -4,7 +4,6 @@ import SeasonSelect from "./components/SeasonSelect";
 import MatchesResultsTable from "./components/MatchesResultsTable";
 import SingleMatchInfo from "./components/SingleMatchInfo";
 import { useGetMatchesResults } from "./hooks/useGetMatchesResults";
-import { seasons } from "./consts/consts";
 import { useGetSeasonsID } from "./hooks/useGetSeasonsID";
 
 const App: React.FC = () => {

@@ -19,7 +19,7 @@ const MatchesResultsTable: React.FC<MatchesResultsTableProps> = ({
     winnerId: string | undefined,
     competitorId: string
   ): {} => {
-    if (gameStatus === "postponed") {
+    if (gameStatus !== "closed") {
       return { backgroundColor: "none" };
     } else if (!winnerId) {
       return { backgroundColor: orange };
