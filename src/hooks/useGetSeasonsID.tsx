@@ -5,14 +5,16 @@ import { extractingSeasonsDetails } from "../utils/dataTransformation";
 import { errorMessage } from "../consts/consts";
 
 export const useGetSeasonsID = () => {
-  const [seasonsID, setSeasonsID] = useState<SeasonDetailSchema[]>([]);
+  const [seasonsIDDetails, setSeasonsIDDetails] = useState<
+    SeasonDetailSchema[]
+  >([]);
 
   const callForSeasonsData = () => {
     getSeasonsData()
       .then(checkError)
       .then((response) => {
         const result = extractingSeasonsDetails(response.seasons);
-        setSeasonsID(result);
+        setSeasonsIDDetails(result);
       });
   };
   const checkError = (response: Response) => {
@@ -23,9 +25,12 @@ export const useGetSeasonsID = () => {
     }
   };
 
-  useEffect((): void => {
-    callForSeasonsData();
+  useEffect((): (() => void) => {
+    const timer = setTimeout(() => {
+      callForSeasonsData();
+    }, 1000);
+    return () => clearTimeout(timer);
   }, []);
 
-  return { seasonsDetails: seasonsID };
+  return { seasonsDetails: seasonsIDDetails };
 };

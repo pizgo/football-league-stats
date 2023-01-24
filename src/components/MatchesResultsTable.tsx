@@ -2,7 +2,6 @@ import React from "react";
 import { Table, TableHeaderCell, TableRow } from "semantic-ui-react";
 import { SingleMatchSchema } from "../types/types";
 import { tableHeadersContent } from "../consts/consts";
-import { Link } from "react-router-dom";
 
 const green = "#5aa13d";
 const red = "#ba2929";
@@ -28,14 +27,9 @@ interface MatchesResultsTableProps {
   onChooseMatch: (singleMatch: SingleMatchSchema) => void;
 }
 
-const MatchesResultsTable: React.FC<MatchesResultsTableProps> = ({
-  matchesResults,
-  onChooseMatch,
-}) => {
-  const handleOnClick = (
-    e: React.MouseEvent,
-    clickedMatch: SingleMatchSchema
-  ) => {
+const MatchesResultsTable: React.FC<MatchesResultsTableProps> =
+    ({ matchesResults, onChooseMatch,}) => {
+  const handleOnClick = (e: React.MouseEvent, clickedMatch: SingleMatchSchema) => {
     onChooseMatch(clickedMatch);
   };
 

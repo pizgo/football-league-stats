@@ -5,14 +5,17 @@ import SingleMatchDetails from "./components/SingleMatchDetails";
 import { SingleMatchSchema } from "./types/types";
 import MatchesSchedules from "./components/MatchesSchedules";
 import { useNavigateSearch } from "./hooks/useNavigateSearch";
+import { useGetMatchTimeline } from "./hooks/useGetMatchTimeline";
 
 const App: React.FC = () => {
   const [chosenMatch, setChosenMatch] = useState<SingleMatchSchema>();
+  const { callForMatchTimeline } = useGetMatchTimeline();
   const redirectToSingleMatchPage = useNavigateSearch();
 
   const handleChooseMatch = (singleMatch: SingleMatchSchema): void => {
     setChosenMatch(singleMatch);
     redirectToSingleMatchPage(singleMatch.matchID);
+    callForMatchTimeline(singleMatch.matchID)
   };
 
   return (
@@ -20,7 +23,9 @@ const App: React.FC = () => {
       <Routes>
         <Route
           path="/"
-          element={<MatchesSchedules choosingSingleMatch={handleChooseMatch} />}
+          element={<MatchesSchedules
+              choosingSingleMatch={handleChooseMatch}
+          />}
         />
         {chosenMatch && (
           <Route

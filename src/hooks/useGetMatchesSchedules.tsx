@@ -12,8 +12,8 @@ export const useGetMatchesSchedules = (initialSeasonID: string) => {
       .then(checkError)
       .then((response) => {
         const results = extractingMatchesResults(response.schedules);
-        console.log(response.schedules);
-        console.log(results);
+        // console.log(response.schedules);
+        // console.log(results);
         setMatchesState(results);
       })
       .catch((error) => {

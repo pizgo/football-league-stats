@@ -1,4 +1,9 @@
-import { APISchedule, APISeasons, buildCompetitorInfo } from "../types/types";
+import {
+  APISchedule,
+  APISeasons,
+  APITimeline,
+  buildCompetitorInfo,
+} from "../types/types";
 
 export const extractingMatchesResults = (array: APISchedule[]) => {
   let arrayOfResults = array.map((el) => {
@@ -32,6 +37,29 @@ export const extractingSeasonsDetails = (array: APISeasons[]) => {
     return {
       seasonID: seasonID,
       seasonName: seasonName,
+    };
+  });
+  return arrayOfResults;
+};
+
+export const extractingTimelineData = (array: APITimeline[]) => {
+  let arrayOfResults = array.map((el) => {
+    let type = el.type;
+    let time = el.time;
+    let matchTime = el.match_time;
+    let period = el.period;
+    let periodType = el.period_type;
+    let breakName = el.break_name;
+    let matchClock = el.match_clock;
+
+    return {
+      type: type,
+      time: time,
+      matchTime: matchTime,
+      period: period,
+      periodType: periodType,
+      breakName: breakName,
+      matchClock: matchClock,
     };
   });
   return arrayOfResults;

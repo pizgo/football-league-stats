@@ -55,6 +55,26 @@ interface CompetitorInfo {
   result: number;
 }
 
+export interface APITimeline {
+  type: string;
+  time: string;
+  match_time?: number;
+  period?: number;
+  period_type?: string;
+  break_name?: string;
+  match_clock?: string;
+}
+
+export interface SingleMatchTimelineSchema {
+  type: string;
+  time: string;
+  matchTime?: string;
+  period?: string;
+  periodType?: string;
+  breakName?: string;
+  matchClock?: string;
+}
+
 export const buildCompetitorInfo = (
   schedule: APISchedule,
   isHome: boolean
