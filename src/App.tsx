@@ -4,14 +4,15 @@ import "semantic-ui-css/semantic.min.css";
 import SingleMatchDetails from "./components/SingleMatchDetails";
 import { SingleMatchSchema } from "./types/types";
 import MatchesSchedules from "./components/MatchesSchedules";
+import { useNavigateSearch } from "./hooks/useNavigateSearch";
 
 const App: React.FC = () => {
   const [chosenMatch, setChosenMatch] = useState<SingleMatchSchema>();
+  const redirectToSingleMatchPage = useNavigateSearch();
 
   const handleChooseMatch = (singleMatch: SingleMatchSchema): void => {
     setChosenMatch(singleMatch);
-    console.log(singleMatch);
-    console.log("test");
+    redirectToSingleMatchPage(singleMatch.matchID);
   };
 
   return (
