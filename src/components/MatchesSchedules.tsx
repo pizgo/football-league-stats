@@ -1,5 +1,5 @@
 import SeasonSelect from "./SeasonSelect";
-import MatchesResultsTable from "./MatchesResultsTable";
+import MatchesSchedulesTable from "./MatchesSchedulesTable";
 import React, { useState } from "react";
 import { useGetSeasonsID } from "../hooks/useGetSeasonsID";
 import { useGetMatchesSchedules } from "../hooks/useGetMatchesSchedules";
@@ -31,7 +31,7 @@ const MatchesSchedules: React.FC<MatchesSchedulesProps> = ({
         seasonsDetails={seasonsDetails}
         value={chosenSeasonID}
       />
-      <MatchesResultsTable
+      <MatchesSchedulesTable
         matchesResults={matchesState}
         onChooseMatch={choosingSingleMatch}
       />

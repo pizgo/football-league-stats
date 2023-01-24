@@ -27,7 +27,7 @@ interface MatchesResultsTableProps {
   onChooseMatch: (singleMatch: SingleMatchSchema) => void;
 }
 
-const MatchesResultsTable: React.FC<MatchesResultsTableProps> =
+const MatchesSchedulesTable: React.FC<MatchesResultsTableProps> =
     ({ matchesResults, onChooseMatch,}) => {
   const handleOnClick = (e: React.MouseEvent, clickedMatch: SingleMatchSchema) => {
     onChooseMatch(clickedMatch);
@@ -85,4 +85,4 @@ const MatchesResultsTable: React.FC<MatchesResultsTableProps> =
   );
 };
 
-export default MatchesResultsTable;
+export default MatchesSchedulesTable;

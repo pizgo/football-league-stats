@@ -68,8 +68,8 @@ export interface APITimeline {
 export interface SingleMatchTimelineSchema {
   type: string;
   time: string;
-  matchTime?: string;
-  period?: string;
+  matchTime?: number;
+  period?: number;
   periodType?: string;
   breakName?: string;
   matchClock?: string;

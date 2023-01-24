@@ -4,17 +4,15 @@ import { errorMessage } from "../consts/consts";
 import {
   extractingTimelineData,
 } from "../utils/dataTransformation";
-import {APITimeline} from "../types/types";
+import {SingleMatchTimelineSchema} from "../types/types";
 
 export const useGetMatchTimeline = () => {
-  const [timeline, setTimeline] = useState<APITimeline[]>();
+  const [timeline, setTimeline] = useState<SingleMatchTimelineSchema[]>([]);
 
   const callForMatchTimeline = (singleMatchId : string) => {
     getMatchTimeline(singleMatchId)
       .then(checkError)
       .then((response) => {
-        console.log(response.timeline);
-        console.log(response)
         const results = extractingTimelineData(response.timeline);
         setTimeline(results);
       });

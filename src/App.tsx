@@ -9,7 +9,7 @@ import { useGetMatchTimeline } from "./hooks/useGetMatchTimeline";
 
 const App: React.FC = () => {
   const [chosenMatch, setChosenMatch] = useState<SingleMatchSchema>();
-  const { callForMatchTimeline } = useGetMatchTimeline();
+  const { timeline, callForMatchTimeline } = useGetMatchTimeline();
   const redirectToSingleMatchPage = useNavigateSearch();
 
   const handleChooseMatch = (singleMatch: SingleMatchSchema): void => {
@@ -30,7 +30,8 @@ const App: React.FC = () => {
         {chosenMatch && (
           <Route
             path="/singleMatch"
-            element={<SingleMatchDetails chosenMatch={chosenMatch} />}
+            element={<SingleMatchDetails chosenMatch={chosenMatch}
+            timeline={timeline}/>}
           />
         )}
       </Routes>
