@@ -1,8 +1,8 @@
 import React from "react";
-import { MatchSchema } from "../types/types";
+import { SingleMatchSchema } from "../types/types";
 
 interface SingleMatchDetailsProps {
-  chosenMatch: MatchSchema;
+  chosenMatch: SingleMatchSchema;
 }
 
 const SingleMatchDetails: React.FC<SingleMatchDetailsProps> = ({

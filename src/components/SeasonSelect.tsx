@@ -1,10 +1,9 @@
 import React from "react";
-import { seasons } from "../consts/consts";
-import { SeasonDetailBuilder } from "../types/types";
+import { SeasonDetailSchema } from "../types/types";
 
 interface SeasonSelectProps {
   onChangeSelect: (chosenSeasonID: string) => void;
-  seasonsDetails: SeasonDetailBuilder[];
+  seasonsDetails: SeasonDetailSchema[];
   value: string;
 }
 

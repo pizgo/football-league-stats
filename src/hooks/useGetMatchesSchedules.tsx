@@ -2,18 +2,18 @@ import { useEffect, useState } from "react";
 import { getSchedulesData } from "../utils/api";
 import { extractingMatchesResults } from "../utils/dataTransformation";
 import { errorMessage } from "../consts/consts";
-import { MatchSchema } from "../types/types";
+import { SingleMatchSchema } from "../types/types";
 
 export const useGetMatchesSchedules = (initialSeasonID: string) => {
-  const [matchesState, setMatchesState] = useState<MatchSchema[]>([]);
+  const [matchesState, setMatchesState] = useState<SingleMatchSchema[]>([]);
 
   const callForSchedulesData = (seasonID: string) => {
     getSchedulesData(seasonID)
       .then(checkError)
       .then((response) => {
         const results = extractingMatchesResults(response.schedules);
-        // console.log(response.schedules);
-        // console.log(results);
+        console.log(response.schedules);
+        console.log(results);
         setMatchesState(results);
       })
       .catch((error) => {

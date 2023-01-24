@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
-import { getMatchDetails, getSeasonsData } from "../utils/api";
-import { APISeasons, SeasonDetailBuilder } from "../types/types";
-import { extractingSeasonsDetails } from "../utils/dataTransformation";
+import { getMatchDetails } from "../utils/api";
 import { errorMessage } from "../consts/consts";
 
 export const useGetMatchDetails = () => {

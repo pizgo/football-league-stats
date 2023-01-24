@@ -1,40 +1,19 @@
 import React, { useState } from "react";
 import "semantic-ui-css/semantic.min.css";
-import SeasonSelect from "./components/SeasonSelect";
-import MatchesResultsTable from "./components/MatchesResultsTable";
 import SingleMatchDetails from "./components/SingleMatchDetails";
-import { useGetMatchesSchedules } from "./hooks/useGetMatchesSchedules";
-import { useGetSeasonsID } from "./hooks/useGetSeasonsID";
-import { MatchSchema } from "./types/types";
+import { SingleMatchSchema } from "./types/types";
+import MatchesSchedules from "./components/MatchesSchedules";
 
 const App: React.FC = () => {
-  const { seasonsDetails } = useGetSeasonsID();
-  const [chosenSeasonID, setChosenSeasonID] =
-    useState<string>("sr:season:77453");
-  const { matchesState, callForSchedulesData } =
-    useGetMatchesSchedules(chosenSeasonID);
-  const [chosenMatch, setChosenMatch] = useState<MatchSchema>();
+  const [chosenMatch, setChosenMatch] = useState<SingleMatchSchema>();
 
-  const handleSelectSeasonID = (clickedChosenSeasonID: string): void => {
-    setChosenSeasonID(clickedChosenSeasonID);
-    callForSchedulesData(clickedChosenSeasonID);
-  };
-
-  const handleChooseMatch = (singleMatch: MatchSchema): void => {
+  const handleChooseMatch = (singleMatch: SingleMatchSchema): void => {
     setChosenMatch(singleMatch);
   };
 
   return (
     <>
-      <SeasonSelect
-        onChangeSelect={handleSelectSeasonID}
-        seasonsDetails={seasonsDetails}
-        value={chosenSeasonID}
-      />
-      <MatchesResultsTable
-        matchesResults={matchesState}
-        onChooseMatch={handleChooseMatch}
-      />
+      <MatchesSchedules choosingSingleMatch={handleChooseMatch} />
       {chosenMatch && <SingleMatchDetails chosenMatch={chosenMatch} />}
     </>
   );

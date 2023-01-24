@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { getSeasonsData } from "../utils/api";
-import { APISeasons, SeasonDetailBuilder } from "../types/types";
+import { SeasonDetailSchema } from "../types/types";
 import { extractingSeasonsDetails } from "../utils/dataTransformation";
 import { errorMessage } from "../consts/consts";
 
 export const useGetSeasonsID = () => {
-  const [seasonsID, setSeasonsID] = useState<SeasonDetailBuilder[]>([]);
+  const [seasonsID, setSeasonsID] = useState<SeasonDetailSchema[]>([]);
 
   const callForSeasonsData = () => {
     getSeasonsData()

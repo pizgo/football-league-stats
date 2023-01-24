@@ -1,38 +1,40 @@
 import React from "react";
 import { Table, TableHeaderCell, TableRow } from "semantic-ui-react";
-import { MatchSchema } from "../types/types";
+import { SingleMatchSchema } from "../types/types";
 import { tableHeadersContent } from "../consts/consts";
 
 const green = "#5aa13d";
 const red = "#ba2929";
 const orange = "#db611a";
+const colorBackgroundSetting = (
+  gameStatus: string,
+  winnerId: string | undefined,
+  competitorId: string
+): {} => {
+  if (gameStatus !== "closed") {
+    return { backgroundColor: "none" };
+  } else if (!winnerId) {
+    return { backgroundColor: orange };
+  } else if (winnerId && winnerId === competitorId) {
+    return { backgroundColor: green };
+  } else {
+    return { backgroundColor: red };
+  }
+};
 
 interface MatchesResultsTableProps {
-  matchesResults: MatchSchema[];
-  onChooseMatch: (singleMatch: MatchSchema) => void;
+  matchesResults: SingleMatchSchema[];
+  onChooseMatch: (singleMatch: SingleMatchSchema) => void;
 }
 
 const MatchesResultsTable: React.FC<MatchesResultsTableProps> = ({
   matchesResults,
   onChooseMatch,
 }) => {
-  const colorBackgroundSetting = (
-    gameStatus: string,
-    winnerId: string | undefined,
-    competitorId: string
-  ): {} => {
-    if (gameStatus !== "closed") {
-      return { backgroundColor: "none" };
-    } else if (!winnerId) {
-      return { backgroundColor: orange };
-    } else if (winnerId && winnerId === competitorId) {
-      return { backgroundColor: green };
-    } else {
-      return { backgroundColor: red };
-    }
-  };
-
-  const handleOnClick = (e: React.MouseEvent, clickedMatch: MatchSchema) => {
+  const handleOnClick = (
+    e: React.MouseEvent,
+    clickedMatch: SingleMatchSchema
+  ) => {
     onChooseMatch(clickedMatch);
   };
 
