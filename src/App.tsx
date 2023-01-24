@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import "semantic-ui-css/semantic.min.css";
 import SingleMatchDetails from "./components/SingleMatchDetails";
 import { SingleMatchSchema } from "./types/types";
@@ -9,12 +10,24 @@ const App: React.FC = () => {
 
   const handleChooseMatch = (singleMatch: SingleMatchSchema): void => {
     setChosenMatch(singleMatch);
+    console.log(singleMatch);
+    console.log("test");
   };
 
   return (
     <>
-      <MatchesSchedules choosingSingleMatch={handleChooseMatch} />
-      {chosenMatch && <SingleMatchDetails chosenMatch={chosenMatch} />}
+      <Routes>
+        <Route
+          path="/"
+          element={<MatchesSchedules choosingSingleMatch={handleChooseMatch} />}
+        />
+        {chosenMatch && (
+          <Route
+            path="/singleMatch"
+            element={<SingleMatchDetails chosenMatch={chosenMatch} />}
+          />
+        )}
+      </Routes>
     </>
   );
 };

@@ -2,6 +2,7 @@ import React from "react";
 import { Table, TableHeaderCell, TableRow } from "semantic-ui-react";
 import { SingleMatchSchema } from "../types/types";
 import { tableHeadersContent } from "../consts/consts";
+import { Link } from "react-router-dom";
 
 const green = "#5aa13d";
 const red = "#ba2929";
@@ -50,39 +51,41 @@ const MatchesResultsTable: React.FC<MatchesResultsTableProps> = ({
         </Table.Header>
         <Table.Body>
           {matchesResults.map((singleMatch, key) => (
-            <TableRow
-              key={singleMatch.matchID}
-              onClick={(e: React.MouseEvent) => handleOnClick(e, singleMatch)}
-            >
-              <Table.Cell
-                style={colorBackgroundSetting(
-                  singleMatch.status,
-                  singleMatch.winnerID,
-                  singleMatch.homeCompetitor.id
-                )}
+            <Link to="/singleMatch">
+              <TableRow
+                key={singleMatch.matchID}
+                onClick={(e: React.MouseEvent) => handleOnClick(e, singleMatch)}
               >
-                {singleMatch.homeCompetitor.name}
-              </Table.Cell>
-              <Table.Cell
-                style={colorBackgroundSetting(
-                  singleMatch.status,
-                  singleMatch.winnerID,
-                  singleMatch.awayCompetitor.id
-                )}
-              >
-                {singleMatch.awayCompetitor.name}
-              </Table.Cell>
-              <Table.Cell>
-                {singleMatch.homeCompetitor.result} -{" "}
-                {singleMatch.awayCompetitor.result}
-              </Table.Cell>
-              <Table.Cell>{singleMatch.matchDate}</Table.Cell>
-              <Table.Cell>
-                {singleMatch.homeCompetitor.halfScore} -{" "}
-                {singleMatch.awayCompetitor.halfScore}
-              </Table.Cell>
-              <Table.Cell>{singleMatch.stadiumName}</Table.Cell>
-            </TableRow>
+                <Table.Cell
+                  style={colorBackgroundSetting(
+                    singleMatch.status,
+                    singleMatch.winnerID,
+                    singleMatch.homeCompetitor.id
+                  )}
+                >
+                  {singleMatch.homeCompetitor.name}
+                </Table.Cell>
+                <Table.Cell
+                  style={colorBackgroundSetting(
+                    singleMatch.status,
+                    singleMatch.winnerID,
+                    singleMatch.awayCompetitor.id
+                  )}
+                >
+                  {singleMatch.awayCompetitor.name}
+                </Table.Cell>
+                <Table.Cell>
+                  {singleMatch.homeCompetitor.result} -{" "}
+                  {singleMatch.awayCompetitor.result}
+                </Table.Cell>
+                <Table.Cell>{singleMatch.matchDate}</Table.Cell>
+                <Table.Cell>
+                  {singleMatch.homeCompetitor.halfScore} -{" "}
+                  {singleMatch.awayCompetitor.halfScore}
+                </Table.Cell>
+                <Table.Cell>{singleMatch.stadiumName}</Table.Cell>
+              </TableRow>
+            </Link>
           ))}
         </Table.Body>
       </Table>
