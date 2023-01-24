@@ -9,10 +9,12 @@ const orange = "#db611a";
 
 interface MatchesResultsTableProps {
   matchesResults: MatchSchema[];
+  onChooseMatch: (singleMatch: MatchSchema) => void;
 }
 
 const MatchesResultsTable: React.FC<MatchesResultsTableProps> = ({
   matchesResults,
+  onChooseMatch,
 }) => {
   const colorBackgroundSetting = (
     gameStatus: string,
@@ -30,6 +32,10 @@ const MatchesResultsTable: React.FC<MatchesResultsTableProps> = ({
     }
   };
 
+  const handleOnClick = (e: React.MouseEvent, clickedMatch: MatchSchema) => {
+    onChooseMatch(clickedMatch);
+  };
+
   return (
     <>
       <Table celled>
@@ -41,35 +47,39 @@ const MatchesResultsTable: React.FC<MatchesResultsTableProps> = ({
           </TableRow>
         </Table.Header>
         <Table.Body>
-          {matchesResults.map((game, key) => (
-            <TableRow key={game.matchID}>
+          {matchesResults.map((singleMatch, key) => (
+            <TableRow
+              key={singleMatch.matchID}
+              onClick={(e: React.MouseEvent) => handleOnClick(e, singleMatch)}
+            >
               <Table.Cell
                 style={colorBackgroundSetting(
-                  game.status,
-                  game.winnerID,
-                  game.homeCompetitor.id
+                  singleMatch.status,
+                  singleMatch.winnerID,
+                  singleMatch.homeCompetitor.id
                 )}
               >
-                {game.homeCompetitor.name}
+                {singleMatch.homeCompetitor.name}
               </Table.Cell>
               <Table.Cell
                 style={colorBackgroundSetting(
-                  game.status,
-                  game.winnerID,
-                  game.awayCompetitor.id
+                  singleMatch.status,
+                  singleMatch.winnerID,
+                  singleMatch.awayCompetitor.id
                 )}
               >
-                {game.awayCompetitor.name}
+                {singleMatch.awayCompetitor.name}
               </Table.Cell>
               <Table.Cell>
-                {game.homeCompetitor.result} - {game.awayCompetitor.result}
+                {singleMatch.homeCompetitor.result} -{" "}
+                {singleMatch.awayCompetitor.result}
               </Table.Cell>
-              <Table.Cell>{game.matchDate}</Table.Cell>
+              <Table.Cell>{singleMatch.matchDate}</Table.Cell>
               <Table.Cell>
-                {game.homeCompetitor.halfScore} -{" "}
-                {game.awayCompetitor.halfScore}
+                {singleMatch.homeCompetitor.halfScore} -{" "}
+                {singleMatch.awayCompetitor.halfScore}
               </Table.Cell>
-              <Table.Cell>{game.stadiumName}</Table.Cell>
+              <Table.Cell>{singleMatch.stadiumName}</Table.Cell>
             </TableRow>
           ))}
         </Table.Body>
