@@ -36,7 +36,7 @@ const App: React.FC = () => {
         matchesResults={matchesState}
         onChooseMatch={handleChooseMatch}
       />
-      {/*<SingleMatchDetails chosenMatch={chosenMatch} />*/}
+      {chosenMatch && <SingleMatchDetails chosenMatch={chosenMatch} />}
     </>
   );
 };
