@@ -1,6 +1,6 @@
 import React from "react";
 import { SeasonDetailSchema } from "../types/types";
-import { Form } from "react-bootstrap"
+import { Form } from "react-bootstrap";
 
 interface SeasonSelectProps {
   onChangeSelect: (chosenSeasonID: string) => void;
@@ -19,11 +19,16 @@ const SeasonSelect: React.FC<SeasonSelectProps> = ({
     value = chosenSeasonID;
   };
   return (
-      <Form.Select value={value} onChange={handleChange} size="lg">
-        {seasonsDetails.map((el, key) => (
-          <option value={el.seasonID} key={el.seasonID} label={el.seasonName} />
-        ))}
-      </Form.Select>
+    <Form.Select
+      value={value}
+      onChange={handleChange}
+      className="fw-bold"
+      role="button"
+    >
+      {seasonsDetails.map((el, key) => (
+        <option value={el.seasonID} key={el.seasonID} label={el.seasonName} />
+      ))}
+    </Form.Select>
   );
 };
 

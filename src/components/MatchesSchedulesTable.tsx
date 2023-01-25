@@ -1,5 +1,5 @@
 import React from "react";
-import Table from "react-bootstrap/Table"
+import Table from "react-bootstrap/Table";
 import { SingleMatchSchema } from "../types/types";
 import { tableHeadersContent } from "../consts/consts";
 
@@ -24,32 +24,39 @@ const colorBackgroundSetting = (
 
 const displayWhenStatusNotClosed = (gameStatus: string) => {
   if (gameStatus == "postponed") {
-    return "game postponed"
+    return "game postponed";
   } else if (gameStatus === "delayed") {
-    return "game delayed"
+    return "game delayed";
   } else if (gameStatus === "not_started") {
-    return "not started"
+    return "not started";
   }
-}
+};
 
 interface MatchesResultsTableProps {
   matchesResults: SingleMatchSchema[];
   onChooseMatch: (singleMatch: SingleMatchSchema) => void;
 }
 
-const MatchesSchedulesTable: React.FC<MatchesResultsTableProps> =
-    ({ matchesResults, onChooseMatch,}) => {
-  const handleOnClick = (e: React.MouseEvent, clickedMatch: SingleMatchSchema) => {
+const MatchesSchedulesTable: React.FC<MatchesResultsTableProps> = ({
+  matchesResults,
+  onChooseMatch,
+}) => {
+  const handleOnClick = (
+    e: React.MouseEvent,
+    clickedMatch: SingleMatchSchema
+  ) => {
     onChooseMatch(clickedMatch);
   };
 
   return (
     <>
-      <Table responsive bordered={true} className="border-rounded">
+      <Table responsive hover className="border-rounded">
         <thead>
           <tr className="bg-light">
             {tableHeadersContent.map((el, key) => (
-              <td className="p-3 fw-bold" key={el}>{el}</td>
+              <td className="p-3 fw-bold text-center" key={el}>
+                {el}
+              </td>
             ))}
           </tr>
         </thead>
@@ -58,9 +65,10 @@ const MatchesSchedulesTable: React.FC<MatchesResultsTableProps> =
             <tr
               key={singleMatch.matchID}
               onClick={(e: React.MouseEvent) => handleOnClick(e, singleMatch)}
-              style={{cursor: "pointer"}}
+              style={{ cursor: "pointer" }}
             >
-              <td className="p-3"
+              <td
+                className="p-3"
                 style={colorBackgroundSetting(
                   singleMatch.status,
                   singleMatch.winnerID,
@@ -69,7 +77,8 @@ const MatchesSchedulesTable: React.FC<MatchesResultsTableProps> =
               >
                 {singleMatch.homeCompetitor.name}
               </td>
-              <td className="p-3"
+              <td
+                className="p-3"
                 style={colorBackgroundSetting(
                   singleMatch.status,
                   singleMatch.winnerID,
@@ -78,9 +87,16 @@ const MatchesSchedulesTable: React.FC<MatchesResultsTableProps> =
               >
                 {singleMatch.awayCompetitor.name}
               </td>
-                {(singleMatch.status === "closed") ? <td className="p-3 d-flex justify-content-center">{singleMatch.homeCompetitor.result} -{" "}
-                  {singleMatch.awayCompetitor.result}</td> : <td className="p-3 d-flex justify-content-center">{displayWhenStatusNotClosed(singleMatch.status)}</td>}
-
+              {singleMatch.status === "closed" ? (
+                <td className="p-3 d-flex justify-content-center">
+                  {singleMatch.homeCompetitor.result} -{" "}
+                  {singleMatch.awayCompetitor.result}
+                </td>
+              ) : (
+                <td className="p-3 d-flex justify-content-center">
+                  {displayWhenStatusNotClosed(singleMatch.status)}
+                </td>
+              )}
               <td className="p-3">{singleMatch.matchDate}</td>
               <td className="p-3 d-flex justify-content-center">
                 {singleMatch.homeCompetitor.halfScore} -{" "}
