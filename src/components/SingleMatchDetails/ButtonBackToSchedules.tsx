@@ -10,8 +10,7 @@ const ButtonBackToSchedules: React.FC = () => {
         variant="light"
         size="lg"
         className="position-fixed px-5 fw-bold"
-        style={{ backgroundColor: "#D9D9D6" }}
-      >
+        style={{ backgroundColor: "#D9D9D6" }}>
         <BiArrowBack />
       </Button>
     </Link>

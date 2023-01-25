@@ -1,20 +1,17 @@
 import React from "react";
-import {SingleMatchSchema, SingleMatchTimelineSchema} from "../types/types";
-import {Card, Col, Container, Row} from "react-bootstrap";
 import SingleMatchOverview from "./SingleMatchOverview";
 import SingleMatchTimeline from "./SingleMatchTimeline";
-import ButtonBackToSchedules from "./ButtonBackToSchedules"
+import ButtonBackToSchedules from "./ButtonBackToSchedules";
+import { SingleMatchSchema, SingleMatchTimelineSchema } from "../../types/types";
+import { Container } from "react-bootstrap";
 
 interface SingleMatchDetailsProps {
   chosenMatch: SingleMatchSchema;
   timeline: SingleMatchTimelineSchema[];
 }
 
-const SingleMatchDetails: React.FC<SingleMatchDetailsProps> = ({
-  chosenMatch,
-    timeline
-}) => {
-    console.log(timeline)
+const SingleMatchDetails: React.FC<SingleMatchDetailsProps> = ({chosenMatch, timeline}) => {
+
   return (
       <>
           <ButtonBackToSchedules/>
@@ -25,10 +22,8 @@ const SingleMatchDetails: React.FC<SingleMatchDetailsProps> = ({
               <SingleMatchTimeline
                   chosenMatch={chosenMatch}
                   timeline={timeline}/>
-
           </Container>
       </>
-
   );
 };
 

@@ -1,17 +1,16 @@
 import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import SingleMatchDetails from "./components/SingleMatchDetails";
-import { SingleMatchSchema } from "./types/types";
-import MatchesSchedules from "./components/MatchesSchedules";
+import SingleMatchDetails from "./components/SingleMatchDetails/SingleMatchDetails";
+import MatchesSchedules from "./components/MatchesSchedule/MatchesSchedules";
 import { useNavigateSearch } from "./hooks/useNavigateSearch";
 import { useGetMatchTimeline } from "./hooks/useGetMatchTimeline";
+import { SingleMatchSchema } from "./types/types";
+import { firstSeason } from "./consts/consts";
 import { Container } from "react-bootstrap"
-import {firstSeason} from "./consts/consts";
 
 const App: React.FC = () => {
   const [chosenMatch, setChosenMatch] = useState<SingleMatchSchema>();
   const [chosenSeasonID, setChosenSeasonID] = useState<string>(firstSeason);
-
   const { timeline, callForMatchTimeline } = useGetMatchTimeline();
   const redirectToSingleMatchPage = useNavigateSearch();
 
@@ -34,9 +33,9 @@ const App: React.FC = () => {
         />
         {chosenMatch && (
           <Route
-            path="/singleMatch"
-            element={<SingleMatchDetails chosenMatch={chosenMatch}
-            timeline={timeline}/>}
+              path="/singleMatch"
+              element={<SingleMatchDetails chosenMatch={chosenMatch}
+              timeline={timeline}/>}
           />
         )}
       </Routes>
