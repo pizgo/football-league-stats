@@ -73,6 +73,13 @@ export interface APITimeline {
 }
 
 export interface SingleMatchTimelineSchema {
+  competitor: string,
+  home_score?: number,
+  away_score?: number,
+  players?: {
+    name: string,
+    type: string,
+  }[],
   type: string;
   time: string;
   matchTime?: number;
