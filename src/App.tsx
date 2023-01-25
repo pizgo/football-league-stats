@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import "semantic-ui-css/semantic.min.css";
 import SingleMatchDetails from "./components/SingleMatchDetails";
 import { SingleMatchSchema } from "./types/types";
 import MatchesSchedules from "./components/MatchesSchedules";

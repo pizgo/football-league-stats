@@ -1,6 +1,7 @@
 import React from "react";
 import {Card, Col, Container, Row} from "react-bootstrap";
 import {SingleMatchSchema, SingleMatchTimelineSchema} from "../types/types";
+import { BiFootball } from "react-icons/bi"
 
 
 
@@ -11,8 +12,8 @@ interface SingleMatchOverviewProps {
 
 const SingleMatchOverview: React.FC<SingleMatchOverviewProps> = ( {chosenMatch, timeline}) => {
     return (
-        <Container className="shadow-lg w-75 rounded" style={{backgroundColor: "#FFFBF5"}}>
-            <Row className="justify-content-center fw-bold mt-3">
+        <Container className="shadow-lg w-75 rounded mb-5" style={{backgroundColor: "#FFFBF5"}}>
+            <Row className="justify-content-center fw-bold mt-4">
                 <Col xs lg="4" className="text-center">
                     Match date: {chosenMatch.matchDate}
                 </Col>
@@ -29,9 +30,18 @@ const SingleMatchOverview: React.FC<SingleMatchOverviewProps> = ( {chosenMatch, 
                     {chosenMatch.awayCompetitor.name}
                 </Col>
             </Row>
-            <Row className="my-3">
-                <Col></Col>
-                <Col className=" text-center">
+            <Row className="mt-3 mb-4">
+                <Col>
+                    {timeline.map((el) => (
+                        ((el.type === "score_change") && (el.competitor === "home")) ?
+                            <Row className="justify-content-end">
+                                <Col className="col-8 text-end">Name</Col>
+                                <Col className="col-1 text-end">'{el.matchTime}</Col>
+                                <Col className="col-2"><BiFootball/></Col>
+                            </Row>: null
+                    ))}
+                </Col>
+                <Col className="col-2 text-center">
                     <Row>
                         <Col>Half-score</Col>
                     </Row>
@@ -40,7 +50,16 @@ const SingleMatchOverview: React.FC<SingleMatchOverviewProps> = ( {chosenMatch, 
                             {chosenMatch.awayCompetitor.halfScore}</Col>
                     </Row>
                 </Col>
-                <Col></Col>
+                <Col>
+                    {timeline.map((el) => (
+                        ((el.type === "score_change") && (el.competitor === "away")) ?
+                            <Row className="">
+                                <Col className="col-2 text-end"><BiFootball/></Col>
+                                <Col className="col-1 text-start">'{el.matchTime}</Col>
+                                <Col className="col-8 text-start">Name</Col>
+                            </Row>: null
+                    ))}
+                </Col>
             </Row>
         </Container>
     )
