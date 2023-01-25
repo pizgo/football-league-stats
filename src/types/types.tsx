@@ -102,7 +102,7 @@ export const buildCompetitorInfo = (
     : 1;
 
   let halfScoreCompetitor = undefined;
-  if (schedule.sport_event_status.status == "closed") {
+  if (schedule.sport_event_status.status === "closed") {
     halfScoreCompetitor = isHome
       ? schedule.sport_event_status.period_scores[0].home_score
       : schedule.sport_event_status.period_scores[0].away_score;

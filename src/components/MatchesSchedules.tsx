@@ -36,7 +36,6 @@ const MatchesSchedules: React.FC<MatchesSchedulesProps> = ({
                       value={chosenSeasonID}
                   />
               </Col>
-
           </Row>
           <Row>
               <MatchesSchedulesTable
