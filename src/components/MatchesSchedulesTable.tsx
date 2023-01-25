@@ -3,7 +3,6 @@ import Table from "react-bootstrap/Table"
 import { SingleMatchSchema } from "../types/types";
 import { tableHeadersContent } from "../consts/consts";
 
-
 const green = "#5aa13d";
 const red = "#ba2929";
 const orange = "#db611a";
@@ -22,6 +21,16 @@ const colorBackgroundSetting = (
     return { backgroundColor: red };
   }
 };
+
+const displayWhenStatusNotClosed = (gameStatus: string) => {
+  if (gameStatus == "postponed") {
+    return "game postponed"
+  } else if (gameStatus === "delayed") {
+    return "game delayed"
+  } else if (gameStatus === "not_started") {
+    return "not started"
+  }
+}
 
 interface MatchesResultsTableProps {
   matchesResults: SingleMatchSchema[];
@@ -69,10 +78,9 @@ const MatchesSchedulesTable: React.FC<MatchesResultsTableProps> =
               >
                 {singleMatch.awayCompetitor.name}
               </td>
-              <td className="p-3 d-flex justify-content-center">
-                {singleMatch.homeCompetitor.result} -{" "}
-                {singleMatch.awayCompetitor.result}
-              </td>
+                {(singleMatch.status === "closed") ? <td className="p-3 d-flex justify-content-center">{singleMatch.homeCompetitor.result} -{" "}
+                  {singleMatch.awayCompetitor.result}</td> : <td className="p-3 d-flex justify-content-center">{displayWhenStatusNotClosed(singleMatch.status)}</td>}
+
               <td className="p-3">{singleMatch.matchDate}</td>
               <td className="p-3 d-flex justify-content-center">
                 {singleMatch.homeCompetitor.halfScore} -{" "}

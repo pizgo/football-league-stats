@@ -9,8 +9,8 @@ interface SingleMatchTimelineProps {
 const SingleMatchTimeline: React.FC<SingleMatchTimelineProps> = ( {chosenMatch, timeline}) => {
     return (
         <Container className="shadow-lg w-75 rounded mt-5" style={{backgroundColor: "#A4BE7B"}}>
-            <Row>
-                <Col>ddddd</Col>
+            <Row className="justify-content-center fw-bold mt-4">
+                <Col xs lg="4" className="text-center">Timeline</Col>
             </Row>
         </Container>
     )

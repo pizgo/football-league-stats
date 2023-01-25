@@ -15,8 +15,6 @@ const MatchesSchedules: React.FC<MatchesSchedulesProps> = ({
   choosingSingleMatch,
 }) => {
   const { seasonsDetails } = useGetSeasonsID();
-  // const initialSeason = seasonsDetails[0].seasonID;
-  // console.log(initialSeason);
   const [chosenSeasonID, setChosenSeasonID] =
     useState<string>("");
   const { matchesState, callForSchedulesData } =
