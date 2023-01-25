@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { getSchedulesData } from "../utils/api";
 import { extractingMatchesResults } from "../utils/dataTransformation";
-import { errorMessage } from "../consts/consts";
 import { SingleMatchSchema } from "../types/types";
+import { errorMessage } from "../consts/consts";
 
 export const useGetMatchesSchedules = (chosenSeason: string) => {
   const [matchesState, setMatchesState] = useState<SingleMatchSchema[]>([]);
@@ -26,13 +26,6 @@ export const useGetMatchesSchedules = (chosenSeason: string) => {
       return response.json();
     }
   };
-
-  // useEffect((): () => void => {
-  //     const timer = setTimeout(() => {
-  //       callForSchedulesData(chosenSeason);
-  //     }, 1001);
-  //     return () => clearTimeout(timer);
-  // }, [chosenSeason]);
 
     useEffect(() => {
             callForSchedulesData(chosenSeason);

@@ -6,7 +6,6 @@ import { errorMessage } from "../consts/consts";
 
 export const useGetSeasonsID = () => {
   const [seasonsIDDetails, setSeasonsIDDetails] = useState<SeasonDetailSchema[]>([]);
-  const [seasonID, setSeasonID] = useState<string>("");
 
   const callForSeasonsData = () => {
     getSeasonsData()
@@ -14,7 +13,6 @@ export const useGetSeasonsID = () => {
       .then((response) => {
         const result = extractingSeasonsDetails(response.seasons);
         setSeasonsIDDetails(result);
-        setSeasonID(result[0].seasonID)
       });
   };
   const checkError = (response: Response) => {
@@ -31,10 +29,7 @@ export const useGetSeasonsID = () => {
     }, 1001);
     return () => clearTimeout(timer);
   }, []);
-  //
-  // useEffect(() => {
-  //     callForSeasonsData();
-  // }, []);
 
-  return { seasonsDetails: seasonsIDDetails, seasonID};
+
+  return { seasonsDetails: seasonsIDDetails};
 };

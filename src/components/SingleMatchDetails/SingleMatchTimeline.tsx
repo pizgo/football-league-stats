@@ -5,8 +5,6 @@ import { Col,
   Row,
   OverlayTrigger,
   Popover } from "react-bootstrap";
-import { BiFootball } from "react-icons/bi";
-import { TbExchange } from "react-icons/tb";
 
 interface SingleMatchTimelineProps {
   chosenMatch: SingleMatchSchema;
@@ -57,11 +55,11 @@ const SingleMatchTimeline: React.FC<SingleMatchTimelineProps> = ({ chosenMatch, 
                   trigger="click"
                   placement="left"
                   overlay={popover(el)}>
-                    <Col className="text-end pointer-event" role="button">
+                    <Col className="text-end" role="button">
                       {el.type}
                     </Col>
                 </OverlayTrigger>) :
-                    (<Col className="text-end">{el.type}</Col>)) :
+                    (<Col className="text-end fw-bold">{el.type}</Col>)) :
                 (<Col></Col>)}
             <Col className="col-1 text-center">{el.matchTime}</Col>
               {el.competitor === "away" ? (typesToPopover(el) ? (
@@ -69,11 +67,11 @@ const SingleMatchTimeline: React.FC<SingleMatchTimelineProps> = ({ chosenMatch, 
                       trigger="click"
                       placement="right"
                       overlay={popover(el)}>
-                      <Col className="text-end pointer-event" role="button">
+                      <Col className="text-start fw-bold" role="button">
                           {el.type}
                       </Col>
                   </OverlayTrigger>) :
-                    (<Col className="text-end">{el.type}</Col>)) :
+                    (<Col className="text-start">{el.type}</Col>)) :
                   (<Col></Col>)}
           </Row>
         ))}
