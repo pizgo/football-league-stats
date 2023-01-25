@@ -1,7 +1,8 @@
 import React from "react";
-import { Table, TableHeaderCell, TableRow } from "semantic-ui-react";
+import Table from "react-bootstrap/Table"
 import { SingleMatchSchema } from "../types/types";
 import { tableHeadersContent } from "../consts/consts";
+
 
 const green = "#5aa13d";
 const red = "#ba2929";
@@ -35,21 +36,22 @@ const MatchesSchedulesTable: React.FC<MatchesResultsTableProps> =
 
   return (
     <>
-      <Table celled>
-        <Table.Header>
-          <TableRow>
+      <Table responsive bordered={true} className="border-rounded">
+        <thead>
+          <tr className="bg-light">
             {tableHeadersContent.map((el, key) => (
-              <TableHeaderCell key={el}>{el}</TableHeaderCell>
+              <td className="p-3 fw-bold" key={el}>{el}</td>
             ))}
-          </TableRow>
-        </Table.Header>
-        <Table.Body>
+          </tr>
+        </thead>
+        <tbody>
           {matchesResults.map((singleMatch, key) => (
-            <TableRow
+            <tr
               key={singleMatch.matchID}
               onClick={(e: React.MouseEvent) => handleOnClick(e, singleMatch)}
+              style={{cursor: "pointer"}}
             >
-              <Table.Cell
+              <td className="p-3"
                 style={colorBackgroundSetting(
                   singleMatch.status,
                   singleMatch.winnerID,
@@ -57,8 +59,8 @@ const MatchesSchedulesTable: React.FC<MatchesResultsTableProps> =
                 )}
               >
                 {singleMatch.homeCompetitor.name}
-              </Table.Cell>
-              <Table.Cell
+              </td>
+              <td className="p-3"
                 style={colorBackgroundSetting(
                   singleMatch.status,
                   singleMatch.winnerID,
@@ -66,20 +68,20 @@ const MatchesSchedulesTable: React.FC<MatchesResultsTableProps> =
                 )}
               >
                 {singleMatch.awayCompetitor.name}
-              </Table.Cell>
-              <Table.Cell>
+              </td>
+              <td className="p-3 d-flex justify-content-center">
                 {singleMatch.homeCompetitor.result} -{" "}
                 {singleMatch.awayCompetitor.result}
-              </Table.Cell>
-              <Table.Cell>{singleMatch.matchDate}</Table.Cell>
-              <Table.Cell>
+              </td>
+              <td className="p-3">{singleMatch.matchDate}</td>
+              <td className="p-3 d-flex justify-content-center">
                 {singleMatch.homeCompetitor.halfScore} -{" "}
                 {singleMatch.awayCompetitor.halfScore}
-              </Table.Cell>
-              <Table.Cell>{singleMatch.stadiumName}</Table.Cell>
-            </TableRow>
+              </td>
+              <td className="p-3">{singleMatch.stadiumName}</td>
+            </tr>
           ))}
-        </Table.Body>
+        </tbody>
       </Table>
     </>
   );
