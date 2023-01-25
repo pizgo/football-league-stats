@@ -1,6 +1,6 @@
 import React from "react";
 import SingleMatchOverview from "./SingleMatchOverview";
-import SingleMatchTimeline from "./SingleMatchTimeline";
+import SingleMatchTimeline from "./SingleMatchTimeline/SingleMatchTimeline";
 import ButtonBackToSchedules from "./ButtonBackToSchedules";
 import { SingleMatchSchema, SingleMatchTimelineSchema } from "../../types/types";
 import { Container } from "react-bootstrap";

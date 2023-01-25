@@ -102,4 +102,3 @@ export const extractingTimelineData = (array: APITimeline[]) => {
   });
   return arrayOfResults;
 };
-

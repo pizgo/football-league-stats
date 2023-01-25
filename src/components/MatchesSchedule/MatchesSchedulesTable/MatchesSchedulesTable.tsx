@@ -3,7 +3,7 @@ import { SingleMatchSchema } from "../../../types/types";
 import { tableHeadersContent } from "../../../consts/consts";
 import {
   colorBackgroundSetting,
-  displayWhenStatusNotClosed } from "./style";
+  displayWhenStatusNotClosed } from "./matchesSchedulesStyle";
 import Table from "react-bootstrap/Table";
 
 interface MatchesResultsTableProps {
@@ -13,7 +13,6 @@ interface MatchesResultsTableProps {
 
 const MatchesSchedulesTable: React.FC<MatchesResultsTableProps> = ({ matchesResults, onChooseMatch}) => {
 
-
   const handleOnClick = ( e: React.MouseEvent, clickedMatch: SingleMatchSchema) => {
     if(clickedMatch.status === "closed") {
       onChooseMatch(clickedMatch);
@@ -22,7 +21,7 @@ const MatchesSchedulesTable: React.FC<MatchesResultsTableProps> = ({ matchesResu
 
   return (
     <>
-      <Table responsive hover className="border-rounded">
+      <Table responsive className="border-rounded" style={{fontSize: "0.9rem"}}>
         <thead>
           <tr className="bg-light">
             {tableHeadersContent.map((el, key) => (

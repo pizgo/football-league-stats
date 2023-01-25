@@ -15,10 +15,7 @@ interface MatchesSchedulesProps {
   setChosenSeasonId?: Dispatch<SetStateAction<string>>;
 }
 
-const MatchesSchedules: React.FC<MatchesSchedulesProps> = ({
-  choosingSingleMatch,
-  chosenSeasonId,
-  setChosenSeasonId}) => {
+const MatchesSchedules: React.FC<MatchesSchedulesProps> = ({choosingSingleMatch, chosenSeasonId, setChosenSeasonId}) => {
 
   const { seasonsDetails } = useGetSeasonsID();
   const { matchesState, callForSchedulesData } = useGetMatchesSchedules(chosenSeasonId);

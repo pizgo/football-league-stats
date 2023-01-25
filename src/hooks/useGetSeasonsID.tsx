@@ -7,6 +7,8 @@ import { errorMessage } from "../consts/consts";
 export const useGetSeasonsID = () => {
   const [seasonsIDDetails, setSeasonsIDDetails] = useState<SeasonDetailSchema[]>([]);
 
+  const timeOutToMeetQpsQuota = 1001
+
   const callForSeasonsData = () => {
     getSeasonsData()
       .then(checkError)
@@ -26,7 +28,7 @@ export const useGetSeasonsID = () => {
   useEffect((): (() => void) => {
     const timer = setTimeout(() => {
       callForSeasonsData();
-    }, 1001);
+    }, timeOutToMeetQpsQuota);
     return () => clearTimeout(timer);
   }, []);
 
