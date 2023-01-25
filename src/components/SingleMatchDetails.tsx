@@ -1,6 +1,9 @@
 import React from "react";
 import {SingleMatchSchema, SingleMatchTimelineSchema} from "../types/types";
-import { Link } from "react-router-dom";
+import {Card, Col, Container, Row} from "react-bootstrap";
+import SingleMatchOverview from "./SingleMatchOverview";
+import SingleMatchTimeline from "./SingleMatchTimeline";
+import Button from "./Button"
 
 interface SingleMatchDetailsProps {
   chosenMatch: SingleMatchSchema;
@@ -13,16 +16,15 @@ const SingleMatchDetails: React.FC<SingleMatchDetailsProps> = ({
 }) => {
     console.log(timeline)
   return (
-    <>
-      <p>{chosenMatch.homeCompetitor.name}</p>
-        {timeline.map((el, key) => (
-            <p>{el.type}</p>
-        ))}
-
-      <Link to="/">
-        <button>Back</button>
-      </Link>
-    </>
+      <Container className="d-flex flex-column align-items-center">
+            <SingleMatchOverview
+            chosenMatch={chosenMatch}
+            timeline={timeline}/>
+            <SingleMatchTimeline
+                chosenMatch={chosenMatch}
+                timeline={timeline}/>
+                <Button/>
+      </Container>
   );
 };
 

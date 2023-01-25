@@ -7,7 +7,6 @@ import MatchesSchedules from "./components/MatchesSchedules";
 import { useNavigateSearch } from "./hooks/useNavigateSearch";
 import { useGetMatchTimeline } from "./hooks/useGetMatchTimeline";
 import { Container } from "react-bootstrap"
-// import { Container } from "@mui/material/";
 
 const App: React.FC = () => {
   const [chosenMatch, setChosenMatch] = useState<SingleMatchSchema>();
