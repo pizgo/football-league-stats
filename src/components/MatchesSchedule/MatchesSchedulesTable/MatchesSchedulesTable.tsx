@@ -13,8 +13,11 @@ interface MatchesResultsTableProps {
 
 const MatchesSchedulesTable: React.FC<MatchesResultsTableProps> = ({ matchesResults, onChooseMatch}) => {
 
+
   const handleOnClick = ( e: React.MouseEvent, clickedMatch: SingleMatchSchema) => {
-    onChooseMatch(clickedMatch);
+    if(clickedMatch.status === "closed") {
+      onChooseMatch(clickedMatch);
+    }
   };
 
   return (
@@ -31,19 +34,16 @@ const MatchesSchedulesTable: React.FC<MatchesResultsTableProps> = ({ matchesResu
         </thead>
         <tbody>
           {matchesResults.map((singleMatch, key) => (
-            <tr
-              key={singleMatch.matchID}
-              onClick={(e: React.MouseEvent) => handleOnClick(e, singleMatch)}
-              style={{ cursor: "pointer" }}>
-              <td
-                className="p-3" style={colorBackgroundSetting(
+            <tr key={singleMatch.matchID}
+                onClick={(e: React.MouseEvent) => handleOnClick(e, singleMatch)}
+                style={ (singleMatch.status === "closed") ? { cursor: "pointer" } : { cursor: "auto"}}>
+              <td className="p-3" style={colorBackgroundSetting(
                   singleMatch.status,
                   singleMatch.winnerID,
                   singleMatch.homeCompetitor.id)}>
                 {singleMatch.homeCompetitor.name}
               </td>
-              <td
-                className="p-3"
+              <td className="p-3"
                 style={colorBackgroundSetting(
                   singleMatch.status,
                   singleMatch.winnerID,

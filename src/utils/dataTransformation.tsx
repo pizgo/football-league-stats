@@ -73,6 +73,7 @@ export const extractingSeasonsDetails = (array: APISeasons[]) => {
 
 export const extractingTimelineData = (array: APITimeline[]) => {
   let arrayOfResults = array.map((el) => {
+    let id = el.id;
     let competitor = el.competitor;
     let home_score = el.home_score;
     let away_score = el.away_score;
@@ -85,6 +86,7 @@ export const extractingTimelineData = (array: APITimeline[]) => {
     let breakName = el.break_name;
     let matchClock = el.match_clock;
     return {
+      id: id,
       competitor: competitor,
       homeScore: home_score,
       awayScore:  away_score,

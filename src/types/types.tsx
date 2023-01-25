@@ -56,6 +56,7 @@ export interface CompetitorInfo {
 }
 
 export interface APITimeline {
+  id: string,
   competitor: string,
   home_score?: number,
   away_score?: number,
@@ -73,6 +74,7 @@ export interface APITimeline {
 }
 
 export interface SingleMatchTimelineSchema {
+  id: string,
   competitor: string,
   home_score?: number,
   away_score?: number,

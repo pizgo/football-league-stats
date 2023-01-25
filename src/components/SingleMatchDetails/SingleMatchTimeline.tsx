@@ -49,17 +49,17 @@ const SingleMatchTimeline: React.FC<SingleMatchTimelineProps> = ({ chosenMatch, 
       </Row>
       <Row className="mt-4">
         {timeline.map((el, key) => (
-          <Row>
+          <Row key={el.id}>
             {el.competitor === "home" ? (typesToPopover(el) ? (
                 <OverlayTrigger
                   trigger="click"
                   placement="left"
                   overlay={popover(el)}>
-                    <Col className="text-end" role="button">
+                    <Col className="text-end fw-bold" role="button">
                       {el.type}
                     </Col>
                 </OverlayTrigger>) :
-                    (<Col className="text-end fw-bold">{el.type}</Col>)) :
+                    (<Col className="text-end">{el.type}</Col>)) :
                 (<Col></Col>)}
             <Col className="col-1 text-center">{el.matchTime}</Col>
               {el.competitor === "away" ? (typesToPopover(el) ? (
