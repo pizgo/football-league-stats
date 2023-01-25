@@ -19,7 +19,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <Container className="mt-5">
+    <Container className="mt-5 position-relative">
       <Routes>
         <Route
           path="/"

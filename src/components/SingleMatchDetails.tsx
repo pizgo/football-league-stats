@@ -3,7 +3,7 @@ import {SingleMatchSchema, SingleMatchTimelineSchema} from "../types/types";
 import {Card, Col, Container, Row} from "react-bootstrap";
 import SingleMatchOverview from "./SingleMatchOverview";
 import SingleMatchTimeline from "./SingleMatchTimeline";
-import Button from "./Button"
+import ButtonBackToSchedules from "./ButtonBackToSchedules"
 
 interface SingleMatchDetailsProps {
   chosenMatch: SingleMatchSchema;
@@ -16,15 +16,19 @@ const SingleMatchDetails: React.FC<SingleMatchDetailsProps> = ({
 }) => {
     console.log(timeline)
   return (
-      <Container className="d-flex flex-column align-items-center">
-            <SingleMatchOverview
-            chosenMatch={chosenMatch}
-            timeline={timeline}/>
-            <SingleMatchTimeline
-                chosenMatch={chosenMatch}
-                timeline={timeline}/>
-                <Button/>
-      </Container>
+      <>
+          <ButtonBackToSchedules/>
+          <Container className="d-flex flex-column align-items-center">
+              <SingleMatchOverview
+                  chosenMatch={chosenMatch}
+                  timeline={timeline}/>
+              <SingleMatchTimeline
+                  chosenMatch={chosenMatch}
+                  timeline={timeline}/>
+
+          </Container>
+      </>
+
   );
 };
 
