@@ -8,7 +8,7 @@ export const useGetMatchesSchedules = (initialSeasonID: string) => {
   const [matchesState, setMatchesState] = useState<SingleMatchSchema[]>([]);
 
   const callForSchedulesData = (seasonID: string) => {
-    getSchedulesData(seasonID)
+    if (seasonID) getSchedulesData(seasonID)
       .then(checkError)
       .then((response) => {
         const results = extractingMatchesResults(response.schedules);

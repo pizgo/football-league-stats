@@ -14,6 +14,7 @@ export const useGetMatchTimeline = () => {
       .then(checkError)
       .then((response) => {
         const results = extractingTimelineData(response.timeline);
+        console.log(response)
         setTimeline(results);
       });
   };

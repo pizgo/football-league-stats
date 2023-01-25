@@ -56,6 +56,13 @@ interface CompetitorInfo {
 }
 
 export interface APITimeline {
+  competitor: string,
+  home_score?: number,
+  away_score?: number,
+  players?: {
+    name: string,
+    type: string,
+  }[],
   type: string;
   time: string;
   match_time?: number;
