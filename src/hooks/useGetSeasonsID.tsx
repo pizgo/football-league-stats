@@ -5,9 +5,7 @@ import { extractingSeasonsDetails } from "../utils/dataTransformation";
 import { errorMessage } from "../consts/consts";
 
 export const useGetSeasonsID = () => {
-  const [seasonsIDDetails, setSeasonsIDDetails] = useState<
-    SeasonDetailSchema[]
-  >([]);
+  const [seasonsIDDetails, setSeasonsIDDetails] = useState<SeasonDetailSchema[]>([]);
 
   const callForSeasonsData = () => {
     getSeasonsData()
@@ -25,11 +23,14 @@ export const useGetSeasonsID = () => {
     }
   };
 
-  useEffect((): (() => void) => {
-    const timer = setTimeout(() => {
+  // useEffect((): (() => void) => {
+  //   const timer = setTimeout(() => {
+  //     callForSeasonsData();
+  //   }, 1000);
+  //   return () => clearTimeout(timer);
+  // }, []);
+  useEffect(() => {
       callForSeasonsData();
-    }, 1000);
-    return () => clearTimeout(timer);
   }, []);
 
   return { seasonsDetails: seasonsIDDetails };

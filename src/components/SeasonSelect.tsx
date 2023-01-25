@@ -2,10 +2,6 @@ import React from "react";
 import { SeasonDetailSchema } from "../types/types";
 import { Form } from "react-bootstrap"
 
-const style = {
-
-}
-
 interface SeasonSelectProps {
   onChangeSelect: (chosenSeasonID: string) => void;
   seasonsDetails: SeasonDetailSchema[];
@@ -23,7 +19,8 @@ const SeasonSelect: React.FC<SeasonSelectProps> = ({
     value = chosenSeasonID;
   };
   return (
-      <Form.Select value={value} onChange={handleChange} style={style} size="lg">
+      <Form.Select value={value} onChange={handleChange} size="lg">
+        <option selected>search for the Ekstraklasa season</option>
         {seasonsDetails.map((el, key) => (
           <option value={el.seasonID} key={el.seasonID} label={el.seasonName} />
         ))}

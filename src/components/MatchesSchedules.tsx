@@ -18,7 +18,7 @@ const MatchesSchedules: React.FC<MatchesSchedulesProps> = ({
   // const initialSeason = seasonsDetails[0].seasonID;
   // console.log(initialSeason);
   const [chosenSeasonID, setChosenSeasonID] =
-    useState<string>("sr:season:77453");
+    useState<string>("");
   const { matchesState, callForSchedulesData } =
     useGetMatchesSchedules(chosenSeasonID);
   const handleSelectSeasonID = (clickedChosenSeasonID: string): void => {
@@ -29,7 +29,7 @@ const MatchesSchedules: React.FC<MatchesSchedulesProps> = ({
   return (
       <Container>
           <Row className="justify-content-center mb-5">
-              <Col xs lg="3">
+              <Col xs lg="4">
                   <SeasonSelect
                       onChangeSelect={handleSelectSeasonID}
                       seasonsDetails={seasonsDetails}
