@@ -9,15 +9,24 @@ interface SingleMatchTimelineProps {
 }
 
 const typesToPopover = (el: SingleMatchTimelineSchema) => {
-    return ((el.type === "score_change") || (el.type === "yellow_card") || (el.type === "red_card") || (el.type === "penalty_awarded"))
+    return (
+        (el.type === "score_change") ||
+        (el.type === "yellow_card") ||
+        (el.type === "red_card") ||
+        (el.type === "penalty_awarded") ||
+        (el.type === "substitution"))
 }
 const popover = (el : SingleMatchTimelineSchema) => {
     return (
         <Popover id="popover-basic">
             <Popover.Body className="fw-bold">
                 <Col>{el.type}</Col>
-                <Col>Teamplayer Name</Col>
-                <Col>Second Teamplayer name if present in data</Col>
+                {/*{el.players ? <Col>{el.players[0].name}</Col> : null}*/}
+                {el.players ?
+                    el.players.map((el) => (
+                        <Col>{el.name}, {el.type}</Col>
+                    )) : null }
+
                 <Col>'{el.matchTime}</Col>
             </Popover.Body>
         </Popover>

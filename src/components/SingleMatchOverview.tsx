@@ -1,9 +1,7 @@
 import React from "react";
-import {Card, Col, Container, Row} from "react-bootstrap";
+import {Col, Container, Row} from "react-bootstrap";
 import {SingleMatchSchema, SingleMatchTimelineSchema} from "../types/types";
 import { BiFootball } from "react-icons/bi"
-
-
 
 interface SingleMatchOverviewProps {
     chosenMatch: SingleMatchSchema;
@@ -18,7 +16,7 @@ const SingleMatchOverview: React.FC<SingleMatchOverviewProps> = ( {chosenMatch, 
                     Match date: {chosenMatch.matchDate}
                 </Col>
             </Row>
-            <Row className="fw-bold fs-4 mt-3">
+            <Row className="fw-bold fs-4 mt-4">
                 <Col className="col-lg-5 px-3 align-self-center">
                     {chosenMatch.homeCompetitor.name}
                 </Col>
@@ -35,7 +33,7 @@ const SingleMatchOverview: React.FC<SingleMatchOverviewProps> = ( {chosenMatch, 
                     {timeline.map((el) => (
                         ((el.type === "score_change") && (el.competitor === "home")) ?
                             <Row className="justify-content-end">
-                                <Col className="col-8 text-end">Name</Col>
+                                <Col className="col-8 text-end">{el.players ? el.players[0].name : ""}</Col>
                                 <Col className="col-1 text-end">'{el.matchTime}</Col>
                                 <Col className="col-2"><BiFootball/></Col>
                             </Row>: null
@@ -56,7 +54,7 @@ const SingleMatchOverview: React.FC<SingleMatchOverviewProps> = ( {chosenMatch, 
                             <Row className="">
                                 <Col className="col-2 text-end"><BiFootball/></Col>
                                 <Col className="col-1 text-start">'{el.matchTime}</Col>
-                                <Col className="col-8 text-start">Name</Col>
+                                <Col className="col-8 text-start">{el.players ? el.players[0].name : ""}</Col>
                             </Row>: null
                     ))}
                 </Col>
