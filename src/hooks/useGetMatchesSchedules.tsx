@@ -4,7 +4,7 @@ import { extractingMatchesResults } from "../utils/dataTransformation";
 import { errorMessage } from "../consts/consts";
 import { SingleMatchSchema } from "../types/types";
 
-export const useGetMatchesSchedules = (initialSeasonID: string) => {
+export const useGetMatchesSchedules = (chosenSeason: string) => {
   const [matchesState, setMatchesState] = useState<SingleMatchSchema[]>([]);
 
   const callForSchedulesData = (seasonID: string) => {
@@ -12,8 +12,6 @@ export const useGetMatchesSchedules = (initialSeasonID: string) => {
       .then(checkError)
       .then((response) => {
         const results = extractingMatchesResults(response.schedules);
-        console.log(response.schedules);
-        // console.log(results);
         setMatchesState(results);
       })
       .catch((error) => {
@@ -29,9 +27,16 @@ export const useGetMatchesSchedules = (initialSeasonID: string) => {
     }
   };
 
-  useEffect((): void => {
-    callForSchedulesData(initialSeasonID);
-  }, [initialSeasonID]);
+  // useEffect((): () => void => {
+  //     const timer = setTimeout(() => {
+  //       callForSchedulesData(chosenSeason);
+  //     }, 1001);
+  //     return () => clearTimeout(timer);
+  // }, [chosenSeason]);
+
+    useEffect(() => {
+            callForSchedulesData(chosenSeason);
+    }, [chosenSeason]);
 
   return { matchesState: matchesState, callForSchedulesData };
 };

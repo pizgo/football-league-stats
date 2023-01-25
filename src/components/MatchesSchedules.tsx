@@ -1,6 +1,6 @@
 import SeasonSelect from "./SeasonSelect";
 import MatchesSchedulesTable from "./MatchesSchedulesTable";
-import React, { useState } from "react";
+import React, {Dispatch, SetStateAction, useState} from "react";
 import { useGetSeasonsID } from "../hooks/useGetSeasonsID";
 import { useGetMatchesSchedules } from "../hooks/useGetMatchesSchedules";
 import { SingleMatchSchema } from "../types/types";
@@ -9,18 +9,21 @@ import { Container, Row, Col } from "react-bootstrap"
 
 interface MatchesSchedulesProps {
   choosingSingleMatch: (singleMatch: SingleMatchSchema) => void;
+  chosenSeasonId : string;
+  setChosenSeasonId? : Dispatch<SetStateAction<string>>
 }
 
 const MatchesSchedules: React.FC<MatchesSchedulesProps> = ({
   choosingSingleMatch,
+    chosenSeasonId,
+    setChosenSeasonId
 }) => {
   const { seasonsDetails } = useGetSeasonsID();
-  const [chosenSeasonID, setChosenSeasonID] =
-    useState<string>("");
-  const { matchesState, callForSchedulesData } =
-    useGetMatchesSchedules(chosenSeasonID);
+  console.log(seasonsDetails)
+  const { matchesState, callForSchedulesData } = useGetMatchesSchedules(chosenSeasonId);
+
   const handleSelectSeasonID = (clickedChosenSeasonID: string): void => {
-    setChosenSeasonID(clickedChosenSeasonID);
+      setChosenSeasonId?.(clickedChosenSeasonID);
     callForSchedulesData(clickedChosenSeasonID);
   };
 
@@ -31,7 +34,7 @@ const MatchesSchedules: React.FC<MatchesSchedulesProps> = ({
                   <SeasonSelect
                       onChangeSelect={handleSelectSeasonID}
                       seasonsDetails={seasonsDetails}
-                      value={chosenSeasonID}
+                      value={chosenSeasonId}
                   />
               </Col>
           </Row>

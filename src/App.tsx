@@ -6,9 +6,12 @@ import MatchesSchedules from "./components/MatchesSchedules";
 import { useNavigateSearch } from "./hooks/useNavigateSearch";
 import { useGetMatchTimeline } from "./hooks/useGetMatchTimeline";
 import { Container } from "react-bootstrap"
+import {firstSeason} from "./consts/consts";
 
 const App: React.FC = () => {
   const [chosenMatch, setChosenMatch] = useState<SingleMatchSchema>();
+  const [chosenSeasonID, setChosenSeasonID] = useState<string>(firstSeason);
+
   const { timeline, callForMatchTimeline } = useGetMatchTimeline();
   const redirectToSingleMatchPage = useNavigateSearch();
 
@@ -25,6 +28,8 @@ const App: React.FC = () => {
           path="/"
           element={<MatchesSchedules
               choosingSingleMatch={handleChooseMatch}
+              chosenSeasonId={chosenSeasonID}
+              setChosenSeasonId={setChosenSeasonID}
           />}
         />
         {chosenMatch && (

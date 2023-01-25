@@ -20,7 +20,6 @@ const SeasonSelect: React.FC<SeasonSelectProps> = ({
   };
   return (
       <Form.Select value={value} onChange={handleChange} size="lg">
-        <option selected>search for the Ekstraklasa season</option>
         {seasonsDetails.map((el, key) => (
           <option value={el.seasonID} key={el.seasonID} label={el.seasonName} />
         ))}
