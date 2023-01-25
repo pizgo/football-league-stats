@@ -6,22 +6,24 @@ interface SingleMatchTimelineProps {
     chosenMatch: SingleMatchSchema;
     timeline: SingleMatchTimelineSchema[];
 }
+
+
 const SingleMatchTimeline: React.FC<SingleMatchTimelineProps> = ( {chosenMatch, timeline}) => {
+
     return (
         <Container className="shadow-lg w-75 rounded mt-5" style={{backgroundColor: "#A4BE7B"}}>
             <Row className="justify-content-center fw-bold mt-4">
-                <Col xs lg="4" className="text-center">Timeline</Col>
+                <Col xs lg="4" className="text-center fs-3">Timeline</Col>
             </Row>
-            <Row>
-                <Table responsive className="border-rounded">
+            <Row className="mt-4">
                     {timeline.map((el, key) => (
-                        <tr>
-                            {(el.competitor === "home") ? <td>{el.type}</td> : <td></td>}
-                            <td>{el.matchTime}</td>
-                            {(el.competitor === "away") ? <td>{el.type}</td> : <td></td>}
-                        </tr>
+                        <Row>
+                            {(el.competitor === "home") ? <Col className="text-end">{el.type}</Col> : <Col></Col>}
+                            <Col className="col-1 text-center">{el.matchTime}</Col>
+                            {(el.competitor === "away") ? <Col>{el.type}</Col> : <Col></Col>}
+                        </Row>
                     ))}
-                </Table>
+
             </Row>
         </Container>
     )

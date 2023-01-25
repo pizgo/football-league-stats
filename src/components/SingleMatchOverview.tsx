@@ -18,11 +18,11 @@ const SingleMatchOverview: React.FC<SingleMatchOverviewProps> = ( {chosenMatch, 
                     Match date: {chosenMatch.matchDate}
                 </Col>
             </Row>
-            <Row className="fw-bold fs-3 mt-3">
+            <Row className="fw-bold fs-4 mt-3">
                 <Col className="col-lg-5 px-3 align-self-center">
                     {chosenMatch.homeCompetitor.name}
                 </Col>
-                <Col className="col-lg-2 text-center rounded shadow" style={{backgroundColor: "#E5BA73", fontSize: "40px"}}>
+                <Col className="col-lg-2 fs-1 text-center rounded shadow" style={{backgroundColor: "#E5BA73"}}>
                     {chosenMatch.homeCompetitor.result} -{" "}
                     {chosenMatch.awayCompetitor.result}
                 </Col>
