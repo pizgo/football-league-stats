@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import { useGetSeasonsID } from "../hooks/useGetSeasonsID";
 import { useGetMatchesSchedules } from "../hooks/useGetMatchesSchedules";
 import { SingleMatchSchema } from "../types/types";
+import { Container, Row, Col } from "react-bootstrap"
+
 
 interface MatchesSchedulesProps {
   choosingSingleMatch: (singleMatch: SingleMatchSchema) => void;
@@ -25,17 +27,25 @@ const MatchesSchedules: React.FC<MatchesSchedulesProps> = ({
   };
 
   return (
-    <>
-      <SeasonSelect
-        onChangeSelect={handleSelectSeasonID}
-        seasonsDetails={seasonsDetails}
-        value={chosenSeasonID}
-      />
-      <MatchesSchedulesTable
-        matchesResults={matchesState}
-        onChooseMatch={choosingSingleMatch}
-      />
-    </>
+      <Container>
+          <Row className="justify-content-center mb-5">
+              <Col xs lg="3">
+                  <SeasonSelect
+                      onChangeSelect={handleSelectSeasonID}
+                      seasonsDetails={seasonsDetails}
+                      value={chosenSeasonID}
+                  />
+              </Col>
+
+          </Row>
+          <Row>
+              <MatchesSchedulesTable
+                  matchesResults={matchesState}
+                  onChooseMatch={choosingSingleMatch}
+              />
+          </Row></Container>
+
+
   );
 };
 
