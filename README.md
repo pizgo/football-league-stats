@@ -1,27 +1,27 @@
 # Football stats
 
 ## What it does:
-* displays data about Ekstraklasa (polish footall league) games results in the following manner:
-    *  user can choose between three seasons 
-* the pagination and filtered ID are reflected in the URL, so it's possible for users to share links with specific search result 
-* after cliking on a row with specific color, the modal pops up with detailed information about the item.
+* displays data about Ekstraklasa (polish footall league) matches results in the following manner:
+    *  after selecting specific season, user is provided with information about all matches played during this period: team names, date, final scores, half          scores and stadium name
+    *  the winner/looser/draw are identified by colors
+    *  when match's table row is clicked, user is being redirected to a new match info subpage with detailed information about the game: which players            scored goals and timeline with all the match events
+    * 
 
 ## Why I made this 
-* to practice TypeScript, custom hooks and working with URLSearchParams;
-* to get familiar with Material UI 
-* because I like working with colors :)
-
+* to practice working with API, custom hooks and 
+* to gain insights on how to display data in a good-looking, modern way (this part is stil in progress :) ) 
 
 ## Technologies:
 * Typescript
 * React.js
 * react-router-dom
 * custom hooks
-* MUI
+* React Bootstrap
 
 ## Future improvements:
 * migrating state to Redux
 * adding tests
-* adding funcionality for searching information about different colors
-* adding color palette generator 
-* improving the UI, as it is rather basic atm
+* RWD
+* adding filters to table columns
+* display more data about te specific match
+* working on UI and make it fund and modern
