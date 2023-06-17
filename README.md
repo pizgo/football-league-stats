@@ -8,8 +8,7 @@
     * 
 
 ## Why I made this 
-* to practice working with API, custom hooks and 
-* to gain insights on how to display data in a good-looking, modern way (this part is stil in progress :) ) 
+* to practice working with external API, custom hooks and Typescript
 
 ## Technologies:
 * Typescript
