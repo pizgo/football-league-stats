@@ -23,7 +23,7 @@ const Home: React.FC<MatchesSchedulesProps> = ({choosingSingleMatch, chosenSeaso
     };
 
     return (
-        <Container>
+        <Container className="">
             <h4 className="py-6">Overview of Ekstraklasa League Matches</h4>
             <SeasonSelect
                 onChangeSelect={handleSelectSeasonID}
