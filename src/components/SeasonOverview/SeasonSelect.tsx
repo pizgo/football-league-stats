@@ -1,7 +1,6 @@
-import React from "react";
+import React, {ReactNode} from "react";
 import { SeasonDetailSchema } from "../../types/types";
-import { Form } from "react-bootstrap";
-import { FormControl, InputLabel, Select, MenuItem, NativeSelect} from "@mui/material";
+import {FormControl, InputLabel, Select, MenuItem, NativeSelect, SelectChangeEvent} from "@mui/material";
 
 interface SeasonSelectProps {
   onChangeSelect: (chosenSeasonID: string) => void;
@@ -11,58 +10,55 @@ interface SeasonSelectProps {
 
 const SeasonSelect: React.FC<SeasonSelectProps> = ({ onChangeSelect, seasonsDetails, value}) => {
 
-  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const chosenSeasonID = e.target.value;
+  const handleChange = (event: SelectChangeEvent<string>, child: ReactNode) => {
+    const chosenSeasonID = event.target.value;
     onChangeSelect(chosenSeasonID);
     value = chosenSeasonID;
   };
 
   return (
       <>
-      <div className="md:hidden">
-          {/*<FormControl fullWidth>*/}
-          {/*  <InputLabel htmlFor="choose-season" className="">Choose season to display</InputLabel>*/}
-          {/*  <Select*/}
-          {/*      labelId="demo-simple-select-label"*/}
-          {/*      id="demo-simple-select"*/}
-          {/*      value={value}*/}
-          {/*      label="Age"*/}
-          {/*      onChange={handleChange}>*/}
-          {/*    {seasonsDetails.map((el, key) => (*/}
-          {/*          <MenuItem value={el.seasonID} key={el.seasonID} label={el.seasonName}/>*/}
-          {/*        ))}*/}
-          {/*  </Select>*/}
-          {/*</FormControl>*/}
-          {/*  <FormControl fullWidth>*/}
-          {/*       <InputLabel variant="standard" htmlFor="uncontrolled-native">*/}
-          {/*         Choose season to display*/}
-          {/*       </InputLabel>*/}
-          {/*        <NativeSelect*/}
-          {/*            inputProps={{id: 'uncontrolled-native'}}*/}
-          {/*            value={value}*/}
-          {/*            onChange={handleChange}>*/}
-          {/*    {seasonsDetails.map((el, key) => (*/}
-          {/*            <MenuItem value={el.seasonID} key={el.seasonID} label={el.seasonName}/>*/}
-          {/*          ))}*/}
-          {/*    </NativeSelect>*/}
-          {/*  </FormControl>*/}
-      </div>
-
-
-
-
-    {/*<Form.Select*/}
-          {/*    value={value}*/}
-          {/*    onChange={handleChange}*/}
-          {/*    className="fw-bold"*/}
-          {/*    role="button">*/}
-          {/*    {seasonsDetails.map((el, key) => (*/}
-          {/*        <option value={el.seasonID} key={el.seasonID} label={el.seasonName} />*/}
-          {/*    ))}*/}
-          {/*</Form.Select>*/}
-
+          <div className="md:hidden mb-10">
+              <FormControl fullWidth>
+                  <InputLabel variant="standard" htmlFor="select">
+                      Choose season to display
+                  </InputLabel>
+                  <NativeSelect
+                      inputProps={{
+                          name: 'season to display',
+                          id: 'select',
+                      }}>
+                      {/*{seasonsDetails.map((el, key) => (*/}
+                      {/*    <option value={el.seasonID} key={el.seasonID}>{el.seasonName}</MenuItem>*/}
+                      {/*))}*/}
+                      <option value={10}>Ten</option>
+                      <option value={20}>Twenty</option>
+                      <option value={30}>Thirty</option>
+                  </NativeSelect>
+              </FormControl>
+          </div>
+          <div className="hidden md:block">
+              <FormControl fullWidth>
+                  <InputLabel  id="demo-simple-select-label">Choose season to display</InputLabel>
+                  <Select
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      value={value}
+                      label="Choose season to display"
+                      onChange={handleChange}>
+                      {/*{seasonsDetails.map((el, key) => (*/}
+                      {/*    <MenuItem value={el.seasonID} key={el.seasonID}>{el.seasonName}</MenuItem>*/}
+                      {/*))}*/}
+                      <MenuItem value={10}>Ten</MenuItem>
+                      <MenuItem value={20}>Twenty</MenuItem>
+                      <MenuItem value={30}>Thirty</MenuItem>
+                  </Select>
+              </FormControl>
+          </div>
       </>
   );
 };
 
 export default SeasonSelect;
+
+
