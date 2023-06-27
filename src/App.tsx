@@ -6,6 +6,7 @@ import { useNavigateSearch } from "./hooks/useNavigateSearch";
 import { useGetMatchTimeline } from "./hooks/useGetMatchTimeline";
 import { SingleMatchSchema } from "./types/types";
 import { firstSeason} from "./utils/api";
+import {Container} from "@mui/material";
 
 const App: React.FC = () => {
   const [chosenMatch, setChosenMatch] = useState<SingleMatchSchema>();
@@ -21,23 +22,23 @@ const App: React.FC = () => {
 
   return (
     <div className="relative bg-light-100">
-      <Routes>
-        <Route
-          path="/"
-          element={<Home
-              choosingSingleMatch={handleChooseMatch}
-              chosenSeasonId={chosenSeasonID}
-              setChosenSeasonId={setChosenSeasonID}
-          />}
-        />
-        {chosenMatch && (
+      <Container className="py-8">
+        <Routes>
           <Route
-              path="/singleMatch"
-              element={<SingleMatch chosenMatch={chosenMatch}
-                                    timeline={timeline}/>}
+              path="/"
+              element={<Home
+                  choosingSingleMatch={handleChooseMatch}
+                  chosenSeasonId={chosenSeasonID}
+                  setChosenSeasonId={setChosenSeasonID}/>}
           />
-        )}
-      </Routes>
+          {chosenMatch && (
+              <Route
+                  path="/singleMatch"
+                  element={<SingleMatch chosenMatch={chosenMatch}
+                                        timeline={timeline}/>}/>
+          )}
+        </Routes>
+      </Container>
     </div>
   );
 };

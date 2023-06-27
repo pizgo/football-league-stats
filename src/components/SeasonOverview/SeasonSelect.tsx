@@ -1,6 +1,7 @@
 import React from "react";
 import { SeasonDetailSchema } from "../../types/types";
 import { Form } from "react-bootstrap";
+import { FormControl, InputLabel, NativeSelect} from "@mui/material";
 
 interface SeasonSelectProps {
   onChangeSelect: (chosenSeasonID: string) => void;
@@ -17,15 +18,19 @@ const SeasonSelect: React.FC<SeasonSelectProps> = ({ onChangeSelect, seasonsDeta
   };
   return (
 
-    <Form.Select
-      value={value}
-      onChange={handleChange}
-      className="fw-bold"
-      role="button">
+  <FormControl fullWidth>
+    <InputLabel variant="standard" htmlFor="uncontrolled-native">
+      Choose season to display
+    </InputLabel>
+    <NativeSelect
+        inputProps={{id: 'uncontrolled-native'}}
+        value={value}
+        onChange={handleChange}>
       {seasonsDetails.map((el, key) => (
-        <option value={el.seasonID} key={el.seasonID} label={el.seasonName} />
-      ))}
-    </Form.Select>
+            <option value={el.seasonID} key={el.seasonID} label={el.seasonName} />
+          ))}
+    </NativeSelect>
+  </FormControl>
   );
 };
 

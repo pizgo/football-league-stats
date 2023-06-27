@@ -4,10 +4,7 @@ import MatchesSchedulesTable from "../components/SeasonOverview/MatchesSchedules
 import { useGetSeasonsID} from "../hooks/useGetSeasonsID";
 import { useGetMatchesSchedules} from "../hooks/useGetMatchesSchedules";
 import { SingleMatchSchema} from "../types/types";
-import {
-    Container,
-    Row,
-    Col } from "react-bootstrap";
+import {Container} from "@mui/material";
 
 interface MatchesSchedulesProps {
     choosingSingleMatch: (singleMatch: SingleMatchSchema) => void;
@@ -27,24 +24,14 @@ const Home: React.FC<MatchesSchedulesProps> = ({choosingSingleMatch, chosenSeaso
 
     return (
         <Container>
-            <Row className="justify-content-center mb-5">
-                <h4 className="">Overview of Ekstraklasa League Matches</h4>
-            </Row>
-            <Row className="justify-content-center mb-5">
-                <Col xs lg="4">
-                    <SeasonSelect
-                        onChangeSelect={handleSelectSeasonID}
-                        seasonsDetails={seasonsDetails}
-                        value={chosenSeasonId}
-                    />
-                </Col>
-            </Row>
-            <Row>
-                <MatchesSchedulesTable
+            <h4 className="py-6">Overview of Ekstraklasa League Matches</h4>
+            <SeasonSelect
+                onChangeSelect={handleSelectSeasonID}
+                seasonsDetails={seasonsDetails}
+                value={chosenSeasonId}/>
+            <MatchesSchedulesTable
                     matchesResults={matchesState}
-                    onChooseMatch={choosingSingleMatch}
-                />
-            </Row>
+                    onChooseMatch={choosingSingleMatch}/>
         </Container>
     );
 };
