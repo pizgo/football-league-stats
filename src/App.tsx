@@ -6,7 +6,6 @@ import { useNavigateSearch } from "./hooks/useNavigateSearch";
 import { useGetMatchTimeline } from "./hooks/useGetMatchTimeline";
 import { SingleMatchSchema } from "./types/types";
 import { firstSeason} from "./utils/api";
-import { Container } from "react-bootstrap"
 
 const App: React.FC = () => {
   const [chosenMatch, setChosenMatch] = useState<SingleMatchSchema>();
@@ -21,7 +20,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <Container className="mt-5 position-relative">
+    <div className="relative bg-light-100">
       <Routes>
         <Route
           path="/"
@@ -39,7 +38,7 @@ const App: React.FC = () => {
           />
         )}
       </Routes>
-    </Container>
+    </div>
   );
 };
 

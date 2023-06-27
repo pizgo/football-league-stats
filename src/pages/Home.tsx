@@ -28,9 +28,7 @@ const Home: React.FC<MatchesSchedulesProps> = ({choosingSingleMatch, chosenSeaso
     return (
         <Container>
             <Row className="justify-content-center mb-5">
-                <Col xs lg="4">
-                    <h3 className="text-center">Choose season to display</h3>
-                </Col>
+                <h4 className="">Overview of Ekstraklasa League Matches</h4>
             </Row>
             <Row className="justify-content-center mb-5">
                 <Col xs lg="4">

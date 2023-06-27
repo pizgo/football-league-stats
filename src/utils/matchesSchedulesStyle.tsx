@@ -16,7 +16,7 @@ export const teamNameColor = (gameStatus: string, winnerId: string | undefined, 
 };
 
 export const displayWhenStatusNotClosed = (gameStatus: string) => {
-    if (gameStatus == "postponed") {
+    if (gameStatus === "postponed") {
         return "game postponed";
     } else if (gameStatus === "delayed") {
         return "game delayed";

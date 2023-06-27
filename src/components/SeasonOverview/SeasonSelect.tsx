@@ -16,6 +16,7 @@ const SeasonSelect: React.FC<SeasonSelectProps> = ({ onChangeSelect, seasonsDeta
     value = chosenSeasonID;
   };
   return (
+
     <Form.Select
       value={value}
       onChange={handleChange}
