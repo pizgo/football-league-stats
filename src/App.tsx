@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import SingleMatchDetails from "./components/SingleMatchDetails/SingleMatchDetails";
-import MatchesSchedules from "./components/MatchesSchedule/MatchesSchedules";
+import SingleMatch from "./pages/SingleMatch";
+import Home from "./pages/Home";
 import { useNavigateSearch } from "./hooks/useNavigateSearch";
 import { useGetMatchTimeline } from "./hooks/useGetMatchTimeline";
 import { SingleMatchSchema } from "./types/types";
-import { firstSeason } from "./consts/consts";
+import { firstSeason} from "./utils/api";
 import { Container } from "react-bootstrap"
 
 const App: React.FC = () => {
@@ -25,7 +25,7 @@ const App: React.FC = () => {
       <Routes>
         <Route
           path="/"
-          element={<MatchesSchedules
+          element={<Home
               choosingSingleMatch={handleChooseMatch}
               chosenSeasonId={chosenSeasonID}
               setChosenSeasonId={setChosenSeasonID}
@@ -34,8 +34,8 @@ const App: React.FC = () => {
         {chosenMatch && (
           <Route
               path="/singleMatch"
-              element={<SingleMatchDetails chosenMatch={chosenMatch}
-              timeline={timeline}/>}
+              element={<SingleMatch chosenMatch={chosenMatch}
+                                    timeline={timeline}/>}
           />
         )}
       </Routes>

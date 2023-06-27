@@ -2,7 +2,7 @@ import { useState } from "react";
 import { getMatchTimeline } from "../utils/api";
 import { extractingTimelineData } from "../utils/dataTransformation";
 import {SingleMatchTimelineSchema} from "../types/types";
-import { errorMessage } from "../consts/consts";
+import { errorMessage } from "../utils/consts";
 
 export const useGetMatchTimeline = () => {
   const [timeline, setTimeline] = useState<SingleMatchTimelineSchema[]>([]);

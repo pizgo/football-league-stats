@@ -1,5 +1,6 @@
 const APIKey = process.env.REACT_APP_API_KEY;
-const APISeasonsID = "sr:competition:202";
+const APISeasonsID : string = "sr:competition:202";
+export const firstSeason : string = "sr:season:84320"
 
 export const getSchedulesData = (seasonID: string): Promise<Response> => {
   return fetch(

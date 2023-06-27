@@ -1,9 +1,9 @@
 import React from "react";
-import { SingleMatchSchema } from "../../../types/types";
-import { tableHeadersContent } from "../../../consts/consts";
+import { SingleMatchSchema } from "../../types/types";
+import { tableHeadersContent } from "../../utils/consts";
 import {
   colorBackgroundSetting,
-  displayWhenStatusNotClosed } from "./matchesSchedulesStyle";
+  displayWhenStatusNotClosed } from "../../utils/matchesSchedulesStyle";
 import Table from "react-bootstrap/Table";
 
 interface MatchesResultsTableProps {

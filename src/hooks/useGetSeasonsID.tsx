@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { getSeasonsData } from "../utils/api";
 import { SeasonDetailSchema } from "../types/types";
 import { extractingSeasonsDetails } from "../utils/dataTransformation";
-import { errorMessage } from "../consts/consts";
+import { errorMessage } from "../utils/consts";
 
 export const useGetSeasonsID = () => {
   const [seasonsIDDetails, setSeasonsIDDetails] = useState<SeasonDetailSchema[]>([]);

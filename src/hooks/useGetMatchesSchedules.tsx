@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { getSchedulesData } from "../utils/api";
 import { extractingMatchesResults } from "../utils/dataTransformation";
 import { SingleMatchSchema } from "../types/types";
-import { errorMessage } from "../consts/consts";
+import { errorMessage } from "../utils/consts";
 
 export const useGetMatchesSchedules = (chosenSeason: string) => {
   const [matchesState, setMatchesState] = useState<SingleMatchSchema[]>([]);

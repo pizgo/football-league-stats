@@ -1,11 +1,11 @@
 import React from "react";
-import { SingleMatchSchema, SingleMatchTimelineSchema } from "../../../types/types";
+import { SingleMatchSchema, SingleMatchTimelineSchema } from "../../types/types";
 import { Col,
   Container,
   Row,
   OverlayTrigger,
   Popover } from "react-bootstrap";
-import {getUserFriendlyEventType} from "./singleMatchTimelineStrings";
+import {formattedEventType} from "../../utils/formattedEventType";
 
 interface SingleMatchTimelineProps {
   chosenMatch: SingleMatchSchema;
@@ -26,10 +26,10 @@ const popover = (el: SingleMatchTimelineSchema) => {
   return (
     <Popover id="popover-basic">
       <Popover.Body className="fw-bold">
-        <Col>{getUserFriendlyEventType(el.type)}</Col>
+        <Col>{formattedEventType(el.type)}</Col>
         {el.players ? el.players.map((el) => (
               <Col>
-                {el.name}, {getUserFriendlyEventType(el.type)}
+                {el.name}, {formattedEventType(el.type)}
               </Col>
             )) : null}
         <Col>'{el.matchTime}</Col>
@@ -58,10 +58,10 @@ const SingleMatchTimeline: React.FC<SingleMatchTimelineProps> = ({ chosenMatch, 
                   placement="left"
                   overlay={popover(el)}>
                     <Col className="text-end fw-bold" role="button">
-                      {getUserFriendlyEventType(el.type)}
+                      {formattedEventType(el.type)}
                     </Col>
                 </OverlayTrigger>) :
-                    (<Col className="text-end">{getUserFriendlyEventType(el.type)}</Col>)) :
+                    (<Col className="text-end">{formattedEventType(el.type)}</Col>)) :
                 (<Col></Col>)}
             <Col className="col-1 text-center">{el.matchTime}</Col>
               {el.competitor === "away" ? (typesToPopover(el) ? (
@@ -70,10 +70,10 @@ const SingleMatchTimeline: React.FC<SingleMatchTimelineProps> = ({ chosenMatch, 
                       placement="right"
                       overlay={popover(el)}>
                       <Col className="text-start fw-bold" role="button">
-                          {getUserFriendlyEventType(el.type)}
+                          {formattedEventType(el.type)}
                       </Col>
                   </OverlayTrigger>) :
-                    (<Col className="text-start">{getUserFriendlyEventType(el.type)}</Col>)) :
+                    (<Col className="text-start">{formattedEventType(el.type)}</Col>)) :
                   (<Col></Col>)}
           </Row>
         ))}

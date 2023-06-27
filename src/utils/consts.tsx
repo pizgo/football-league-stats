@@ -7,4 +7,3 @@ export const tableHeadersContent = [
   "Half-time score",
   "Stadium name",
 ];
-export const firstSeason : string = "sr:season:84320"
