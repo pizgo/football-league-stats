@@ -2,7 +2,7 @@ import React from "react";
 import { SingleMatchSchema } from "../../types/types";
 import { tableHeadersContent } from "../../utils/consts";
 import {
-  colorBackgroundSetting,
+  teamNameColor,
   displayWhenStatusNotClosed } from "../../utils/matchesSchedulesStyle";
 import Table from "react-bootstrap/Table";
 
@@ -37,14 +37,14 @@ const MatchesSchedulesTable: React.FC<MatchesResultsTableProps> = ({ matchesResu
             <tr key={singleMatch.matchID}
                 onClick={(e: React.MouseEvent) => handleOnClick(e, singleMatch)}
                 style={ (singleMatch.status === "closed") ? { cursor: "pointer" } : { cursor: "auto"}}>
-              <td className="p-3" style={colorBackgroundSetting(
+              <td className="p-3" style={teamNameColor(
                   singleMatch.status,
                   singleMatch.winnerID,
                   singleMatch.homeCompetitor.id)}>
                 {singleMatch.homeCompetitor.name}
               </td>
               <td className="p-3"
-                style={colorBackgroundSetting(
+                style={teamNameColor(
                   singleMatch.status,
                   singleMatch.winnerID,
                   singleMatch.awayCompetitor.id)}>

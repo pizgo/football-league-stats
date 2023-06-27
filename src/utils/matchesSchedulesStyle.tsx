@@ -1,16 +1,17 @@
 const green = "#5aa13d";
 const red = "#ba2929";
 const orange = "#db611a";
+const black = "#000000"
 
-export const colorBackgroundSetting = ( gameStatus: string, winnerId: string | undefined, competitorId: string): {} => {
+export const teamNameColor = (gameStatus: string, winnerId: string | undefined, competitorId: string): {} => {
     if (gameStatus !== "closed") {
-        return { backgroundColor: "none" };
+        return { color: black };
     } else if (!winnerId) {
-        return { backgroundColor: orange };
+        return { color: orange };
     } else if (winnerId && winnerId === competitorId) {
-        return { backgroundColor: green };
+        return { color: green };
     } else {
-        return { backgroundColor: red };
+        return { color: red };
     }
 };
 
