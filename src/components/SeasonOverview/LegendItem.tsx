@@ -8,9 +8,9 @@ const LegendItem: React.FC<LegendStatusProps> = ({status}) => {
 
     let className = 'flex items-center text-sm mb-0 justify-center gap-2 before:h-3 before:w-3 before:rounded-full before:block px-3.5 h-10 rounded-md';
 
-    if (status === 'winner team') {
+    if (status === 'winner') {
         className += 'text-winner before:bg-winner';
-    } else if (status === "lost team") {
+    } else if (status === "lost") {
         className += 'text-lost before:bg-lost';
     } else {
         className +=

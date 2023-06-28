@@ -18,7 +18,7 @@ const MatchesSchedulesTable: React.FC<MatchesResultsTableProps> = ({ matchesResu
     };
 
     return (
-        <TableContainer component={Paper} sx={{maxHeight: 440}}>
+        <TableContainer component={Paper} sx={{maxHeight: "50vh"}}>
             <Table stickyHeader>
                 <TableHead>
                     <TableRow className="bg-primary-200">

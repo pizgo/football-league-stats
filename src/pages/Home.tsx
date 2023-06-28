@@ -35,17 +35,17 @@ const Home: React.FC<MatchesSchedulesProps> = ({choosingSingleMatch, chosenSeaso
             <div>
                 <h5 className="text-base">Legend:</h5>
                 <div className="flex justify-around bg-white">
-                    <LegendItem status={"winner team"}/>
-                    <LegendItem status={"lost team"}/>
+                    <LegendItem status={"winner"}/>
+                    <LegendItem status={"lost"}/>
                     <LegendItem status={"tie"}/>
                 </div>
             </div>
-            <div className="mt-10 md:hidden">
+            <div className="mt-10 sm:hidden">
                     <MatchesSchedulesTableMobile
                         matchesResults={matchesState}
                         onChooseMatch={choosingSingleMatch}/>
             </div>
-            <div className="hidden md:block">
+            <div className="hidden sm:block">
                 <MatchesSchedulesTable
                     matchesResults={matchesState}
                     onChooseMatch={choosingSingleMatch}/>
