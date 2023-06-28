@@ -16,7 +16,6 @@ const MatchesSchedulesTable: React.FC<MatchesResultsTableProps> = ({ matchesResu
   const handleOnClick = ( e: React.MouseEvent, clickedMatch: SingleMatchSchema) => {
     if(clickedMatch.status === "closed") {
       onChooseMatch(clickedMatch);
-      console.log(clickedMatch)
     }
   };
 

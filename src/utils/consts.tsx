@@ -7,3 +7,10 @@ export const tableHeadersContent = [
   "Half-time score",
   "Stadium name",
 ];
+
+export const mobileTableHeadersContent = [
+  "HT",
+  "AT",
+  "Result",
+  "Date",
+];

@@ -12,7 +12,7 @@ body {
 
 .MuiInputBase-root:hover,
 .MuiInputBase-root:focus {
-  border: 1px solid black
+  border: 1px solid #7C5DFA
 }
 
 .MuiSvgIcon-root {
@@ -38,7 +38,7 @@ body {
 
 .MuiMenuItem-root:hover,
 .MuiMenuItem-root:focus {
-  color: red;
+  color: #7C5DFA;
   font-weight: bold;
   background: transparent;
 }
