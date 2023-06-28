@@ -1,6 +1,6 @@
 import React from "react";
 import { SingleMatchSchema } from "../../types/types";
-import {mobileTableHeadersContent, tableHeadersContent} from "../../utils/consts";
+import { mobileTableHeadersContent } from "../../utils/consts";
 import {
     teamNameColor,
     displayWhenStatusNotClosed } from "../../utils/matchesSchedulesStyle";
@@ -40,14 +40,14 @@ const MatchesSchedulesTable: React.FC<MatchesResultsTableProps> = ({ matchesResu
                             singleMatch.status,
                             singleMatch.winnerID,
                             singleMatch.homeCompetitor.id)}>
-                            {singleMatch.homeCompetitor.name}
+                            {singleMatch.homeCompetitor.abbreviation}
                         </td>
                         <td className="p-3"
                             style={teamNameColor(
                                 singleMatch.status,
                                 singleMatch.winnerID,
                                 singleMatch.awayCompetitor.id)}>
-                            {singleMatch.awayCompetitor.name}
+                            {singleMatch.awayCompetitor.abbreviation}
                         </td>
                         {singleMatch.status === "closed" ?
                             (<td className="p-3 d-flex justify-content-center">

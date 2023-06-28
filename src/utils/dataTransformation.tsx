@@ -5,32 +5,27 @@ import {
   CompetitorInfo
 } from "../types/types";
 
-const buildCompetitorInfo = (
-    schedule: APISchedule,
-    isHome: boolean
-): CompetitorInfo => {
-  let index = isHome
-      ? schedule.sport_event.competitors[0].qualifier === "home"
-          ? 0
-          : 1
+const buildCompetitorInfo = (schedule: APISchedule, isHome: boolean): CompetitorInfo => {
+  let index = isHome ? schedule.sport_event.competitors[0].qualifier === "home" ? 0 : 1
       : schedule.sport_event.competitors[0].qualifier === "away"
           ? 0
           : 1;
-
   let halfScoreCompetitor = undefined;
   if (schedule.sport_event_status.status === "closed") {
     halfScoreCompetitor = isHome
         ? schedule.sport_event_status.period_scores[0].home_score
         : schedule.sport_event_status.period_scores[0].away_score;
   }
-
   let result = isHome
       ? schedule.sport_event_status.home_score
       : schedule.sport_event_status.away_score;
 
+
+
   return {
     name: schedule.sport_event.competitors[index].name,
     id: schedule.sport_event.competitors[index].id,
+    abbreviation: schedule.sport_event.competitors[index].abbreviation,
     halfScore: halfScoreCompetitor,
     result: result,
   };

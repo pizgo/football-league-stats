@@ -27,6 +27,7 @@ interface APICompetitorInfo {
   name: string;
   id: string;
   qualifier: string;
+  abbreviation: string;
 }
 
 interface APIPeriodScores {
@@ -51,6 +52,7 @@ export interface SingleMatchSchema {
 export interface CompetitorInfo {
   name: string;
   id: string;
+  abbreviation: string;
   halfScore: number | undefined;
   result: number;
 }
