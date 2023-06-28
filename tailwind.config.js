@@ -10,6 +10,7 @@ module.exports = {
         "tie": "#db611a",
         "primary-100": "#9277FF",
         "primary-200": "#7C5DFA",
+        "neutral-200": "#DFE3FA",
       }
     },
   },

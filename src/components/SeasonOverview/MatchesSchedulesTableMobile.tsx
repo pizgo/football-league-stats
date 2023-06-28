@@ -18,8 +18,8 @@ const MatchesSchedulesTable: React.FC<MatchesResultsTableProps> = ({ matchesResu
     };
 
     return (
-        <TableContainer component={Paper}>
-            <Table>
+        <TableContainer component={Paper} sx={{maxHeight: 440}}>
+            <Table stickyHeader>
                 <TableHead>
                     <TableRow className="bg-primary-200">
                         {mobileTableHeadersContent.map((el, key) => (
@@ -33,6 +33,7 @@ const MatchesSchedulesTable: React.FC<MatchesResultsTableProps> = ({ matchesResu
                 {matchesResults.map((singleMatch, key) => (
                     <TableRow key={singleMatch.matchID}
                         onClick={(e: React.MouseEvent) => handleOnClick(e, singleMatch)}
+                        className="hover:bg-neutral-200"
                         style={ (singleMatch.status === "closed") ? { cursor: "pointer" } : { cursor: "auto"}}>
                         <TableCell className="" style={teamNameColor(
                             singleMatch.status,
