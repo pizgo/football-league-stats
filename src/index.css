@@ -9,3 +9,38 @@ html {
 body {
   margin: 0;
 }
+
+.MuiInputBase-root:hover,
+.MuiInputBase-root:focus {
+  border: 1px solid black
+}
+
+.MuiSvgIcon-root {
+  width: 1rem;
+  height: 1rem;
+  color: black;
+}
+
+.MuiInputBase-input,
+.Mui-selected,
+.MuiButtonBase-root {
+  font-size: 1rem;
+  color: black;
+  padding: 0.75rem;
+  cursor: pointer;
+  background-color: white;
+}
+
+.MuiSelect-select {
+  display: flex;
+  align-items: center;
+}
+
+.MuiMenuItem-root:hover,
+.MuiMenuItem-root:focus {
+  color: red;
+  font-weight: bold;
+  background: transparent;
+}
+
+
