@@ -40,7 +40,7 @@ const Home: React.FC<MatchesSchedulesProps> = ({choosingSingleMatch, chosenSeaso
                     <LegendItem status={"tie"}/>
                 </div>
             </div>
-            <div className="md:hidden">
+            <div className="mt-10 md:hidden">
                 <MatchesSchedulesTableMobile
                     matchesResults={matchesState}
                     onChooseMatch={choosingSingleMatch}/>

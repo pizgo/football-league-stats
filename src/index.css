@@ -43,4 +43,9 @@ body {
   background: transparent;
 }
 
+.MuiTableCell-root {
+  padding: 0.5rem 0;
+  text-align: center;
+}
+
 

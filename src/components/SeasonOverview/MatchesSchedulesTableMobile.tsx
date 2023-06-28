@@ -1,10 +1,8 @@
 import React from "react";
 import { SingleMatchSchema } from "../../types/types";
 import { mobileTableHeadersContent } from "../../utils/consts";
-import {
-    teamNameColor,
-    displayWhenStatusNotClosed } from "../../utils/matchesSchedulesStyle";
-import Table from "react-bootstrap/Table";
+import { teamNameColor, displayWhenStatusNotClosed } from "../../utils/matchesSchedulesStyle";
+import {Paper, TableContainer, Table, TableHead, TableRow, TableCell, TableBody} from "@mui/material";
 
 interface MatchesResultsTableProps {
     matchesResults: SingleMatchSchema[];
@@ -20,49 +18,49 @@ const MatchesSchedulesTable: React.FC<MatchesResultsTableProps> = ({ matchesResu
     };
 
     return (
-        <>
-            <Table responsive className="border-rounded" style={{fontSize: "0.9rem"}}>
-                <thead>
-                <tr className="bg-light">
-                    {mobileTableHeadersContent.map((el, key) => (
-                        <td className="p-3 fw-bold text-center" key={el}>
-                            {el}
-                        </td>
-                    ))}
-                </tr>
-                </thead>
-                <tbody>
+        <TableContainer component={Paper}>
+            <Table>
+                <TableHead>
+                    <TableRow className="bg-primary-200">
+                        {mobileTableHeadersContent.map((el, key) => (
+                            <TableCell className="font-bold text-white text-center" key={el}>
+                                {el}
+                            </TableCell>
+                        ))}
+                    </TableRow>
+                </TableHead>
+                <TableBody>
                 {matchesResults.map((singleMatch, key) => (
-                    <tr key={singleMatch.matchID}
+                    <TableRow key={singleMatch.matchID}
                         onClick={(e: React.MouseEvent) => handleOnClick(e, singleMatch)}
                         style={ (singleMatch.status === "closed") ? { cursor: "pointer" } : { cursor: "auto"}}>
-                        <td className="p-3" style={teamNameColor(
+                        <TableCell className="" style={teamNameColor(
                             singleMatch.status,
                             singleMatch.winnerID,
                             singleMatch.homeCompetitor.id)}>
                             {singleMatch.homeCompetitor.abbreviation}
-                        </td>
-                        <td className="p-3"
+                        </TableCell>
+                        <TableCell className=""
                             style={teamNameColor(
                                 singleMatch.status,
                                 singleMatch.winnerID,
                                 singleMatch.awayCompetitor.id)}>
                             {singleMatch.awayCompetitor.abbreviation}
-                        </td>
+                        </TableCell>
                         {singleMatch.status === "closed" ?
-                            (<td className="p-3 d-flex justify-content-center">
+                            (<TableCell className="d-flex justify-content-center">
                                 {singleMatch.homeCompetitor.result} -{" "}
                                 {singleMatch.awayCompetitor.result}
-                            </td>) :
-                            (<td className="p-3 d-flex justify-content-center">
+                            </TableCell>) :
+                            (<TableCell className="d-flex justify-content-center">
                                 {displayWhenStatusNotClosed(singleMatch.status)}
-                            </td>)}
-                        <td className="p-3">{singleMatch.matchDate}</td>
-                    </tr>
+                            </TableCell>)}
+                        <TableCell className="">{singleMatch.matchDate}</TableCell>
+                    </TableRow>
                 ))}
-                </tbody>
+                </TableBody>
             </Table>
-        </>
+        </TableContainer>
     );
 };
 
