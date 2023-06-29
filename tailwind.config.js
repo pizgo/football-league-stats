@@ -2,6 +2,9 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
+    fontFamily: {
+      'sans': 'Roboto, Helvetica, Arial, sans-serif'
+    },
     extend: {
       colors: {
         "light-100": "#F8F8FB",
@@ -11,6 +14,9 @@ module.exports = {
         "primary-100": "#9277FF",
         "primary-200": "#7C5DFA",
         "neutral-200": "#DFE3FA",
+      },
+      height: {
+        'halfScreen': '50vh',
       }
     },
   },

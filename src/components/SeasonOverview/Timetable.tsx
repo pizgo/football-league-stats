@@ -11,7 +11,7 @@ interface MatchesResultsTableProps {
   onChooseMatch: (singleMatch: SingleMatchSchema) => void;
 }
 
-const MatchesSchedulesTable: React.FC<MatchesResultsTableProps> = ({ matchesResults, onChooseMatch}) => {
+const Timetable: React.FC<MatchesResultsTableProps> = ({ matchesResults, onChooseMatch}) => {
 
   const handleOnClick = ( e: React.MouseEvent, clickedMatch: SingleMatchSchema) => {
     if(clickedMatch.status === "closed") {
@@ -71,4 +71,4 @@ const MatchesSchedulesTable: React.FC<MatchesResultsTableProps> = ({ matchesResu
   );
 };
 
-export default MatchesSchedulesTable;
+export default Timetable;

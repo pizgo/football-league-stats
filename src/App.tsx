@@ -21,7 +21,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="relative bg-light-100">
+    <div className="bg-light-100 h-screen">
       <Container className="py-8">
         <Routes>
           <Route

@@ -1,13 +1,12 @@
 import React, { Dispatch, SetStateAction } from "react";
 import SeasonSelect from "../components/SeasonOverview/SeasonSelect";
-import MatchesSchedulesTable from "../components/SeasonOverview/MatchesSchedulesTable";
+import Timetable from "../components/SeasonOverview/Timetable";
 import { useGetSeasonsID} from "../hooks/useGetSeasonsID";
 import { useGetMatchesSchedules} from "../hooks/useGetMatchesSchedules";
 import { SingleMatchSchema} from "../types/types";
-import {Box, Container} from "@mui/material";
-import Legend from "../components/SeasonOverview/LegendItem";
+import { Container } from "@mui/material";
 import LegendItem from "../components/SeasonOverview/LegendItem";
-import MatchesSchedulesTableMobile from "../components/SeasonOverview/MatchesSchedulesTableMobile";
+import MatchesSchedulesTableMobile from "../components/SeasonOverview/TimetableMobile";
 
 interface MatchesSchedulesProps {
     choosingSingleMatch: (singleMatch: SingleMatchSchema) => void;
@@ -26,30 +25,30 @@ const Home: React.FC<MatchesSchedulesProps> = ({choosingSingleMatch, chosenSeaso
     };
 
     return (
-        <Container className="">
-            <h4 className="py-6">Overview of Ekstraklasa League Matches</h4>
+        <Container className="font-sans">
+            <h4 className="py-4">Ekstraklasa League Timetable</h4>
             <SeasonSelect
                 onChangeSelect={handleSelectSeasonID}
                 seasonsDetails={seasonsDetails}
                 value={chosenSeasonId}/>
             <div>
-                <h5 className="text-base">Legend:</h5>
+                <p className="">Legend:</p>
                 <div className="flex justify-around bg-white">
                     <LegendItem status={"winner"}/>
                     <LegendItem status={"lost"}/>
                     <LegendItem status={"tie"}/>
                 </div>
             </div>
-            <div className="mt-10 sm:hidden">
+            <div className="">
                     <MatchesSchedulesTableMobile
                         matchesResults={matchesState}
                         onChooseMatch={choosingSingleMatch}/>
             </div>
-            <div className="hidden sm:block">
-                <MatchesSchedulesTable
-                    matchesResults={matchesState}
-                    onChooseMatch={choosingSingleMatch}/>
-            </div>
+            {/*<div className="hidden sm:block">*/}
+            {/*    <Timetable*/}
+            {/*        matchesResults={matchesState}*/}
+            {/*        onChooseMatch={choosingSingleMatch}/>*/}
+            {/*</div>*/}
         </Container>
     );
 };

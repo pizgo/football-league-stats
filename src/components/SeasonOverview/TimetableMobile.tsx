@@ -1,8 +1,9 @@
 import React from "react";
 import { SingleMatchSchema } from "../../types/types";
-import { mobileTableHeadersContent } from "../../utils/consts";
+import {mobileTableHeadersContent, tableHeadersContent} from "../../utils/consts";
 import { teamNameColor, displayWhenStatusNotClosed } from "../../utils/matchesSchedulesStyle";
 import {Paper, TableContainer, Table, TableHead, TableRow, TableCell, TableBody} from "@mui/material";
+import HeaderCell from "./HeaderCell";
 
 interface MatchesResultsTableProps {
     matchesResults: SingleMatchSchema[];
@@ -17,16 +18,14 @@ const MatchesSchedulesTable: React.FC<MatchesResultsTableProps> = ({ matchesResu
         }
     };
 
+
     return (
-        <TableContainer component={Paper} sx={{maxHeight: "50vh"}}>
+        <TableContainer component={Paper} className="h-halfScreen">
             <Table stickyHeader>
-                <TableHead>
+                <TableHead className="mt-10">
                     <TableRow className="bg-primary-200">
-                        {mobileTableHeadersContent.map((el, key) => (
-                            <TableCell className="font-bold text-white text-center" key={el}>
-                                {el}
-                            </TableCell>
-                        ))}
+                        <HeaderCell style="sm:hidden" headerCell={mobileTableHeadersContent}/>
+                        <HeaderCell style="hidden sm:table-cell" headerCell={tableHeadersContent}/>
                     </TableRow>
                 </TableHead>
                 <TableBody>

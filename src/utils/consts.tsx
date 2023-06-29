@@ -1,5 +1,5 @@
 export const errorMessage: string = "Something went wrong. Try again later";
-export const tableHeadersContent = [
+export const tableHeadersContent  = [
   "Host team",
   "Away team",
   "Result",
@@ -8,7 +8,7 @@ export const tableHeadersContent = [
   "Stadium name",
 ];
 
-export const mobileTableHeadersContent = [
+export const mobileTableHeadersContent  = [
   "HT",
   "AT",
   "Result",
