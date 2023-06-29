@@ -3,9 +3,9 @@ export const tableHeadersContent  = [
   "Host team",
   "Away team",
   "Result",
-  "Match date",
-  "Half-time score",
-  "Stadium name",
+  "Date",
+  "Half-time",
+  "Stadium",
 ];
 
 export const mobileTableHeadersContent  = [

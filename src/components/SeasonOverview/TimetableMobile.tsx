@@ -1,9 +1,10 @@
 import React from "react";
 import { SingleMatchSchema } from "../../types/types";
 import {mobileTableHeadersContent, tableHeadersContent} from "../../utils/consts";
-import { teamNameColor, displayWhenStatusNotClosed } from "../../utils/matchesSchedulesStyle";
+import { displayWhenStatusNotClosed } from "../../utils/matchesSchedulesStyle";
 import {Paper, TableContainer, Table, TableHead, TableRow, TableCell, TableBody} from "@mui/material";
 import HeaderCell from "./HeaderCell";
+import TeamCell from "./TeamCell";
 
 interface MatchesResultsTableProps {
     matchesResults: SingleMatchSchema[];
@@ -24,8 +25,8 @@ const MatchesSchedulesTable: React.FC<MatchesResultsTableProps> = ({ matchesResu
             <Table stickyHeader>
                 <TableHead className="mt-10">
                     <TableRow className="bg-primary-200">
-                        <HeaderCell style="sm:hidden" headerCell={mobileTableHeadersContent}/>
-                        <HeaderCell style="hidden sm:table-cell" headerCell={tableHeadersContent}/>
+                        <HeaderCell style="md:hidden" headerCell={mobileTableHeadersContent}/>
+                        <HeaderCell style="hidden md:table-cell" headerCell={tableHeadersContent}/>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -33,20 +34,28 @@ const MatchesSchedulesTable: React.FC<MatchesResultsTableProps> = ({ matchesResu
                     <TableRow key={singleMatch.matchID}
                         onClick={(e: React.MouseEvent) => handleOnClick(e, singleMatch)}
                         className="hover:bg-neutral-200"
-                        style={ (singleMatch.status === "closed") ? { cursor: "pointer" } : { cursor: "auto"}}>
-                        <TableCell className="" style={teamNameColor(
-                            singleMatch.status,
-                            singleMatch.winnerID,
-                            singleMatch.homeCompetitor.id)}>
-                            {singleMatch.homeCompetitor.abbreviation}
-                        </TableCell>
-                        <TableCell className=""
-                            style={teamNameColor(
-                                singleMatch.status,
-                                singleMatch.winnerID,
-                                singleMatch.awayCompetitor.id)}>
-                            {singleMatch.awayCompetitor.abbreviation}
-                        </TableCell>
+                        style={(singleMatch.status === "closed") ? { cursor: "pointer" } : { cursor: "auto"}}>
+                        <TeamCell style="sm:hidden"
+                                  status={singleMatch.status}
+                                  winnerId={singleMatch.winnerID}
+                                  competitorId={singleMatch.homeCompetitor.id}
+                                  content={singleMatch.homeCompetitor.abbreviation}/>
+                        <TeamCell style="hidden sm:table-cell text-start"
+                                  status={singleMatch.status}
+                                  winnerId={singleMatch.winnerID}
+                                  competitorId={singleMatch.homeCompetitor.id}
+                                  content={singleMatch.homeCompetitor.name}/>
+                        <TeamCell style="sm:hidden"
+                                  status={singleMatch.status}
+                                  winnerId={singleMatch.winnerID}
+                                  competitorId={singleMatch.awayCompetitor.id}
+                                  content={singleMatch.awayCompetitor.abbreviation}/>
+                        <TeamCell style="hidden sm:table-cell text-start"
+                                  status={singleMatch.status}
+                                  winnerId={singleMatch.winnerID}
+                                  competitorId={singleMatch.awayCompetitor.id}
+                                  content={singleMatch.awayCompetitor.name}/>
+
                         {singleMatch.status === "closed" ?
                             (<TableCell className="d-flex justify-content-center">
                                 {singleMatch.homeCompetitor.result} -{" "}

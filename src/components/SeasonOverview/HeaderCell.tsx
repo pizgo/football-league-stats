@@ -1,5 +1,4 @@
 import React from "react";
-import {mobileTableHeadersContent} from "../../utils/consts";
 import {TableCell} from "@mui/material";
 
 interface HeaderCellProps {
