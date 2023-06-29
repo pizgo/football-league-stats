@@ -25,8 +25,8 @@ const MatchesSchedulesTable: React.FC<MatchesResultsTableProps> = ({ matchesResu
             <Table stickyHeader>
                 <TableHead className="mt-10">
                     <TableRow className="bg-primary-200">
-                        <HeaderCell style="md:hidden" headerCell={mobileTableHeadersContent}/>
-                        <HeaderCell style="hidden md:table-cell" headerCell={tableHeadersContent}/>
+                        <HeaderCell style="lg:hidden" headerCell={mobileTableHeadersContent}/>
+                        <HeaderCell style="hidden lg:table-cell" headerCell={tableHeadersContent}/>
                     </TableRow>
                 </TableHead>
                 <TableBody>
