@@ -4,7 +4,7 @@ import Timetable from "../components/SeasonOverview/Timetable";
 import { useGetSeasonsID} from "../hooks/useGetSeasonsID";
 import { useGetMatchesSchedules} from "../hooks/useGetMatchesSchedules";
 import { SingleMatchSchema} from "../types/types";
-import { Container } from "@mui/material";
+import {Box, Container, Paper} from "@mui/material";
 import LegendItem from "../components/SeasonOverview/LegendItem";
 import MatchesSchedulesTableMobile from "../components/SeasonOverview/TimetableMobile";
 
@@ -26,19 +26,19 @@ const Home: React.FC<MatchesSchedulesProps> = ({choosingSingleMatch, chosenSeaso
 
     return (
         <Container className="font-sans">
-            <h4 className="py-4">Ekstraklasa League Timetable</h4>
+            <h4 className="py-3">Ekstraklasa League Timetable</h4>
             <SeasonSelect
                 onChangeSelect={handleSelectSeasonID}
                 seasonsDetails={seasonsDetails}
                 value={chosenSeasonId}/>
-            <div>
-                <p className="">Legend:</p>
-                <div className="flex justify-around bg-white">
+            <Box component={Paper} className="flex flex-row items-center bg-white mb-3 ps-3" >
+                <p className="mb-0">Legend:</p>
+                <div className="flex justify-around">
                     <LegendItem status={"winner"}/>
                     <LegendItem status={"lost"}/>
                     <LegendItem status={"tie"}/>
                 </div>
-            </div>
+            </Box>
             <div className="">
                     <MatchesSchedulesTableMobile
                         matchesResults={matchesState}
