@@ -1,6 +1,6 @@
 import React, {ReactNode} from "react";
 import { SeasonDetailSchema } from "../../types/types";
-import {FormControl, InputLabel, Select, MenuItem, SelectChangeEvent} from "@mui/material";
+import {InputLabel, Select, MenuItem, SelectChangeEvent} from "@mui/material";
 
 interface SeasonSelectProps {
   onChangeSelect: (chosenSeasonID: string) => void;
@@ -9,7 +9,6 @@ interface SeasonSelectProps {
 }
 
 const SeasonSelect: React.FC<SeasonSelectProps> = ({ onChangeSelect, seasonsDetails, value}) => {
-
   const handleChange = (event: SelectChangeEvent<string>, child: ReactNode) => {
     const chosenSeasonID = event.target.value;
     onChangeSelect(chosenSeasonID);
@@ -18,10 +17,9 @@ const SeasonSelect: React.FC<SeasonSelectProps> = ({ onChangeSelect, seasonsDeta
 
   return (
       <>
-          <div className="mb-10 flex flex-col max-w-md">
+          <div className="mb-4 flex flex-col max-w-md">
                   <InputLabel className="mb-2 text-base text-black" htmlFor="season-select">Choose season to display</InputLabel>
                   <Select
-                      // labelId="season-select"
                       name="seasonSelect"
                       id="season-select"
                       value={value}

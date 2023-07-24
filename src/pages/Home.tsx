@@ -26,13 +26,13 @@ const Home: React.FC<MatchesSchedulesProps> = ({choosingSingleMatch, chosenSeaso
 
     return (
         <Container className="font-sans">
-            <h4 className="py-4">Ekstraklasa League Timetable</h4>
+            <h4 className="my-4 m-0">Ekstraklasa League Timetable</h4>
             <SeasonSelect
                 onChangeSelect={handleSelectSeasonID}
                 seasonsDetails={seasonsDetails}
                 value={chosenSeasonId}/>
-            <div>
-                <p className="">Legend:</p>
+            <div className="mb-4">
+                <p className="mb-2">Legend:</p>
                 <div className="flex justify-around bg-white">
                     <LegendItem status={"winner"}/>
                     <LegendItem status={"lost"}/>

@@ -19,7 +19,6 @@ const MatchesSchedulesTable: React.FC<MatchesResultsTableProps> = ({ matchesResu
         }
     };
 
-
     return (
         <TableContainer component={Paper} className="h-halfScreen">
             <Table stickyHeader>
@@ -55,7 +54,6 @@ const MatchesSchedulesTable: React.FC<MatchesResultsTableProps> = ({ matchesResu
                                   winnerId={singleMatch.winnerID}
                                   competitorId={singleMatch.awayCompetitor.id}
                                   content={singleMatch.awayCompetitor.name}/>
-
                         {singleMatch.status === "closed" ?
                             (<TableCell className="d-flex justify-content-center">
                                 {singleMatch.homeCompetitor.result} -{" "}
