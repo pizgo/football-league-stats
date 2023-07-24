@@ -31,9 +31,9 @@ const Home: React.FC<MatchesSchedulesProps> = ({choosingSingleMatch, chosenSeaso
                 onChangeSelect={handleSelectSeasonID}
                 seasonsDetails={seasonsDetails}
                 value={chosenSeasonId}/>
-            <Box component={Paper} className="flex flex-row items-center bg-white mb-4 ps-3" >
+            <Box component={Paper} className="flex items-center bg-white mb-4 ps-3 sm:max-w-xs" >
                 <p className="mb-0">Legend:</p>
-                <div className="flex justify-around">
+                <div className="flex">
                     <LegendItem status={"winner"}/>
                     <LegendItem status={"lost"}/>
                     <LegendItem status={"tie"}/>

@@ -17,7 +17,7 @@ const SeasonSelect: React.FC<SeasonSelectProps> = ({ onChangeSelect, seasonsDeta
 
   return (
       <>
-          <div className="mb-4 flex flex-col max-w-md">
+          <div className="mb-4 flex flex-col sm:max-w-xs">
                   <InputLabel className="mb-2 text-base text-black" htmlFor="season-select">Choose season to display</InputLabel>
                   <Select
                       name="seasonSelect"
