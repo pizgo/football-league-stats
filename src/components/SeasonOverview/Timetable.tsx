@@ -1,74 +1,76 @@
 import React from "react";
 import { SingleMatchSchema } from "../../types/types";
-import { desktopHeadersContent } from "../../utils/consts";
-import {
-  teamNameColor,
-  displayWhenStatusNotClosed } from "../../utils/matchesSchedulesStyle";
-import Table from "react-bootstrap/Table";
+import {mobileHeadersContent, desktopHeadersContent, tabletHeadersContent} from "../../utils/consts";
+import { displayWhenStatusNotClosed } from "../../utils/matchesSchedulesStyle";
+import {Paper, TableContainer, Table, TableHead, TableRow, TableCell, TableBody} from "@mui/material";
+import HeaderCell from "./HeaderCell";
+import TeamCell from "./TeamCell";
 
 interface MatchesResultsTableProps {
-  matchesResults: SingleMatchSchema[];
-  onChooseMatch: (singleMatch: SingleMatchSchema) => void;
+    matchesResults: SingleMatchSchema[];
+    onChooseMatch: (singleMatch: SingleMatchSchema) => void;
 }
 
 const Timetable: React.FC<MatchesResultsTableProps> = ({ matchesResults, onChooseMatch}) => {
 
-  const handleOnClick = ( e: React.MouseEvent, clickedMatch: SingleMatchSchema) => {
-    if(clickedMatch.status === "closed") {
-      onChooseMatch(clickedMatch);
-    }
-  };
+    const handleOnClick = ( e: React.MouseEvent, clickedMatch: SingleMatchSchema) => {
+        if(clickedMatch.status === "closed") {
+            onChooseMatch(clickedMatch);
+        }
+    };
 
-  return (
-    <>
-      <Table responsive className="border-rounded" style={{fontSize: "0.9rem"}}>
-        <thead>
-          <tr className="bg-light">
-            {desktopHeadersContent.map((el, key) => (
-              <td className="p-3 fw-bold text-center" key={el}>
-                {el}
-              </td>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {matchesResults.map((singleMatch, key) => (
-            <tr key={singleMatch.matchID}
-                onClick={(e: React.MouseEvent) => handleOnClick(e, singleMatch)}
-                style={ (singleMatch.status === "closed") ? { cursor: "pointer" } : { cursor: "auto"}}>
-              <td className="p-3" style={teamNameColor(
-                  singleMatch.status,
-                  singleMatch.winnerID,
-                  singleMatch.homeCompetitor.id)}>
-                {singleMatch.homeCompetitor.name}
-              </td>
-              <td className="p-3"
-                style={teamNameColor(
-                  singleMatch.status,
-                  singleMatch.winnerID,
-                  singleMatch.awayCompetitor.id)}>
-                {singleMatch.awayCompetitor.name}
-              </td>
-              {singleMatch.status === "closed" ?
-                  (<td className="p-3 d-flex justify-content-center">
-                  {singleMatch.homeCompetitor.result} -{" "}
-                  {singleMatch.awayCompetitor.result}
-                </td>) :
-                  (<td className="p-3 d-flex justify-content-center">
-                  {displayWhenStatusNotClosed(singleMatch.status)}
-                </td>)}
-              <td className="p-3">{singleMatch.matchDate}</td>
-              <td className="p-3 d-flex justify-content-center">
-                {singleMatch.homeCompetitor.halfScore} -{" "}
-                {singleMatch.awayCompetitor.halfScore}
-              </td>
-              <td className="p-3">{singleMatch.stadiumName}</td>
-            </tr>
-          ))}
-        </tbody>
-      </Table>
-    </>
-  );
+    return (
+        <TableContainer component={Paper} className="h-60screen">
+            <Table stickyHeader>
+                <TableHead className="mt-10">
+                    <TableRow className="bg-primary-200">
+                        <HeaderCell style="sm:hidden" headerCell={mobileHeadersContent}/>
+                        <HeaderCell style="hidden sm:table-cell lg:hidden" headerCell={tabletHeadersContent}/>
+                        <HeaderCell style="hidden lg:table-cell text-base" headerCell={desktopHeadersContent}/>
+                    </TableRow>
+                </TableHead>
+                <TableBody>
+                {matchesResults.map((singleMatch, key) => (
+                    <TableRow key={singleMatch.matchID}
+                        onClick={(e: React.MouseEvent) => handleOnClick(e, singleMatch)}
+                        className="hover:bg-neutral-200"
+                        style={(singleMatch.status === "closed") ? { cursor: "pointer" } : { cursor: "auto"}}>
+                        <TeamCell style="sm:hidden"
+                                  status={singleMatch.status}
+                                  winnerId={singleMatch.winnerID}
+                                  competitorId={singleMatch.homeCompetitor.id}
+                                  content={singleMatch.homeCompetitor.abbreviation}/>
+                        <TeamCell style="hidden sm:table-cell px-3 text-start"
+                                  status={singleMatch.status}
+                                  winnerId={singleMatch.winnerID}
+                                  competitorId={singleMatch.homeCompetitor.id}
+                                  content={singleMatch.homeCompetitor.name}/>
+                        <TeamCell style="sm:hidden"
+                                  status={singleMatch.status}
+                                  winnerId={singleMatch.winnerID}
+                                  competitorId={singleMatch.awayCompetitor.id}
+                                  content={singleMatch.awayCompetitor.abbreviation}/>
+                        <TeamCell style="hidden sm:table-cell px-3 text-start"
+                                  status={singleMatch.status}
+                                  winnerId={singleMatch.winnerID}
+                                  competitorId={singleMatch.awayCompetitor.id}
+                                  content={singleMatch.awayCompetitor.name}/>
+                        {singleMatch.status === "closed" ?
+                            (<TableCell className="d-flex justify-content-center">
+                                {singleMatch.homeCompetitor.result} -{" "}
+                                {singleMatch.awayCompetitor.result}
+                            </TableCell>) :
+                            (<TableCell className="d-flex justify-content-center">
+                                {displayWhenStatusNotClosed(singleMatch.status)}
+                            </TableCell>)}
+                        <TableCell className="px-2">{singleMatch.matchDate}</TableCell>
+                        <TableCell className="hidden lg:table-cell text-start px-3">{singleMatch.stadiumName}</TableCell>
+                    </TableRow>
+                ))}
+                </TableBody>
+            </Table>
+        </TableContainer>
+    );
 };
 
 export default Timetable;
