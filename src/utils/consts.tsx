@@ -16,6 +16,5 @@ export const desktopHeadersContent  = [
   "Away team",
   "Result",
   "Date",
-  "Half-time",
   "Stadium",
 ];

@@ -7,7 +7,8 @@ module.exports = {
     },
     extend: {
       screens: {
-        'sm': '680px'
+        'sm': '680px',
+        'lg': '1086px',
       },
       colors: {
         "light-100": "#F8F8FB",
@@ -19,7 +20,8 @@ module.exports = {
         "neutral-200": "#DFE3FA",
       },
       height: {
-        'halfScreen': '50vh',
+        '50screen': '50vh',
+        '60screen': '60vh',
       }
     },
   },
