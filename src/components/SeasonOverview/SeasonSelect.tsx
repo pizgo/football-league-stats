@@ -18,7 +18,6 @@ const SeasonSelect: React.FC<SeasonSelectProps> = ({ onChangeSelect, seasonsDeta
   return (
       <>
           <div className="mb-4 flex flex-col sm:max-w-xs">
-                  <p className="mb-2 text-sm md:text-base">Choose a season to display and click on the match to see more details</p>
                   <Select
                       name="seasonSelect"
                       id="season-select"

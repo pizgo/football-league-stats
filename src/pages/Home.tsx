@@ -26,6 +26,7 @@ const Home: React.FC<MatchesSchedulesProps> = ({choosingSingleMatch, chosenSeaso
     return (
         <Container className="font-sans">
             <h5 className="my-4">Ekstraklasa League Timetable</h5>
+            <p className="mb-2 text-sm md:text-base">Choose a season to display and click on the match to see more details</p>
             <SeasonSelect
                 onChangeSelect={handleSelectSeasonID}
                 seasonsDetails={seasonsDetails}
