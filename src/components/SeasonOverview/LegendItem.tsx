@@ -6,7 +6,7 @@ interface LegendStatusProps {
 
 const LegendItem: React.FC<LegendStatusProps> = ({status}) => {
 
-    let className = 'flex items-center text-sm mb-0 justify-center gap-2 before:h-3 before:w-3 before:rounded-full before:block px-3.5 h-10 rounded-md';
+    let className = 'flex items-center mb-0 justify-center gap-2 before:h-3 before:w-3 before:rounded-full before:block px-3.5 h-10 rounded-md';
 
     if (status === 'winner') {
         className += 'text-winner before:bg-winner';
