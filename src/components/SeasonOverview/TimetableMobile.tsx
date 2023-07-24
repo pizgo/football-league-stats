@@ -1,6 +1,6 @@
 import React from "react";
 import { SingleMatchSchema } from "../../types/types";
-import {mobileTableHeadersContent, tableHeadersContent} from "../../utils/consts";
+import {mobileHeadersContent, desktopHeadersContent, tabletHeadersContent} from "../../utils/consts";
 import { displayWhenStatusNotClosed } from "../../utils/matchesSchedulesStyle";
 import {Paper, TableContainer, Table, TableHead, TableRow, TableCell, TableBody} from "@mui/material";
 import HeaderCell from "./HeaderCell";
@@ -24,8 +24,9 @@ const MatchesSchedulesTable: React.FC<MatchesResultsTableProps> = ({ matchesResu
             <Table stickyHeader>
                 <TableHead className="mt-10">
                     <TableRow className="bg-primary-200">
-                        <HeaderCell style="lg:hidden" headerCell={mobileTableHeadersContent}/>
-                        <HeaderCell style="hidden lg:table-cell" headerCell={tableHeadersContent}/>
+                        <HeaderCell style="sm:hidden" headerCell={mobileHeadersContent}/>
+                        <HeaderCell style="hidden sm:table-cell lg:hidden" headerCell={tabletHeadersContent}/>
+                        <HeaderCell style="hidden lg:table-cell" headerCell={desktopHeadersContent}/>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -39,7 +40,7 @@ const MatchesSchedulesTable: React.FC<MatchesResultsTableProps> = ({ matchesResu
                                   winnerId={singleMatch.winnerID}
                                   competitorId={singleMatch.homeCompetitor.id}
                                   content={singleMatch.homeCompetitor.abbreviation}/>
-                        <TeamCell style="hidden sm:table-cell text-start"
+                        <TeamCell style="hidden sm:table-cell px-2"
                                   status={singleMatch.status}
                                   winnerId={singleMatch.winnerID}
                                   competitorId={singleMatch.homeCompetitor.id}
@@ -49,7 +50,7 @@ const MatchesSchedulesTable: React.FC<MatchesResultsTableProps> = ({ matchesResu
                                   winnerId={singleMatch.winnerID}
                                   competitorId={singleMatch.awayCompetitor.id}
                                   content={singleMatch.awayCompetitor.abbreviation}/>
-                        <TeamCell style="hidden sm:table-cell text-start"
+                        <TeamCell style="hidden sm:table-cell"
                                   status={singleMatch.status}
                                   winnerId={singleMatch.winnerID}
                                   competitorId={singleMatch.awayCompetitor.id}
@@ -62,7 +63,7 @@ const MatchesSchedulesTable: React.FC<MatchesResultsTableProps> = ({ matchesResu
                             (<TableCell className="d-flex justify-content-center">
                                 {displayWhenStatusNotClosed(singleMatch.status)}
                             </TableCell>)}
-                        <TableCell className="">{singleMatch.matchDate}</TableCell>
+                        <TableCell className="px-2">{singleMatch.matchDate}</TableCell>
                     </TableRow>
                 ))}
                 </TableBody>

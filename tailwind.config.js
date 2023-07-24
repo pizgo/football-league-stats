@@ -6,6 +6,9 @@ module.exports = {
       'sans': 'Roboto, Helvetica, Arial, sans-serif'
     },
     extend: {
+      screens: {
+        'sm': '680px'
+      },
       colors: {
         "light-100": "#F8F8FB",
         "lost": "#ba2929",

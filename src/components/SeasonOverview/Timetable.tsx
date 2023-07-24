@@ -1,6 +1,6 @@
 import React from "react";
 import { SingleMatchSchema } from "../../types/types";
-import { tableHeadersContent } from "../../utils/consts";
+import { desktopHeadersContent } from "../../utils/consts";
 import {
   teamNameColor,
   displayWhenStatusNotClosed } from "../../utils/matchesSchedulesStyle";
@@ -24,7 +24,7 @@ const Timetable: React.FC<MatchesResultsTableProps> = ({ matchesResults, onChoos
       <Table responsive className="border-rounded" style={{fontSize: "0.9rem"}}>
         <thead>
           <tr className="bg-light">
-            {tableHeadersContent.map((el, key) => (
+            {desktopHeadersContent.map((el, key) => (
               <td className="p-3 fw-bold text-center" key={el}>
                 {el}
               </td>
