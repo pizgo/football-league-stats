@@ -18,3 +18,8 @@ export const desktopHeadersContent  = [
   "Date",
   "Stadium",
 ];
+
+export const changePlayerNameFormat = (name: string) => {
+  let newName = name.split(',')
+  return newName[0]
+}
