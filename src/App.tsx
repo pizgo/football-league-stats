@@ -6,7 +6,7 @@ import { useNavigateSearch } from "./hooks/useNavigateSearch";
 import { useGetMatchTimeline } from "./hooks/useGetMatchTimeline";
 import { SingleMatchSchema } from "./types/types";
 import { firstSeason} from "./utils/api";
-import {Container} from "@mui/material";
+import { Container } from "@mui/material";
 
 const App: React.FC = () => {
   const [chosenMatch, setChosenMatch] = useState<SingleMatchSchema>();
@@ -21,8 +21,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="bg-light-100 h-screen">
-      <Container className="py-8">
+    <Container className="bg-light-100 h-screen py-8 font-sans">
         <Routes>
           <Route
               path="/"
@@ -38,8 +37,7 @@ const App: React.FC = () => {
               />
           )}
         </Routes>
-      </Container>
-    </div>
+    </Container>
   );
 };
 

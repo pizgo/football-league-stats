@@ -62,11 +62,11 @@ const Timetable: React.FC<MatchesResultsTableProps> = ({ matchesResults, onChoos
                                   competitorId={singleMatch.awayCompetitor.id}
                                   content={singleMatch.awayCompetitor.name}/>
                         {singleMatch.status === "closed" ?
-                            (<TableCell className="d-flex justify-content-center">
+                            (<TableCell className="flex justify-center">
                                 {singleMatch.homeCompetitor.result} -{" "}
                                 {singleMatch.awayCompetitor.result}
                             </TableCell>) :
-                            (<TableCell className="d-flex justify-content-center">
+                            (<TableCell className="flex justify-center">
                                 {displayWhenStatusNotClosed(singleMatch.status)}
                             </TableCell>)}
                         <TableCell className="px-2">{singleMatch.matchDate}</TableCell>
