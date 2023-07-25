@@ -55,6 +55,11 @@ body {
 .MuiTabs-indicator {
   display: none;
 }
+.MuiTabs-root {
+  border: 1px solid #7C5DFA;
+  border-bottom: none;
+  border-radius: 0.4rem 0.4rem 0 0;
+}
 
 .MuiButtonBase-root {
   text-transform: lowercase;
@@ -68,7 +73,6 @@ body {
 .css-1ujykiq-MuiButtonBase-root-MuiTab-root.Mui-selected {
   background: #7C5DFA;
   color: white;
-  border-radius: 0.4rem 0.4rem 0 0;
 }
 
 

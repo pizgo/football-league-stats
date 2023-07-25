@@ -22,9 +22,7 @@ function CustomTabPanel(props: TabPanelProps) {
             aria-labelledby={`simple-tab-${index}`}
             {...other}>
             {value === index && (
-                <Box className="p-2">
                     <div>{children}</div>
-                </Box>
             )}
         </div>
     );
@@ -56,7 +54,7 @@ const SingleMatch: React.FC<SingleMatchDetailsProps> = ({chosenMatch, timeline})
                <SingleMatchOverview
                       chosenMatch={chosenMatch}
                       timeline={timeline}/>
-                  <Box className="border-b-2 mt-4 border-b-light-100">
+                  <div className="border-b-2 mt-4 border-b-light-100">
                       <Tabs value={value}
                             onChange={handleTabChange}
                             aria-label="single match tabs"
@@ -65,7 +63,7 @@ const SingleMatch: React.FC<SingleMatchDetailsProps> = ({chosenMatch, timeline})
                           <Tab label="Statistics" {...tabProps(1)} />
                           <Tab label="Lineups" {...tabProps(2)} />
                       </Tabs>
-                  </Box>
+                  </div>
                   <CustomTabPanel value={value} index={0}>
                       <SingleMatchTimeline
                           chosenMatch={chosenMatch}

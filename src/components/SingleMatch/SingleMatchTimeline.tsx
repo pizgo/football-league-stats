@@ -6,6 +6,7 @@ import { Col,
   OverlayTrigger,
   Popover } from "react-bootstrap";
 import {formattedEventType} from "../../utils/formattedEventType";
+import {Box, Paper} from "@mui/material";
 
 interface SingleMatchTimelineProps {
   chosenMatch: SingleMatchSchema;
@@ -38,10 +39,23 @@ const popover = (el: SingleMatchTimelineSchema) => {
   );
 };
 
+const paragraphStyle = "text-sm m-1 font-bold"
+
 const SingleMatchTimeline: React.FC<SingleMatchTimelineProps> = ({ chosenMatch, timeline}) => {
 
-    console.log(timeline)
   return (
+      <>
+          <div className="bg-white">
+              <p className={paragraphStyle}>Date: <span className="font-normal">{chosenMatch.matchDate}</span></p>
+              <p className={paragraphStyle}>Stadium name: <span className="font-normal">{chosenMatch.stadiumName}</span></p>
+              <p className={paragraphStyle}>Highlights:</p>
+              <ul>
+
+              </ul>
+          </div>
+
+
+
     <Container className="shadow-lg w-50 rounded mt-5"
                style={{ backgroundColor: "#A4BE7B" }}>
       <Row className="justify-content-center fw-bold mt-4">
@@ -79,6 +93,7 @@ const SingleMatchTimeline: React.FC<SingleMatchTimelineProps> = ({ chosenMatch, 
         ))}
       </Row>
     </Container>
+    </>
   );
 };
 
