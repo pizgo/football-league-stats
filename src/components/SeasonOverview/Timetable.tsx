@@ -1,8 +1,14 @@
 import React from "react";
 import { SingleMatchSchema } from "../../types/types";
-import {mobileHeadersContent, desktopHeadersContent, tabletHeadersContent} from "../../utils/consts";
+import { mobileHeadersContent, desktopHeadersContent, tabletHeadersContent } from "../../utils/consts";
 import { displayWhenStatusNotClosed } from "../../utils/matchesSchedulesStyle";
-import {Paper, TableContainer, Table, TableHead, TableRow, TableCell, TableBody} from "@mui/material";
+import { Paper,
+        TableContainer,
+        Table,
+        TableHead,
+        TableRow,
+        TableCell,
+        TableBody } from "@mui/material";
 import HeaderCell from "./HeaderCell";
 import TeamCell from "./TeamCell";
 

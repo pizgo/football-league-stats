@@ -34,8 +34,8 @@ const App: React.FC = () => {
           {chosenMatch && (
               <Route
                   path="/singleMatch"
-                  element={<SingleMatch chosenMatch={chosenMatch}
-                                        timeline={timeline}/>}/>
+                  element={<SingleMatch chosenMatch={chosenMatch} timeline={timeline}/>}
+              />
           )}
         </Routes>
       </Container>

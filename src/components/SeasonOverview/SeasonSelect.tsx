@@ -1,6 +1,8 @@
-import React, {ReactNode} from "react";
+import React, { ReactNode } from "react";
 import { SeasonDetailSchema } from "../../types/types";
-import {InputLabel, Select, MenuItem, SelectChangeEvent} from "@mui/material";
+import { Select,
+        MenuItem,
+        SelectChangeEvent } from "@mui/material";
 
 interface SeasonSelectProps {
   onChangeSelect: (chosenSeasonID: string) => void;
@@ -16,19 +18,17 @@ const SeasonSelect: React.FC<SeasonSelectProps> = ({ onChangeSelect, seasonsDeta
   };
 
   return (
-      <>
-          <div className="mb-4 flex flex-col sm:max-w-xs">
-                  <Select
-                      name="seasonSelect"
-                      id="season-select"
-                      value={value}
-                      onChange={handleChange}>
-                      {seasonsDetails.map((el, key) => (
-                          <MenuItem value={el.seasonID} key={el.seasonID}>{el.seasonName}</MenuItem>
-                      ))}
-                  </Select>
-          </div>
-      </>
+      <div className="mb-4 flex flex-col sm:max-w-xs">
+          <Select
+              name="seasonSelect"
+              id="season-select"
+              value={value}
+              onChange={handleChange}>
+              {seasonsDetails.map((el, key) => (
+                  <MenuItem value={el.seasonID} key={el.seasonID}>{el.seasonName}</MenuItem>
+              ))}
+          </Select>
+      </div>
   );
 };
 

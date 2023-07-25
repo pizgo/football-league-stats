@@ -3,7 +3,9 @@ import SeasonSelect from "../components/SeasonOverview/SeasonSelect";
 import { useGetSeasonsID} from "../hooks/useGetSeasonsID";
 import { useGetMatchesSchedules} from "../hooks/useGetMatchesSchedules";
 import { SingleMatchSchema} from "../types/types";
-import {Box, Container, Paper} from "@mui/material";
+import { Box,
+        Container,
+        Paper } from "@mui/material";
 import LegendItem from "../components/SeasonOverview/LegendItem";
 import Timetable from "../components/SeasonOverview/Timetable";
 

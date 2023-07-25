@@ -1,5 +1,5 @@
 import React from "react";
-import {TableCell} from "@mui/material";
+import { TableCell } from "@mui/material";
 
 interface HeaderCellProps {
     style: string;
@@ -19,7 +19,6 @@ const HeaderCell: React.FC<HeaderCellProps> = ({style, headerCell}) => {
             ))}
         </>
     )
-
 };
 
 export default HeaderCell;
