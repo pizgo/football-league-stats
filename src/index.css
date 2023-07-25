@@ -52,3 +52,23 @@ body {
   background: #7C5DFA
 }
 
+.MuiTabs-indicator {
+  display: none;
+}
+
+.MuiButtonBase-root {
+  text-transform: lowercase;
+  font-weight: bold;
+}
+
+.MuiButtonBase-root:hover {
+  background: #DFE3FA;
+}
+
+.css-1ujykiq-MuiButtonBase-root-MuiTab-root.Mui-selected {
+  background: #7C5DFA;
+  color: white;
+  border-radius: 0.4rem 0.4rem 0 0;
+}
+
+
