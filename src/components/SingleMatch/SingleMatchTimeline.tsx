@@ -36,7 +36,7 @@ const eventsForTimeline = (el: SingleMatchTimelineSchema) => {
 //   );
 // };
 
-const paragraphStyle = "text-sm pt-2 pl-2 font-bold"
+const paragraphStyle = "text-sm text-center pt-3 pl-2 font-bold"
 
 const SingleMatchTimeline: React.FC<SingleMatchTimelineProps> = ({ chosenMatch, timeline}) => {
 
@@ -45,7 +45,7 @@ const SingleMatchTimeline: React.FC<SingleMatchTimelineProps> = ({ chosenMatch, 
      const formattedEventType =  (type:string)  => {
         // return type ? type.charAt(0).toUpperCase() + type.slice(1).replaceAll("_", " ") : ""
         if (type === 'score_change') {
-            return <BiFootball className="text-md"/>
+            return <BiFootball/>
         } else if (type === "substitution") {
             return <HiOutlineSwitchHorizontal/>
         } else if (type === "yellow_card") {
@@ -57,26 +57,27 @@ const SingleMatchTimeline: React.FC<SingleMatchTimelineProps> = ({ chosenMatch, 
 
   return (
       <>
-          <p className={paragraphStyle}>Date: <span className="font-normal">{chosenMatch.matchDate}</span></p>
-          <p className={paragraphStyle}>Stadium name: <span className="font-normal">{chosenMatch.stadiumName}</span></p>
+          <p className={paragraphStyle}>Date:</p>
+          <p className="text-center text-sm">{chosenMatch.matchDate}</p>
+          <p className={paragraphStyle}>Stadium name:</p>
+          <p className="text-center text-sm">{chosenMatch.stadiumName}</p>
           <p className={paragraphStyle}>Highlights:</p>
-          <div className="grid grid-cols-12 p-2 gap-5">
+          <div className="grid grid-cols-12 px-3 py-4">
               <div className="col-span-6">
-                  <p className="text-sm">{chosenMatch.homeCompetitor.name}</p>
+                  <p className="text-sm font-bold text-primary-200">{chosenMatch.homeCompetitor.name}</p>
               </div>
               <div className="col-span-6">
-                  <p className="text-end text-sm">{chosenMatch.awayCompetitor.name}</p>
+                  <p className="text-end text-sm font-bold text-primary-200">{chosenMatch.awayCompetitor.name}</p>
               </div>
           </div>
-              <Table className="">
+              <Table className="mb-4">
                   {filteredTimeline.map((el, key) => (
                       <TableRow sx={{ "& td": { border: 0 } }}>
                           {(el.competitor === "home") ?
-                              <TableCell className="text-end py-1">{formattedEventType(el.type)}</TableCell> : <TableCell></TableCell>}
-                          <TableCell className="text-center py-1">{el.matchTime}'</TableCell>
+                              <TableCell className="text-end py-1 pr-2 flex justify-end items-center">{formattedEventType(el.type)}</TableCell> : <TableCell></TableCell>}
+                          <TableCell className="text-center py-1 px-2 bg-primary-200 w-3 text-white">{el.matchTime}'</TableCell>
                           {(el.competitor === "away") ?
-                              <TableCell className="text-start py-1">{formattedEventType(el.type)}</TableCell> : <TableCell></TableCell>}
-                          <TableCell></TableCell>
+                              <TableCell className="text-start py-1 pl-2 items-center">{formattedEventType(el.type)}</TableCell> : <TableCell></TableCell>}
                       </TableRow>
                   ))}
               </Table>
