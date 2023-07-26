@@ -72,12 +72,12 @@ const SingleMatchTimeline: React.FC<SingleMatchTimelineProps> = ({ chosenMatch, 
           </div>
               <Table className="mb-4">
                   {filteredTimeline.map((el, key) => (
-                      <TableRow sx={{ "& td": { border: 0 } }}>
+                      <TableRow>
                           {(el.competitor === "home") ?
-                              <TableCell className="text-end py-1 pr-2 flex justify-end items-center">{formattedEventType(el.type)}</TableCell> : <TableCell></TableCell>}
+                              <TableCell className="text-end py-1 pr-2">{formattedEventType(el.type)}</TableCell> : <TableCell></TableCell>}
                           <TableCell className="text-center py-1 px-2 bg-primary-200 w-3 text-white">{el.matchTime}'</TableCell>
                           {(el.competitor === "away") ?
-                              <TableCell className="text-start py-1 pl-2 items-center">{formattedEventType(el.type)}</TableCell> : <TableCell></TableCell>}
+                              <TableCell className="text-start py-1 pl-2">{formattedEventType(el.type)}</TableCell> : <TableCell></TableCell>}
                       </TableRow>
                   ))}
               </Table>

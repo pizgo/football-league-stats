@@ -44,11 +44,6 @@ body {
   background: transparent;
 }
 
-.MuiTableCell-root {
-  /*padding: 1rem 0;*/
-  /*text-align: center;*/
-}
-
 .MuiTableCell-stickyHeader{
   background: #7C5DFA
 }
