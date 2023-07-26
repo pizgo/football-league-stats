@@ -41,36 +41,36 @@ const Timetable: React.FC<MatchesResultsTableProps> = ({ matchesResults, onChoos
                         onClick={(e: React.MouseEvent) => handleOnClick(e, singleMatch)}
                         className="hover:bg-neutral-200"
                         style={(singleMatch.status === "closed") ? { cursor: "pointer" } : { cursor: "auto"}}>
-                        <TeamCell style="sm:hidden"
+                        <TeamCell style="sm:hidden px-0 py-4 text-center"
                                   status={singleMatch.status}
                                   winnerId={singleMatch.winnerID}
                                   competitorId={singleMatch.homeCompetitor.id}
                                   content={singleMatch.homeCompetitor.abbreviation}/>
-                        <TeamCell style="hidden sm:table-cell px-3 text-start"
+                        <TeamCell style="hidden sm:table-cell px-3 py-4 text-start"
                                   status={singleMatch.status}
                                   winnerId={singleMatch.winnerID}
                                   competitorId={singleMatch.homeCompetitor.id}
                                   content={singleMatch.homeCompetitor.name}/>
-                        <TeamCell style="sm:hidden"
+                        <TeamCell style="sm:hidden px-0 py-4 text-center"
                                   status={singleMatch.status}
                                   winnerId={singleMatch.winnerID}
                                   competitorId={singleMatch.awayCompetitor.id}
                                   content={singleMatch.awayCompetitor.abbreviation}/>
-                        <TeamCell style="hidden sm:table-cell px-3 text-start"
+                        <TeamCell style="hidden sm:table-cell px-3 py-4 text-start"
                                   status={singleMatch.status}
                                   winnerId={singleMatch.winnerID}
                                   competitorId={singleMatch.awayCompetitor.id}
                                   content={singleMatch.awayCompetitor.name}/>
                         {singleMatch.status === "closed" ?
-                            (<TableCell className="flex justify-center">
+                            (<TableCell className="flex px-0 py-4 justify-center">
                                 {singleMatch.homeCompetitor.result} -{" "}
                                 {singleMatch.awayCompetitor.result}
                             </TableCell>) :
-                            (<TableCell className="flex justify-center">
+                            (<TableCell className="flex justify-center px-0 py-4">
                                 {displayWhenStatusNotClosed(singleMatch.status)}
                             </TableCell>)}
-                        <TableCell className="px-2">{singleMatch.matchDate}</TableCell>
-                        <TableCell className="hidden lg:table-cell text-start px-3">{singleMatch.stadiumName}</TableCell>
+                        <TableCell className="px-2 py-4 text-center">{singleMatch.matchDate}</TableCell>
+                        <TableCell className="hidden lg:table-cell text-start px-3 py-4">{singleMatch.stadiumName}</TableCell>
                     </TableRow>
                 ))}
                 </TableBody>

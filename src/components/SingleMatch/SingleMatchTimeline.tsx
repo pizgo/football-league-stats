@@ -56,17 +56,18 @@ const SingleMatchTimeline: React.FC<SingleMatchTimelineProps> = ({ chosenMatch, 
               <div className="col-span-6">
                   <p className="text-end text-sm">{chosenMatch.awayCompetitor.name}</p>
               </div>
+          </div>
               <Table className="">
                   {filteredTimeline.map((el, key) => (
-                      <TableRow className="text-sm">
-                          {(el.competitor === "home") ? <TableCell className="text-sm">{formattedEventType(el.type)}</TableCell> : <TableCell></TableCell>}
-                          <TableCell className="text-sm">{el.matchTime}</TableCell>
-                          {(el.competitor === "away") ? <TableCell className="text-sm">{formattedEventType(el.type)}</TableCell> : <TableCell></TableCell>}
+                      <TableRow sx={{ "& td": { border: 0 } }}>
+                          {(el.competitor === "home") ?
+                              <TableCell className="text-end py-1">{formattedEventType(el.type)}</TableCell> : <TableCell></TableCell>}
+                          <TableCell className="text-center py-1">{el.matchTime}'</TableCell>
+                          {(el.competitor === "away") ?
+                              <TableCell className="text-start py-1">{formattedEventType(el.type)}</TableCell> : <TableCell></TableCell>}
                       </TableRow>
                   ))}
               </Table>
-
-          </div>
 
     {/*<Container className="shadow-lg w-50 rounded mt-5"*/}
     {/*           style={{ backgroundColor: "#A4BE7B" }}>*/}
