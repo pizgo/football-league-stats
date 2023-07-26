@@ -1,8 +1,8 @@
 import React from "react";
 import { SingleMatchSchema, SingleMatchTimelineSchema } from "../../types/types";
-import { formattedEventType } from "../../utils/formattedEventType";
-import { Table, TableRow, TableCell} from "@mui/material";
+import {Table, TableRow, TableCell, TableHead} from "@mui/material";
 import {BiFootball} from "react-icons/bi";
+import { HiOutlineSwitchHorizontal } from "react-icons/hi";
 
 interface SingleMatchTimelineProps {
   chosenMatch: SingleMatchSchema;
@@ -42,7 +42,18 @@ const SingleMatchTimeline: React.FC<SingleMatchTimelineProps> = ({ chosenMatch, 
 
     const filteredTimeline = timeline.filter(el => (eventsForTimeline(el)))
 
-    console.log(filteredTimeline)
+     const formattedEventType =  (type:string)  => {
+        // return type ? type.charAt(0).toUpperCase() + type.slice(1).replaceAll("_", " ") : ""
+        if (type === 'score_change') {
+            return <BiFootball className="text-md"/>
+        } else if (type === "substitution") {
+            return <HiOutlineSwitchHorizontal/>
+        } else if (type === "yellow_card") {
+            return <div className="bg-yellow-500 w-4 h-5 rounded"/>
+        } else if (type === "red_card") {
+            return <div className="bg-red-700 w-4 h-5 rounded"/>
+        }
+    }
 
   return (
       <>
@@ -65,6 +76,7 @@ const SingleMatchTimeline: React.FC<SingleMatchTimelineProps> = ({ chosenMatch, 
                           <TableCell className="text-center py-1">{el.matchTime}'</TableCell>
                           {(el.competitor === "away") ?
                               <TableCell className="text-start py-1">{formattedEventType(el.type)}</TableCell> : <TableCell></TableCell>}
+                          <TableCell></TableCell>
                       </TableRow>
                   ))}
               </Table>

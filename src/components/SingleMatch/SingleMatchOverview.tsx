@@ -1,6 +1,6 @@
 import React from "react";
 import { SingleMatchSchema, SingleMatchTimelineSchema } from "../../types/types";
-import {Box, Container, Paper} from "@mui/material";
+import {Box, Paper} from "@mui/material";
 import { BiFootball } from "react-icons/bi"
 import {changePlayerNameFormat} from "../../utils/consts";
 
