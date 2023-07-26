@@ -45,9 +45,9 @@ const SingleMatchTimeline: React.FC<SingleMatchTimelineProps> = ({ chosenMatch, 
      const formattedEventType =  (type:string)  => {
         // return type ? type.charAt(0).toUpperCase() + type.slice(1).replaceAll("_", " ") : ""
         if (type === 'score_change') {
-            return <BiFootball/>
+            return <BiFootball size={18}/>
         } else if (type === "substitution") {
-            return <HiOutlineSwitchHorizontal/>
+            return <HiOutlineSwitchHorizontal size={18}/>
         } else if (type === "yellow_card") {
             return <div className="bg-yellow-500 w-4 h-5 rounded"/>
         } else if (type === "red_card") {
@@ -72,12 +72,14 @@ const SingleMatchTimeline: React.FC<SingleMatchTimelineProps> = ({ chosenMatch, 
           </div>
               <Table className="mb-4">
                   {filteredTimeline.map((el, key) => (
-                      <TableRow>
+                      <TableRow sx={{ "& td": { border: 0 } }}>
                           {(el.competitor === "home") ?
-                              <TableCell className="text-end py-1 pr-2">{formattedEventType(el.type)}</TableCell> : <TableCell></TableCell>}
+                              <TableCell className="text-end py-1 pr-2">
+                                  <div className="flex items-center justify-end">{formattedEventType(el.type)}</div></TableCell> : <TableCell></TableCell>}
                           <TableCell className="text-center py-1 px-2 bg-primary-200 w-3 text-white">{el.matchTime}'</TableCell>
                           {(el.competitor === "away") ?
-                              <TableCell className="text-start py-1 pl-2">{formattedEventType(el.type)}</TableCell> : <TableCell></TableCell>}
+                              <TableCell className="text-start py-1 pl-2">
+                                  <div className="flex items-center">{formattedEventType(el.type)}</div></TableCell> : <TableCell></TableCell>}
                       </TableRow>
                   ))}
               </Table>
