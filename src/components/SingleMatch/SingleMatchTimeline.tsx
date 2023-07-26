@@ -2,21 +2,23 @@ import React from "react";
 import { SingleMatchSchema, SingleMatchTimelineSchema } from "../../types/types";
 import { formattedEventType } from "../../utils/formattedEventType";
 import { Box } from "@mui/material";
+import {BiFootball} from "react-icons/bi";
+import {changePlayerNameFormat} from "../../utils/consts";
 
 interface SingleMatchTimelineProps {
   chosenMatch: SingleMatchSchema;
   timeline: SingleMatchTimelineSchema[];
 }
 
-// const typesToPopover = (el: SingleMatchTimelineSchema) => {
-//   return (
-//     el.type === "score_change" ||
-//     el.type === "yellow_card" ||
-//     el.type === "red_card" ||
-//     el.type === "penalty_awarded" ||
-//     el.type === "substitution"
-//   );
-// };
+const eventsForTimeline = (el: SingleMatchTimelineSchema) => {
+  return (
+    el.type === "score_change" ||
+    el.type === "yellow_card" ||
+    el.type === "red_card" ||
+    el.type === "penalty_awarded" ||
+    el.type === "substitution"
+  );
+};
 //
 // const popover = (el: SingleMatchTimelineSchema) => {
 //   return (
@@ -34,22 +36,39 @@ interface SingleMatchTimelineProps {
 //   );
 // };
 
-const paragraphStyle = "text-sm m-0 pt-2 pl-2 font-bold"
+const paragraphStyle = "text-sm pt-2 pl-2 font-bold"
 
 const SingleMatchTimeline: React.FC<SingleMatchTimelineProps> = ({ chosenMatch, timeline}) => {
 
   return (
       <>
-          <Box className="bg-white border-x border-b border-primary-100 rounded rounded-t-none">
-              <p className={paragraphStyle}>Date: <span className="font-normal">{chosenMatch.matchDate}</span></p>
-              <p className={paragraphStyle}>Stadium name: <span className="font-normal">{chosenMatch.stadiumName}</span></p>
-              <p className={paragraphStyle}>Highlights:</p>
-              <ul>
+          <p className={paragraphStyle}>Date: <span className="font-normal">{chosenMatch.matchDate}</span></p>
+          <p className={paragraphStyle}>Stadium name: <span className="font-normal">{chosenMatch.stadiumName}</span></p>
+          <p className={paragraphStyle}>Highlights:</p>
+          <div className="grid grid-cols-12 p-2">
+              <div className="col-span-6">
+                  <p className="text-sm">{chosenMatch.homeCompetitor.name}</p>
+              </div>
+              <div className="col-span-6">
+                  <p className="text-end text-sm">{chosenMatch.awayCompetitor.name}</p>
+              </div>
+              <div className="col-span-4">
 
-              </ul>
-          </Box>
+              </div>
+              <div className="col-span-4 text-center">
+                  <ul className="text-sm">
+                      {timeline.map((el, key) => (
+                          eventsForTimeline(el) ?
+                              <li className="test-sm">{el.matchTime}'</li>
+                              : null
+                          ))}
+                  </ul>
+              </div>
+              <div className="col-span-4">
 
+              </div>
 
+          </div>
 
     {/*<Container className="shadow-lg w-50 rounded mt-5"*/}
     {/*           style={{ backgroundColor: "#A4BE7B" }}>*/}

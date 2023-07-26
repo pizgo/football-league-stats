@@ -17,12 +17,13 @@ function CustomTabPanel(props: TabPanelProps) {
 
     return (
         <div role="tabpanel"
+             className="bg-white border-x border-b border-primary-100 rounded rounded-t-none"
             hidden={value !== index}
             id={`simple-tabpanel-${index}`}
             aria-labelledby={`simple-tab-${index}`}
             {...other}>
             {value === index && (
-                    <div>{children}</div>
+                    <Box>{children}</Box>
             )}
         </div>
     );
