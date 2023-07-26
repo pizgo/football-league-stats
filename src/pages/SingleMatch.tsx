@@ -54,7 +54,7 @@ const SingleMatch: React.FC<SingleMatchDetailsProps> = ({chosenMatch, timeline})
                <SingleMatchOverview
                       chosenMatch={chosenMatch}
                       timeline={timeline}/>
-                  <div className="border-b-2 mt-4 border-b-light-100">
+                  <div className="mt-4">
                       <Tabs value={value}
                             onChange={handleTabChange}
                             aria-label="single match tabs"

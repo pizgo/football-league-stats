@@ -21,7 +21,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <Container className="bg-light-100 h-screen py-8 font-sans">
+    <Container className="bg-light-100 py-8 font-sans">
         <Routes>
           <Route
               path="/"
