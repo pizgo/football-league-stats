@@ -18,6 +18,8 @@ import {
     yellowCard
 } from "../../../utils/consts";
 import {changeMatchTimeFormat} from "../../../utils/changeMatchTimeFormat";
+import MobileTooltip from "./MobileTooltip";
+import DesktopTooltip from "./DesktopTooltip";
 
 interface TimelineEventProps {
     competitor: string,
@@ -69,30 +71,21 @@ const TimelineEvent: React.FC<TimelineEventProps> = ({competitor, eventType, mat
     }
 
     return (
+        //this solution is not effective (the need to go through all timeline events)
         <TableRow sx={{ "& td": { border: 0 } }}>
             {(competitor === "home") ?
                 <TableCell className="text-end py-1 pr-2">
                     <div className="flex items-center justify-end">
-                        <ClickAwayListener onClickAway={handleTooltipClose}>
-                            <Tooltip PopperProps={{disablePortal: true}}
-                                     onClose={handleTooltipClose}
-                                     open={isOpen}
-                                     disableFocusListener
-                                     disableHoverListener
-                                     disableTouchListener
-                                     title={tooltipMessage(players)}
-                                     placement="left"
-                                     arrow
-                                     className="sm:hidden">
-                                <div onClick={handleTooltipOpen}>{formattedEventType(eventType)}</div>
-                            </Tooltip>
-                        </ClickAwayListener>
-                        <Tooltip title={tooltipMessage(players)}
-                                 placement="left"
-                                 arrow
-                                 className="hidden sm:block">
-                            <div onClick={handleTooltipClose}>{formattedEventType(eventType)}</div>
-                        </Tooltip>
+                        <MobileTooltip message={tooltipMessage(players)}
+                                       placement="left"
+                                       timelineEvent={formattedEventType(eventType)}
+                                       closeTooltip={handleTooltipClose}
+                                       openTooltip={handleTooltipOpen}
+                                       isTooltipOpen={isOpen}/>
+                        <DesktopTooltip message={tooltipMessage(players)}
+                                        placement="left"
+                                        timelineEvent={formattedEventType(eventType)}
+                                        closeTooltip={handleTooltipClose}/>
                     </div>
                 </TableCell>
                 : <TableCell></TableCell>}
@@ -100,33 +93,21 @@ const TimelineEvent: React.FC<TimelineEventProps> = ({competitor, eventType, mat
             {(competitor === "away") ?
                 <TableCell className="text-end py-1 pr-2">
                     <div className="flex items-center justify-start">
-                        <ClickAwayListener onClickAway={handleTooltipClose}>
-                            <Tooltip PopperProps={{disablePortal: true}}
-                                     onClose={handleTooltipClose}
-                                     open={isOpen}
-                                     disableFocusListener
-                                     disableHoverListener
-                                     disableTouchListener
-                                     title={tooltipMessage(players)}
-                                     placement="right"
-                                     arrow className="sm:hidden">
-                                <div onClick={handleTooltipOpen}>{formattedEventType(eventType)}</div>
-                            </Tooltip>
-                        </ClickAwayListener>
-                        <Tooltip title={tooltipMessage(players)}
-                                 placement="right"
-                                 arrow
-                                 className="hidden sm:block">
-                            <div>{formattedEventType(eventType)}</div>
-                        </Tooltip>
+                        <MobileTooltip message={tooltipMessage(players)}
+                                       placement="right"
+                                       timelineEvent={formattedEventType(eventType)}
+                                       closeTooltip={handleTooltipClose}
+                                       openTooltip={handleTooltipOpen}
+                                       isTooltipOpen={isOpen}/>
+                        <DesktopTooltip message={tooltipMessage(players)}
+                                        placement="right"
+                                        timelineEvent={formattedEventType(eventType)}
+                                        closeTooltip={handleTooltipClose}/>
                     </div>
                 </TableCell>
                 : <TableCell></TableCell>}
         </TableRow>
     )
 }
-
-//
-
 
 export default TimelineEvent;
