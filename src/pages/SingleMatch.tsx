@@ -1,5 +1,5 @@
 import React from "react";
-import SingleMatchSummary from "../components/SingleMatch/SingleMatchSummary";
+import SingleMatchSummary from "../components/SingleMatch/SingleMatchSummary/SingleMatchSummary";
 import SingleMatchTimeline from "../components/SingleMatch/SingleMatchOverview/SingleMatchTimeline";
 import { SingleMatchSchema, SingleMatchTimelineSchema } from "../types/types";
 import { Box,
@@ -75,7 +75,6 @@ const SingleMatch: React.FC<SingleMatchDetailsProps> = ({chosenMatch, timeline})
                   <CustomTabPanel value={value} index={2}>
                       Item Three
                   </CustomTabPanel>
-
              </Container>
         </>
   );
