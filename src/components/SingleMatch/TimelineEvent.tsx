@@ -23,7 +23,20 @@ const TimelineEvent: React.FC<TimelineEventProps> = ({competitor, type, matchTim
             return <div className="bg-yellow-500 w-4 h-5 rounded"/>
         } else if (type === "red_card") {
             return <div className="bg-red-700 w-4 h-5 rounded"/>
+        } else if (type === "substituted_in") {
+            return " IN: "
+        } else if (type === "substituted_out") {
+            return "OUT: "
+        } else if (type === "scorer") {
+            return "scorer: "
         }
+    }
+
+    const tooltipMessage = (players: { name: string; type: string; }[] | undefined) => {
+       return ( players ? players.map((el) => (
+            el.type ? formattedEventType(el.type) + el.name : el.name
+        )) : null
+       )
     }
 
     return (
@@ -31,7 +44,7 @@ const TimelineEvent: React.FC<TimelineEventProps> = ({competitor, type, matchTim
             {(competitor === "home") ?
                 <TableCell className="text-end py-1 pr-2">
                     <div className="flex items-center justify-end">
-                        <Tooltip title="title" placement="left" arrow>
+                        <Tooltip title={tooltipMessage(players)} placement="left" arrow>
                             <div>{formattedEventType(type)}</div>
                         </Tooltip>
                     </div>
@@ -41,7 +54,7 @@ const TimelineEvent: React.FC<TimelineEventProps> = ({competitor, type, matchTim
             {(competitor === "away") ?
                 <TableCell className="text-end py-1 pr-2">
                     <div className="flex items-center justify-start">
-                        <Tooltip title="title" placement="right" arrow>
+                        <Tooltip title={tooltipMessage(players)} placement="right" arrow>
                             <div>{formattedEventType(type)}</div>
                         </Tooltip>
                     </div>
@@ -52,20 +65,6 @@ const TimelineEvent: React.FC<TimelineEventProps> = ({competitor, type, matchTim
 }
 
 //
-// const popover = (el: SingleMatchTimelineSchema) => {
-//   return (
-//     <Popover id="popover-basic">
-//       <Popover.Body className="fw-bold">
-//         <Col>{formattedEventType(el.type)}</Col>
-//         {el.players ? el.players.map((el) => (
-//               <Col>
-//                 {el.name}, {formattedEventType(el.type)}
-//               </Col>
-//             )) : null}
-//         <Col>'{el.matchTime}</Col>
-//       </Popover.Body>
-//     </Popover>
-//   );
-// };
+
 
 export default TimelineEvent;
