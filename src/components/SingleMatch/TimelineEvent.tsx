@@ -1,8 +1,11 @@
 import React from "react";
 import {
     Tooltip,
-    TableCell, TableRow
-} from "@mui/material";
+    TableCell,
+    TableRow,
+    TooltipProps,
+    tooltipClasses,
+    styled } from "@mui/material";
 import {BiFootball} from "react-icons/bi";
 import {HiOutlineSwitchHorizontal} from "react-icons/hi";
 interface TimelineEventProps {
@@ -29,6 +32,8 @@ const TimelineEvent: React.FC<TimelineEventProps> = ({competitor, type, matchTim
             return "OUT: "
         } else if (type === "scorer") {
             return "scorer: "
+        } else if (type === "assist") {
+            return " assist: "
         }
     }
 
@@ -39,6 +44,7 @@ const TimelineEvent: React.FC<TimelineEventProps> = ({competitor, type, matchTim
        )
     }
 
+    console.log(players)
     return (
         <TableRow sx={{ "& td": { border: 0 } }}>
             {(competitor === "home") ?

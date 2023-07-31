@@ -71,4 +71,13 @@ body {
   color: white;
 }
 
+.MuiTooltip-tooltipArrow {
+  background: #DFE3FA;
+  color: black;
+}
+
+.MuiTooltip-arrow {
+  color: #DFE3FA
+}
+
 
