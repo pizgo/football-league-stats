@@ -36,14 +36,16 @@ const TimelineEventRow: React.FC<TimelineEventProps> = ({competitor, eventType, 
                                  eventType={eventType}
                                  matchTime={matchTime}
                                  players={players}
-                                 homeCompetitorStyle="justify-end" />
+                                 homeCompetitorStyle="justify-end"
+                                 tooltipPlacement="left" />
             <TableCell className="text-center py-1 px-2 bg-primary-200 w-3 text-white">{changeMatchTimeFormat(matchTime)}</TableCell>
             <SingleTimelineEvent competitorType="away"
                                  competitor={competitor}
                                  eventType={eventType}
                                  matchTime={matchTime}
                                  players={players}
-                                 homeCompetitorStyle="justify-start" />
+                                 homeCompetitorStyle="justify-start"
+                                 tooltipPlacement="right"/>
         </TableRow>
     )
 }

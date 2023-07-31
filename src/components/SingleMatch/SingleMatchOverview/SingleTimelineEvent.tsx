@@ -23,8 +23,21 @@ export interface SingleTimelineEvent {
     matchTime: number | undefined
     players: { name: string; type: string; }[] | undefined
     homeCompetitorStyle: string,
+    tooltipPlacement?:
+        | 'bottom-end'
+        | 'bottom-start'
+        | 'bottom'
+        | 'left-end'
+        | 'left-start'
+        | 'left'
+        | 'right-end'
+        | 'right-start'
+        | 'right'
+        | 'top-end'
+        | 'top-start'
+        | 'top';
 }
-const SingleTimelineEvent: React.FC<SingleTimelineEvent> = ({ competitorType, competitor, eventType, matchTime, players,homeCompetitorStyle}) => {
+const SingleTimelineEvent: React.FC<SingleTimelineEvent> = ({ competitorType, competitor, eventType, matchTime, players,homeCompetitorStyle, tooltipPlacement}) => {
     const [isOpen, setIsOpen] = React.useState(false);
 
     const handleTooltipClose = () => {
@@ -72,18 +85,17 @@ const SingleTimelineEvent: React.FC<SingleTimelineEvent> = ({ competitorType, co
             <TableCell className="text-end py-1 pr-2">
                 <div className={`flex items-center ${homeCompetitorStyle}`}>
                     <MobileTooltip message={tooltipMessage(players)}
-                                   placement="left"
+                                   placement={tooltipPlacement}
                                    timelineEvent={formattedEventType(eventType)}
                                    closeTooltip={handleTooltipClose}
                                    openTooltip={handleTooltipOpen}
                                    isTooltipOpen={isOpen}/>
                     <DesktopTooltip message={tooltipMessage(players)}
-                                    placement="left"
+                                    placement={tooltipPlacement}
                                     timelineEvent={formattedEventType(eventType)}
                                     closeTooltip={handleTooltipClose}/>
                 </div>
-            </TableCell>
-            : <TableCell></TableCell>}
+            </TableCell> : <TableCell></TableCell>}
         </>
     );
 }
