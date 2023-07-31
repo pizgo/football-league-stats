@@ -5,15 +5,16 @@ import {changeMatchTimeFormat} from "../../../utils/changeMatchTimeFormat";
 import {changePlayerNameFormat} from "../../../utils/changePlayerNameFormat";
 
 export interface ScoresProps {
-    timeline: SingleMatchTimelineSchema[]
+    timeline: SingleMatchTimelineSchema[],
+    competitorType: string,
     stylesContainer: string,
     stylesIcon: string,
 }
-const Scores: React.FC<ScoresProps> = ({timeline, stylesContainer, stylesIcon}) => {
+const Scores: React.FC<ScoresProps> = ({timeline, competitorType, stylesContainer, stylesIcon}) => {
 
     return (
         <div className="col-span-6">{timeline.map((el) => (
-            (el.type === "score_change") && (el.competitor === "home") ?
+            (el.type === "score_change") && (el.competitor === competitorType) ?
             <div className={`flex flex-col ${stylesContainer} mb-2`}>
                 <div className="flex items-center font-bold">
                     <BiFootball className={stylesIcon}/>

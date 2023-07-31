@@ -25,8 +25,7 @@ const DesktopTooltip: React.FC<MobileTooltipProps> = ({ message,
                                                         placement,
                                                         timelineEvent,
                                                         closeTooltip,
-                                                         // isTooltipOpen
-}) => {
+                                                      }) => {
     return (
         <Tooltip title={message}
                  placement={placement}

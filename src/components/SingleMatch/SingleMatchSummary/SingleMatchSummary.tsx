@@ -22,8 +22,8 @@ const SingleMatchSummary: React.FC<SingleMatchOverviewProps> = ({chosenMatch, ti
                     </Box>
                 </div>
                 <div className="sm:hidden col-span-4 text-lg font-bold text-center py-2"> {chosenMatch.awayCompetitor.abbreviation}</div>
-               <Scores timeline={timeline} stylesContainer="items-end" stylesIcon="mr-2"/>
-               <Scores timeline={timeline} stylesContainer="items-start" stylesIcon="ml-2"/>
+               <Scores timeline={timeline} competitorType="home" stylesContainer="items-end" stylesIcon="mr-2"/>
+               <Scores timeline={timeline} competitorType="away" stylesContainer="items-start" stylesIcon="ml-2"/>
             </div>
         </Box>
     )

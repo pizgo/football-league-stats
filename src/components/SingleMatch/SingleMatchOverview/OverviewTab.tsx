@@ -2,7 +2,7 @@ import React from "react";
 import { SingleMatchSchema, SingleMatchTimelineSchema } from "../../../types/types";
 import { Table } from "@mui/material";
 
-import TimelineEvent from "./TimelineEvent";
+import TimelineEventRow from "./TimelineEventRow";
 
 interface SingleMatchTimelineProps {
   chosenMatch: SingleMatchSchema;
@@ -20,7 +20,7 @@ const eventsForTimeline = (el: SingleMatchTimelineSchema) => {
 
 const paragraphStyle = "text-sm text-center pt-3 pl-2 font-bold"
 
-const SingleMatchTimeline: React.FC<SingleMatchTimelineProps> = ({ chosenMatch, timeline}) => {
+const OverviewTab: React.FC<SingleMatchTimelineProps> = ({ chosenMatch, timeline}) => {
 
     const filteredTimeline = timeline.filter(el => (eventsForTimeline(el)))
 
@@ -41,11 +41,11 @@ const SingleMatchTimeline: React.FC<SingleMatchTimelineProps> = ({ chosenMatch, 
           </div>
               <Table className="mb-4">
                   {filteredTimeline.map((el, key) => (
-                      <TimelineEvent competitor={el.competitor} eventType={el.type} matchTime={el.matchTime} players={el.players}/>
+                      <TimelineEventRow competitor={el.competitor} eventType={el.type} matchTime={el.matchTime} players={el.players}/>
                   ))}
               </Table>
     </>
   );
 };
 
-export default SingleMatchTimeline;
+export default OverviewTab;
