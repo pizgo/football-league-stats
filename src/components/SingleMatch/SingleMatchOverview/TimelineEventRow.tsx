@@ -2,22 +2,7 @@ import React from "react";
 import {
     TableCell,
     TableRow } from "@mui/material";
-import {BiFootball} from "react-icons/bi";
-import {HiOutlineSwitchHorizontal} from "react-icons/hi";
-import {changePlayerNameFormat} from "../../../utils/changePlayerNameFormat";
-import {
-    assist,
-    redCard,
-    scoreChange,
-    scorer,
-    substitutedIn,
-    substitutedOut,
-    substitution,
-    yellowCard
-} from "../../../utils/consts";
 import {changeMatchTimeFormat} from "../../../utils/changeMatchTimeFormat";
-import MobileTooltip from "./MobileTooltip";
-import DesktopTooltip from "./DesktopTooltip";
 import SingleTimelineEvent from "./SingleTimelineEvent";
 
 interface TimelineEventProps {
@@ -49,5 +34,4 @@ const TimelineEventRow: React.FC<TimelineEventProps> = ({competitor, eventType, 
         </TableRow>
     )
 }
-
 export default TimelineEventRow;

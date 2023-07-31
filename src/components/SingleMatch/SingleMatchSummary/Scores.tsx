@@ -27,5 +27,4 @@ const Scores: React.FC<ScoresProps> = ({timeline, competitorType, stylesContaine
         </div>
     )
 }
-
 export default Scores;
