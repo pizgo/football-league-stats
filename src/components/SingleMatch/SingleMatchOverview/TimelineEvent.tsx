@@ -6,7 +6,7 @@ import {
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import {BiFootball} from "react-icons/bi";
 import {HiOutlineSwitchHorizontal} from "react-icons/hi";
-import {changePlayerNameFormat} from "../../utils/changePlayerNameFormat";
+import {changePlayerNameFormat} from "../../../utils/changePlayerNameFormat";
 import {
     assist,
     redCard,
@@ -16,7 +16,8 @@ import {
     substitutedOut,
     substitution,
     yellowCard
-} from "../../utils/consts";
+} from "../../../utils/consts";
+import {changeMatchTimeFormat} from "../../../utils/changeMatchTimeFormat";
 
 interface TimelineEventProps {
     competitor: string,
@@ -34,8 +35,6 @@ const TimelineEvent: React.FC<TimelineEventProps> = ({competitor, eventType, mat
     const handleTooltipOpen = () => {
         setIsOpen(true)
     }
-
-
 
     const formattedEventType =  (type:string)  => {
         if (type === scoreChange) {
@@ -68,7 +67,6 @@ const TimelineEvent: React.FC<TimelineEventProps> = ({competitor, eventType, mat
             } else return (changePlayerNameFormat(players[0].name))
         } return null
     }
-    console.log(players)
 
     return (
         <TableRow sx={{ "& td": { border: 0 } }}>
@@ -98,7 +96,7 @@ const TimelineEvent: React.FC<TimelineEventProps> = ({competitor, eventType, mat
                     </div>
                 </TableCell>
                 : <TableCell></TableCell>}
-            <TableCell className="text-center py-1 px-2 bg-primary-200 w-3 text-white">{matchTime}'</TableCell>
+            <TableCell className="text-center py-1 px-2 bg-primary-200 w-3 text-white">{changeMatchTimeFormat(matchTime)}</TableCell>
             {(competitor === "away") ?
                 <TableCell className="text-end py-1 pr-2">
                     <div className="flex items-center justify-start">

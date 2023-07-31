@@ -1,6 +1,6 @@
 import React from "react";
-import SingleMatchOverview from "../components/SingleMatch/SingleMatchOverview";
-import SingleMatchTimeline from "../components/SingleMatch/SingleMatchTimeline";
+import SingleMatchSummary from "../components/SingleMatch/SingleMatchSummary";
+import SingleMatchTimeline from "../components/SingleMatch/SingleMatchOverview/SingleMatchTimeline";
 import { SingleMatchSchema, SingleMatchTimelineSchema } from "../types/types";
 import { Box,
         Container,
@@ -12,18 +12,17 @@ interface TabPanelProps {
     index: number;
     value: number;
 }
-function CustomTabPanel(props: TabPanelProps) {
-    const { children, value, index, ...other } = props;
+const CustomTabPanel: React.FC<TabPanelProps> = ({children, value, index, ...other}) => {
 
     return (
         <div role="tabpanel"
              className="bg-white border-x border-b border-primary-100 rounded rounded-t-none"
-            hidden={value !== index}
-            id={`simple-tabpanel-${index}`}
-            aria-labelledby={`simple-tab-${index}`}
-            {...other}>
+             hidden={value !== index}
+             id={`simple-tabpanel-${index}`}
+             aria-labelledby={`simple-tab-${index}`}
+             {...other}>
             {value === index && (
-                    <Box>{children}</Box>
+                <Box>{children}</Box>
             )}
         </div>
     );
@@ -52,7 +51,7 @@ const SingleMatch: React.FC<SingleMatchDetailsProps> = ({chosenMatch, timeline})
     return (
         <>
               <Container>
-               <SingleMatchOverview
+               <SingleMatchSummary
                       chosenMatch={chosenMatch}
                       timeline={timeline}/>
                   <div className="mt-4">

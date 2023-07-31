@@ -3,13 +3,14 @@ import { SingleMatchSchema, SingleMatchTimelineSchema } from "../../types/types"
 import {Box, Paper} from "@mui/material";
 import { BiFootball } from "react-icons/bi"
 import {changePlayerNameFormat} from "../../utils/changePlayerNameFormat";
+import {changeMatchTimeFormat} from "../../utils/changeMatchTimeFormat";
 
 interface SingleMatchOverviewProps {
     chosenMatch: SingleMatchSchema;
     timeline: SingleMatchTimelineSchema[];
 }
 
-const SingleMatchOverview: React.FC<SingleMatchOverviewProps> = ( {chosenMatch, timeline}) => {
+const SingleMatchSummary: React.FC<SingleMatchOverviewProps> = ({chosenMatch, timeline}) => {
 
     return (
         <Box component={Paper} className="bg-white w-full text-sm">
@@ -28,7 +29,7 @@ const SingleMatchOverview: React.FC<SingleMatchOverviewProps> = ( {chosenMatch, 
                         <div className="flex flex-col items-end mb-2">
                             <div className="flex items-center font-bold">
                                 <BiFootball className="mr-2"/>
-                                <p className="m-0"> {el.matchTime}'</p>
+                                <p className="m-0"> {changeMatchTimeFormat(el.matchTime)}</p>
                             </div>
                             <p className="m-0"> {el.players ? changePlayerNameFormat(el.players[0].name) : ""}</p>
                         </div>
@@ -39,7 +40,7 @@ const SingleMatchOverview: React.FC<SingleMatchOverviewProps> = ( {chosenMatch, 
                     ((el.type === "score_change") && (el.competitor === "away")) ?
                         <div className="flex flex-col items-start mb-2">
                             <div className="flex items-center font-bold">
-                                <p className="m-0"> {el.matchTime}'</p>
+                                <p className="m-0"> {changeMatchTimeFormat(el.matchTime)}</p>
                                 <BiFootball className="ml-2"/>
                             </div>
                             <p className="m-0"> {el.players ? changePlayerNameFormat(el.players[0].name) : ""}</p>
@@ -52,4 +53,4 @@ const SingleMatchOverview: React.FC<SingleMatchOverviewProps> = ( {chosenMatch, 
     )
 };
 
-export default SingleMatchOverview
+export default SingleMatchSummary

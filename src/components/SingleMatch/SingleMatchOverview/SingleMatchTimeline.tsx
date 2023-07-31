@@ -1,5 +1,5 @@
 import React from "react";
-import { SingleMatchSchema, SingleMatchTimelineSchema } from "../../types/types";
+import { SingleMatchSchema, SingleMatchTimelineSchema } from "../../../types/types";
 import { Table } from "@mui/material";
 
 import TimelineEvent from "./TimelineEvent";
