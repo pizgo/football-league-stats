@@ -1,3 +1,7 @@
+import {BiFootball} from "react-icons/bi";
+import {HiOutlineSwitchHorizontal} from "react-icons/hi";
+import React from "react";
+
 export const errorMessage: string = "Something went wrong. Try again later";
 export const mobileHeadersContent  = [
   "HT",
@@ -19,7 +23,13 @@ export const desktopHeadersContent  = [
   "Stadium",
 ];
 
-export const changePlayerNameFormat = (name: string) => {
-  let newName = name.split(',')
-  return newName[0]
-}
+export const scoreChange = "score_change"
+export const substitution = "substitution"
+export const yellowCard = "yellow_card"
+export const redCard = "red_card"
+export const substitutedIn = "substituted_in"
+export const substitutedOut = "substituted_out"
+export const scorer = "scorer"
+export const assist = "assist"
+
+

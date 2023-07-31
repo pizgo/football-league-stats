@@ -74,6 +74,7 @@ body {
 .MuiTooltip-tooltipArrow {
   background: #DFE3FA;
   color: black;
+  font-size: 0.7rem
 }
 
 .MuiTooltip-arrow {

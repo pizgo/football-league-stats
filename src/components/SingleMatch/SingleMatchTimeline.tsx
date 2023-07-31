@@ -14,7 +14,6 @@ const eventsForTimeline = (el: SingleMatchTimelineSchema) => {
     el.type === "score_change" ||
     el.type === "yellow_card" ||
     el.type === "red_card" ||
-    el.type === "penalty_awarded" ||
     el.type === "substitution"
   );
 };
@@ -42,7 +41,7 @@ const SingleMatchTimeline: React.FC<SingleMatchTimelineProps> = ({ chosenMatch, 
           </div>
               <Table className="mb-4">
                   {filteredTimeline.map((el, key) => (
-                      <TimelineEvent competitor={el.competitor} type={el.type} matchTime={el.matchTime} players={el.players}/>
+                      <TimelineEvent competitor={el.competitor} eventType={el.type} matchTime={el.matchTime} players={el.players}/>
                   ))}
               </Table>
     </>
