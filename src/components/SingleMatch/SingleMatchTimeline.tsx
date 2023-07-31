@@ -1,8 +1,8 @@
 import React from "react";
 import { SingleMatchSchema, SingleMatchTimelineSchema } from "../../types/types";
-import {Table, TableRow, TableCell, TableHead} from "@mui/material";
-import {BiFootball} from "react-icons/bi";
-import { HiOutlineSwitchHorizontal } from "react-icons/hi";
+import { Table } from "@mui/material";
+
+import TimelineEvent from "./TimelineEvent";
 
 interface SingleMatchTimelineProps {
   chosenMatch: SingleMatchSchema;
@@ -19,41 +19,11 @@ const eventsForTimeline = (el: SingleMatchTimelineSchema) => {
   );
 };
 
-//
-// const popover = (el: SingleMatchTimelineSchema) => {
-//   return (
-//     <Popover id="popover-basic">
-//       <Popover.Body className="fw-bold">
-//         <Col>{formattedEventType(el.type)}</Col>
-//         {el.players ? el.players.map((el) => (
-//               <Col>
-//                 {el.name}, {formattedEventType(el.type)}
-//               </Col>
-//             )) : null}
-//         <Col>'{el.matchTime}</Col>
-//       </Popover.Body>
-//     </Popover>
-//   );
-// };
-
 const paragraphStyle = "text-sm text-center pt-3 pl-2 font-bold"
 
 const SingleMatchTimeline: React.FC<SingleMatchTimelineProps> = ({ chosenMatch, timeline}) => {
 
     const filteredTimeline = timeline.filter(el => (eventsForTimeline(el)))
-
-     const formattedEventType =  (type:string)  => {
-        // return type ? type.charAt(0).toUpperCase() + type.slice(1).replaceAll("_", " ") : ""
-        if (type === 'score_change') {
-            return <BiFootball size={18}/>
-        } else if (type === "substitution") {
-            return <HiOutlineSwitchHorizontal size={18}/>
-        } else if (type === "yellow_card") {
-            return <div className="bg-yellow-500 w-4 h-5 rounded"/>
-        } else if (type === "red_card") {
-            return <div className="bg-red-700 w-4 h-5 rounded"/>
-        }
-    }
 
   return (
       <>
@@ -72,15 +42,16 @@ const SingleMatchTimeline: React.FC<SingleMatchTimelineProps> = ({ chosenMatch, 
           </div>
               <Table className="mb-4">
                   {filteredTimeline.map((el, key) => (
-                      <TableRow sx={{ "& td": { border: 0 } }}>
-                          {(el.competitor === "home") ?
-                              <TableCell className="text-end py-1 pr-2">
-                                  <div className="flex items-center justify-end">{formattedEventType(el.type)}</div></TableCell> : <TableCell></TableCell>}
-                          <TableCell className="text-center py-1 px-2 bg-primary-200 w-3 text-white">{el.matchTime}'</TableCell>
-                          {(el.competitor === "away") ?
-                              <TableCell className="text-start py-1 pl-2">
-                                  <div className="flex items-center">{formattedEventType(el.type)}</div></TableCell> : <TableCell></TableCell>}
-                      </TableRow>
+                      // <TableRow sx={{ "& td": { border: 0 } }}>
+                      //     {(el.competitor === "home") ?
+                      //         <TableCell className="text-end py-1 pr-2">
+                      //             <div className="flex items-center justify-end">{formattedEventType(el.type)}</div></TableCell> : <TableCell></TableCell>}
+                      //     <TableCell className="text-center py-1 px-2 bg-primary-200 w-3 text-white">{el.matchTime}'</TableCell>
+                      //     {(el.competitor === "away") ?
+                      //         <TableCell className="text-start py-1 pl-2">
+                      //             <div className="flex items-center">{formattedEventType(el.type)}</div></TableCell> : <TableCell></TableCell>}
+                      // </TableRow>
+                      <TimelineEvent competitor={el.competitor} type={el.type} matchTime={el.matchTime} players={el.players}/>
                   ))}
               </Table>
 
