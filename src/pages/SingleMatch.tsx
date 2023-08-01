@@ -6,7 +6,6 @@ import { Box,
         Container,
         Tab,
         Tabs} from "@mui/material";
-
 interface TabPanelProps {
     children?: React.ReactNode;
     index: number;
@@ -18,8 +17,8 @@ const CustomTabPanel: React.FC<TabPanelProps> = ({children, value, index, ...oth
         <div role="tabpanel"
              className="bg-white border-x border-b border-primary-100 rounded rounded-t-none"
              hidden={value !== index}
-             id={`simple-tabpanel-${index}`}
-             aria-labelledby={`simple-tab-${index}`}
+             id={`tabpanel-${index}`}
+             aria-labelledby={`tab-${index}`}
              {...other}>
             {value === index && (
                 <Box>{children}</Box>
@@ -27,30 +26,24 @@ const CustomTabPanel: React.FC<TabPanelProps> = ({children, value, index, ...oth
         </div>
     );
 }
-
-
 interface SingleMatchDetailsProps {
   chosenMatch: SingleMatchSchema;
   timeline: SingleMatchTimelineSchema[];
 }
-
 const SingleMatch: React.FC<SingleMatchDetailsProps> = ({chosenMatch, timeline}) => {
     const [value, setValue] = React.useState(0)
-
     const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
         setValue(newValue);
     };
-
     const tabProps = (index: number) => {
         return {
             id: `simple-tab${index}`,
             'aria-controls': `simple-tabpanel-${index}`,
         }
     }
-
     return (
         <>
-              <Container>
+            <Container>
                <SingleMatchSummary
                       chosenMatch={chosenMatch}
                       timeline={timeline}/>
