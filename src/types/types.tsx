@@ -58,38 +58,22 @@ export interface CompetitorInfo {
 }
 
 export interface APITimeline {
-  id: string,
   competitor: string,
-  home_score?: number,
-  away_score?: number,
   players?: {
     name: string,
     type: string,
   }[],
   type: string;
-  time: string;
   match_time?: number;
-  period?: number;
-  period_type?: string;
-  break_name?: string;
-  match_clock?: string;
 }
 
 export interface SingleMatchTimelineSchema {
-  id: string,
   competitor: string,
-  home_score?: number,
-  away_score?: number,
   players?: {
     name: string,
     type: string,
   }[],
   type: string;
-  time: string;
   matchTime?: number;
-  period?: number;
-  periodType?: string;
-  breakName?: string;
-  matchClock?: string;
 }
 

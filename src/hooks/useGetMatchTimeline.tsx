@@ -13,6 +13,7 @@ export const useGetMatchTimeline = () => {
       .then((response) => {
         const results = extractingTimelineData(response.timeline);
         setTimeline(results);
+        console.log(results)
       });
   };
   const checkError = (response: Response) => {

@@ -9,20 +9,9 @@ interface SingleMatchTimelineProps {
   timeline: SingleMatchTimelineSchema[];
 }
 
-const eventsForTimeline = (el: SingleMatchTimelineSchema) => {
-  return (
-    el.type === "score_change" ||
-    el.type === "yellow_card" ||
-    el.type === "red_card" ||
-    el.type === "substitution"
-  );
-};
-
 const paragraphStyle = "text-sm text-center pt-3 pl-2 font-bold"
 
 const OverviewTab: React.FC<SingleMatchTimelineProps> = ({ chosenMatch, timeline}) => {
-
-    const filteredTimeline = timeline.filter(el => (eventsForTimeline(el)))
 
   return (
       <>
@@ -40,7 +29,7 @@ const OverviewTab: React.FC<SingleMatchTimelineProps> = ({ chosenMatch, timeline
               </div>
           </div>
               <Table className="mb-4">
-                  {filteredTimeline.map((el, key) => (
+                  {timeline.map((el, key) => (
                       <TimelineEventRow competitor={el.competitor} eventType={el.type} matchTime={el.matchTime} players={el.players}/>
                   ))}
               </Table>
