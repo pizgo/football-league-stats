@@ -8,9 +8,9 @@ import { SingleMatchSchema } from "./types/types";
 import { firstSeason} from "./utils/api";
 import { Container } from "@mui/material";
 import SingleMatchSummary from "./components/SingleMatch/SingleMatchSummary/SingleMatchSummary";
-import OverviewTab from "./components/SingleMatch/SingleMatchOverview/OverviewTab";
+import OverviewTab from "./components/SingleMatch/OverviewTab/OverviewTab";
 import Scores from "./components/SingleMatch/SingleMatchSummary/Scores";
-import TimelineEventRow from "./components/SingleMatch/SingleMatchOverview/TimelineEventRow";
+import TimelineEventRow from "./components/SingleMatch/OverviewTab/TimelineEventRow";
 
 const App: React.FC = () => {
   const [chosenMatch, setChosenMatch] = useState<SingleMatchSchema>();
