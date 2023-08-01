@@ -1,14 +1,13 @@
 import React from "react";
-import { SingleMatchSchema, SingleMatchTimelineSchema } from "../../../types/types";
+import { SingleMatchSchema } from "../../../types/types";
 import {Box, Paper} from "@mui/material";
-import Scores from "./Scores";
 
 interface SingleMatchOverviewProps {
+    children: React.ReactNode;
     chosenMatch: SingleMatchSchema;
-    timeline: SingleMatchTimelineSchema[];
 }
 
-const SingleMatchSummary: React.FC<SingleMatchOverviewProps> = ({chosenMatch, timeline}) => {
+const SingleMatchSummary: React.FC<SingleMatchOverviewProps> = ({children, chosenMatch}) => {
 
     return (
         <Box component={Paper} className="bg-white w-full text-sm">
@@ -22,11 +21,9 @@ const SingleMatchSummary: React.FC<SingleMatchOverviewProps> = ({chosenMatch, ti
                     </Box>
                 </div>
                 <div className="sm:hidden col-span-4 text-lg font-bold text-center py-2"> {chosenMatch.awayCompetitor.abbreviation}</div>
-               <Scores timeline={timeline} competitorType="home" stylesContainer="items-end" stylesIcon="mr-2"/>
-               <Scores timeline={timeline} competitorType="away" stylesContainer="items-start" stylesIcon="mr-2"/>
+                {children}
             </div>
         </Box>
     )
 };
-
 export default SingleMatchSummary

@@ -7,6 +7,10 @@ import { useGetMatchTimeline } from "./hooks/useGetMatchTimeline";
 import { SingleMatchSchema } from "./types/types";
 import { firstSeason} from "./utils/api";
 import { Container } from "@mui/material";
+import SingleMatchSummary from "./components/SingleMatch/SingleMatchSummary/SingleMatchSummary";
+import OverviewTab from "./components/SingleMatch/SingleMatchOverview/OverviewTab";
+import Scores from "./components/SingleMatch/SingleMatchSummary/Scores";
+import TimelineEventRow from "./components/SingleMatch/SingleMatchOverview/TimelineEventRow";
 
 const App: React.FC = () => {
   const [chosenMatch, setChosenMatch] = useState<SingleMatchSchema>();
@@ -31,11 +35,17 @@ const App: React.FC = () => {
                   setChosenSeasonId={setChosenSeasonID}/>}
           />
           {chosenMatch && (
-              <Route
+            <Route
                   path="/singleMatch"
-                  element={<SingleMatch chosenMatch={chosenMatch} timeline={timeline}/>}
-              />
-          )}
+                  element={<SingleMatch singleMatchSummary={
+                                        <SingleMatchSummary chosenMatch={chosenMatch}>
+                                            <Scores timeline={timeline} competitorType="home" stylesContainer="items-end" stylesIcon="mr-2"/>
+                                            <Scores timeline={timeline} competitorType="away" stylesContainer="items-start" stylesIcon="mr-2"/>
+                                        </SingleMatchSummary>}
+                                        overviewTab={<OverviewTab chosenMatch={chosenMatch}>
+                                          <TimelineEventRow timeline={timeline}/>
+                                        </OverviewTab>}/>}
+            />)}
         </Routes>
     </Container>
   );

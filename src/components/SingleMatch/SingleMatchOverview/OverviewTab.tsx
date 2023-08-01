@@ -1,17 +1,14 @@
 import React from "react";
-import { SingleMatchSchema, SingleMatchTimelineSchema } from "../../../types/types";
-import { Table } from "@mui/material";
-
-import TimelineEventRow from "./TimelineEventRow";
+import { SingleMatchSchema } from "../../../types/types";
 
 interface SingleMatchTimelineProps {
+  children: React.ReactNode;
   chosenMatch: SingleMatchSchema;
-  timeline: SingleMatchTimelineSchema[];
 }
 
 const paragraphStyle = "text-sm text-center pt-3 pl-2 font-bold"
 
-const OverviewTab: React.FC<SingleMatchTimelineProps> = ({ chosenMatch, timeline}) => {
+const OverviewTab: React.FC<SingleMatchTimelineProps> = ({ children, chosenMatch}) => {
 
   return (
       <>
@@ -28,13 +25,8 @@ const OverviewTab: React.FC<SingleMatchTimelineProps> = ({ chosenMatch, timeline
                   <p className="text-end text-sm font-bold text-primary-200">{chosenMatch.awayCompetitor.name}</p>
               </div>
           </div>
-              <Table className="mb-4">
-                  {timeline.map((el, key) => (
-                      <TimelineEventRow competitor={el.competitor} eventType={el.type} matchTime={el.matchTime} players={el.players}/>
-                  ))}
-              </Table>
+          {children}
     </>
   );
 };
-
 export default OverviewTab;

@@ -1,7 +1,4 @@
 import React from "react";
-import SingleMatchSummary from "../components/SingleMatch/SingleMatchSummary/SingleMatchSummary";
-import OverviewTab from "../components/SingleMatch/SingleMatchOverview/OverviewTab";
-import { SingleMatchSchema, SingleMatchTimelineSchema } from "../types/types";
 import { Box,
         Container,
         Tab,
@@ -27,10 +24,10 @@ const CustomTabPanel: React.FC<TabPanelProps> = ({children, value, index, ...oth
     );
 }
 interface SingleMatchDetailsProps {
-  chosenMatch: SingleMatchSchema;
-  timeline: SingleMatchTimelineSchema[];
+  singleMatchSummary: React.ReactNode,
+  overviewTab: React.ReactNode;
 }
-const SingleMatch: React.FC<SingleMatchDetailsProps> = ({chosenMatch, timeline}) => {
+const SingleMatch: React.FC<SingleMatchDetailsProps> = ({singleMatchSummary, overviewTab}) => {
     const [value, setValue] = React.useState(0)
     const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
         setValue(newValue);
@@ -44,9 +41,7 @@ const SingleMatch: React.FC<SingleMatchDetailsProps> = ({chosenMatch, timeline})
     return (
         <>
             <Container>
-               <SingleMatchSummary
-                      chosenMatch={chosenMatch}
-                      timeline={timeline}/>
+                {singleMatchSummary}
                   <div className="mt-4">
                       <Tabs value={value}
                             onChange={handleTabChange}
@@ -58,9 +53,7 @@ const SingleMatch: React.FC<SingleMatchDetailsProps> = ({chosenMatch, timeline})
                       </Tabs>
                   </div>
                   <CustomTabPanel value={value} index={0}>
-                      <OverviewTab
-                          chosenMatch={chosenMatch}
-                          timeline={timeline}/>
+                      {overviewTab}
                   </CustomTabPanel>
                   <CustomTabPanel value={value} index={1}>
                       Item Two
@@ -72,5 +65,4 @@ const SingleMatch: React.FC<SingleMatchDetailsProps> = ({chosenMatch, timeline})
         </>
   );
 };
-
 export default SingleMatch;

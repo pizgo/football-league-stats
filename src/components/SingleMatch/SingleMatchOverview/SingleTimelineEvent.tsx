@@ -15,13 +15,11 @@ import {HiOutlineSwitchHorizontal} from "react-icons/hi";
 import {changePlayerNameFormat} from "../../../utils/changePlayerNameFormat";
 import MobileTooltip from "./MobileTooltip";
 import DesktopTooltip from "./DesktopTooltip";
+import {SingleMatchTimelineSchema} from "../../../types/types";
 
 export interface SingleTimelineEvent {
+    timelineEvent: SingleMatchTimelineSchema
     competitorType: string,
-    competitor: string,
-    eventType: string,
-    matchTime: number | undefined
-    players: { name: string; type: string; }[] | undefined
     homeCompetitorStyle: string,
     tooltipPlacement?:
         | 'bottom-end'
@@ -37,7 +35,10 @@ export interface SingleTimelineEvent {
         | 'top-start'
         | 'top';
 }
-const SingleTimelineEvent: React.FC<SingleTimelineEvent> = ({ competitorType, competitor, eventType, matchTime, players,homeCompetitorStyle, tooltipPlacement}) => {
+const SingleTimelineEvent: React.FC<SingleTimelineEvent> = ({ timelineEvent,
+                                                                competitorType,
+                                                                homeCompetitorStyle,
+                                                                tooltipPlacement}) => {
     const [isOpen, setIsOpen] = React.useState(false);
 
     const handleTooltipClose = () => {
@@ -69,7 +70,7 @@ const SingleTimelineEvent: React.FC<SingleTimelineEvent> = ({ competitorType, co
 
     const tooltipMessage = (players: { name: string; type: string; }[] | undefined) => {
         if(players) {
-            if(eventType === "substitution") {
+            if(timelineEvent.type === "substitution") {
                 return (
                     players.map((el) => (
                         <div>{formattedEventType(el.type)} {changePlayerNameFormat(el.name)}</div>
@@ -81,23 +82,22 @@ const SingleTimelineEvent: React.FC<SingleTimelineEvent> = ({ competitorType, co
 
     return (
         <>
-        {(competitor === competitorType) ?
+        {(timelineEvent.competitor === competitorType) ?
             <TableCell className="text-end py-1 pr-2">
                 <div className={`flex items-center ${homeCompetitorStyle}`}>
-                    <MobileTooltip message={tooltipMessage(players)}
+                    <MobileTooltip message={tooltipMessage(timelineEvent.players)}
                                    placement={tooltipPlacement}
-                                   timelineEvent={formattedEventType(eventType)}
+                                   timelineEvent={formattedEventType(timelineEvent.type)}
                                    closeTooltip={handleTooltipClose}
                                    openTooltip={handleTooltipOpen}
                                    isTooltipOpen={isOpen}/>
-                    <DesktopTooltip message={tooltipMessage(players)}
+                    <DesktopTooltip message={tooltipMessage(timelineEvent.players)}
                                     placement={tooltipPlacement}
-                                    timelineEvent={formattedEventType(eventType)}
+                                    timelineEvent={formattedEventType(timelineEvent.type)}
                                     closeTooltip={handleTooltipClose}/>
                 </div>
             </TableCell> : <TableCell></TableCell>}
         </>
     );
 }
-
 export default SingleTimelineEvent

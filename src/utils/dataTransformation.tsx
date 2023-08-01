@@ -78,7 +78,7 @@ export const extractingTimelineData = (array: APITimeline[]) => {
     let competitor = el.competitor;
     let players = el.players;
     let type = el.type
-    let matchTime = el.match_time;
+    let matchTime = el.match_time
     return {
       competitor: competitor,
       players: players,

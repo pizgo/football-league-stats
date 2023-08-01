@@ -1,8 +1,8 @@
 import {SingleMatchTimelineSchema} from "../../../types/types";
 import React from "react";
 import {BiFootball} from "react-icons/bi";
-import {changeMatchTimeFormat} from "../../../utils/changeMatchTimeFormat";
 import {changePlayerNameFormat} from "../../../utils/changePlayerNameFormat";
+import {changeMatchTimeFormat} from "../../../utils/changeMatchTimeFormat";
 
 export interface ScoresProps {
     timeline: SingleMatchTimelineSchema[],

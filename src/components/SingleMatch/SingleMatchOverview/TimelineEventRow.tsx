@@ -1,37 +1,36 @@
 import React from "react";
 import {
+    Table,
     TableCell,
-    TableRow } from "@mui/material";
+    TableRow
+} from "@mui/material";
 import {changeMatchTimeFormat} from "../../../utils/changeMatchTimeFormat";
 import SingleTimelineEvent from "./SingleTimelineEvent";
+import {SingleMatchTimelineSchema} from "../../../types/types";
 
 interface TimelineEventProps {
-    competitor: string,
-    eventType: string,
-    matchTime: number | undefined
-    players: { name: string; type: string; }[] | undefined
+    timeline: SingleMatchTimelineSchema[]
 }
 
-const TimelineEventRow: React.FC<TimelineEventProps> = ({competitor, eventType, matchTime, players}) => {
+const TimelineEventRow: React.FC<TimelineEventProps> = ({timeline}) => {
 
     return (
-        <TableRow sx={{ "& td": { border: 0 } }}>
-            <SingleTimelineEvent competitorType="home"
-                                 competitor={competitor}
-                                 eventType={eventType}
-                                 matchTime={matchTime}
-                                 players={players}
-                                 homeCompetitorStyle="justify-end"
-                                 tooltipPlacement="left" />
-            <TableCell className="text-center py-1 px-2 bg-primary-200 w-3 text-white">{changeMatchTimeFormat(matchTime)}</TableCell>
-            <SingleTimelineEvent competitorType="away"
-                                 competitor={competitor}
-                                 eventType={eventType}
-                                 matchTime={matchTime}
-                                 players={players}
-                                 homeCompetitorStyle="justify-start"
-                                 tooltipPlacement="right"/>
-        </TableRow>
+        <Table className="mb-4">
+            {timeline.map((el, key) => (
+                <TableRow sx={{ "& td": { border: 0 } }}>
+                    <SingleTimelineEvent timelineEvent = {el}
+                                         competitorType="home"
+                                         homeCompetitorStyle="justify-end"
+                                         tooltipPlacement="left" />
+                    <TableCell className="text-center py-1 px-2 bg-primary-200 w-3 text-white">{changeMatchTimeFormat(el.matchTime)}</TableCell>
+                    <SingleTimelineEvent competitorType="away"
+                                         timelineEvent={el}
+                                         homeCompetitorStyle="justify-start"
+                                         tooltipPlacement="right"/>
+                </TableRow>
+            ))}
+        </Table>
+
     )
 }
 export default TimelineEventRow;
