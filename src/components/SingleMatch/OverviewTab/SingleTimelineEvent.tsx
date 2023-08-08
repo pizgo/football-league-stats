@@ -52,7 +52,7 @@ const SingleTimelineEvent: React.FC<SingleTimelineEvent> = ({ timelineEvent,
         if (type === scoreChange) {
             return <BiFootball size={20}/>
         } else if (type === substitution) {
-            return <HiOutlineSwitchHorizontal size={18}/>
+            return <HiOutlineSwitchHorizontal size={20}/>
         } else if (type === yellowCard) {
             return <div className="bg-yellow-500 w-4 h-5 rounded"/>
         } else if (type === redCard) {
@@ -83,7 +83,7 @@ const SingleTimelineEvent: React.FC<SingleTimelineEvent> = ({ timelineEvent,
     return (
         <>
         {(timelineEvent.competitor === competitorType) ?
-            <TableCell className="text-end py-1 pr-2">
+            <TableCell className="py-2">
                 <div className={`flex items-center ${homeCompetitorStyle}`}>
                     <MobileTooltip message={tooltipMessage(timelineEvent.players)}
                                    placement={tooltipPlacement}
