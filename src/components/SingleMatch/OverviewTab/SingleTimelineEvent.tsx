@@ -52,7 +52,12 @@ const SingleTimelineEvent: React.FC<SingleTimelineEvent> = ({ timelineEvent,
         if (type === scoreChange) {
             return <BiFootball size={20}/>
         } else if (type === substitution) {
-            return <HiOutlineSwitchHorizontal size={20}/>
+            return (
+                <div>
+                     <span className="text-winner text-base md:text-lg">&#8593;</span>
+                     <span className="text-lost text-base md:text-lg">&#8595;</span>
+                </div>
+            )
         } else if (type === yellowCard) {
             return <div className="bg-yellow-500 w-4 h-5 rounded"/>
         } else if (type === redCard) {
