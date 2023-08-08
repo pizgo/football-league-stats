@@ -16,6 +16,7 @@ const TimelineEventRow: React.FC<TimelineEventProps> = ({timeline}) => {
 
     return (
         <Table className="mb-4">
+            <tbody>
             {timeline.map((el, key) => (
                 <TableRow sx={{ "& td": { border: 0 } }}>
                     <SingleTimelineEvent timelineEvent = {el}
@@ -29,8 +30,8 @@ const TimelineEventRow: React.FC<TimelineEventProps> = ({timeline}) => {
                                          tooltipPlacement="right"/>
                 </TableRow>
             ))}
+            </tbody>
         </Table>
-
     )
 }
 export default TimelineEventRow;

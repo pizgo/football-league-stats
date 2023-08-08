@@ -21,7 +21,7 @@ const SingleMatch: React.FC<SingleMatchDetailsProps> = ({singleMatchSummary, ove
     }
     return (
         <>
-            <Container>
+            <Container className="max-w-3xl">
                 {singleMatchSummary}
                   <div className="mt-4">
                       <Tabs value={value}
