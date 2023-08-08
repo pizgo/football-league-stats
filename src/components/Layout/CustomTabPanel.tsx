@@ -10,7 +10,7 @@ const CustomTabPanel: React.FC<TabPanelProps> = ({children, value, index, ...oth
 
     return (
         <div role="tabpanel"
-             className="bg-white border-x border-b border-primary-100 rounded rounded-t-none"
+             className="bg-white border-x border-b border-primary-100 rounded rounded-t-none p-3 md:p-6 text-sm md:text-base"
              hidden={value !== index}
              id={`tabpanel-${index}`}
              aria-labelledby={`tab-${index}`}
