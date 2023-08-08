@@ -50,7 +50,7 @@ const SingleTimelineEvent: React.FC<SingleTimelineEvent> = ({ timelineEvent,
 
     const formattedEventType =  (type:string)  => {
         if (type === scoreChange) {
-            return <BiFootball size={18}/>
+            return <BiFootball size={20}/>
         } else if (type === substitution) {
             return <HiOutlineSwitchHorizontal size={18}/>
         } else if (type === yellowCard) {

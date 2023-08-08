@@ -9,15 +9,16 @@ export interface ScoresProps {
     competitorType: string,
     stylesContainer: string,
     stylesIcon: string,
+    iconSize: string,
 }
-const Scores: React.FC<ScoresProps> = ({timeline, competitorType, stylesContainer, stylesIcon}) => {
+const Scores: React.FC<ScoresProps> = ({timeline, competitorType, stylesContainer, stylesIcon, iconSize}) => {
 
     return (
         <div className="col-span-6">{timeline.map((el) => (
             (el.type === "score_change") && (el.competitor === competitorType) ?
             <div className={`flex flex-col ${stylesContainer} mb-2`}>
                 <div className="flex items-center font-bold">
-                    <BiFootball className={stylesIcon}/>
+                    <BiFootball className={stylesIcon} size={iconSize}/>
                     <p className="m-0"> {changeMatchTimeFormat(el.matchTime)}</p>
                 </div>
                 <p className="m-0"> {el.players ? changePlayerNameFormat(el.players[0].name) : ""}</p>
