@@ -23,7 +23,7 @@ const TimelineEventRow: React.FC<TimelineEventProps> = ({timeline}) => {
                                          competitorType="home"
                                          homeCompetitorStyle="justify-end"
                                          tooltipPlacement="left" />
-                    <TableCell className="text-center py-1 px-2 bg-primary-200 w-8 md:w-16 text-white md:text-base">{changeMatchTimeFormat(el.matchTime)}</TableCell>
+                    <TableCell className="text-center py-1 px-2 bg-neutral-200 w-8 md:w-16 md:text-base">{changeMatchTimeFormat(el.matchTime)}</TableCell>
                     <SingleTimelineEvent competitorType="away"
                                          timelineEvent={el}
                                          homeCompetitorStyle="justify-start"
