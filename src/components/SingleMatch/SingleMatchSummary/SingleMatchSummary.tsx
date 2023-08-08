@@ -1,6 +1,7 @@
 import React from "react";
 import { SingleMatchSchema } from "../../../types/types";
 import {Box, Paper} from "@mui/material";
+import {changeDateFormat} from "../../../utils/changeDateFormat";
 
 interface SingleMatchOverviewProps {
     children: React.ReactNode;
@@ -12,6 +13,9 @@ const SingleMatchSummary: React.FC<SingleMatchOverviewProps> = ({children, chose
     return (
         <Box component={Paper} className="bg-white w-full text-sm md:text-base">
             <div className="grid grid-cols-12 gap-6 py-4 sm:py-6">
+                <div className="col-span-12">
+                    <p className="text-center">{changeDateFormat(chosenMatch.matchDate)}, {chosenMatch.stadiumName}</p>
+                </div>
                 <p className="sm:hidden col-span-4 text-lg font-bold self-center text-center py-2"> {chosenMatch.homeCompetitor.abbreviation}</p>
                 <p className="hidden sm:block col-span-4 text-lg font-bold text-center self-center py-2 px-6"> {chosenMatch.homeCompetitor.name}</p>
                 <div className="col-span-4">

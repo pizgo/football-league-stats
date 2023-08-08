@@ -28,7 +28,7 @@ const SingleMatch: React.FC<SingleMatchDetailsProps> = ({singleMatchSummary, ove
                             onChange={handleTabChange}
                             aria-label="single match tabs"
                             variant="fullWidth">
-                          <Tab label="Overview" {...tabProps(0)} />
+                          <Tab label="Highlights" {...tabProps(0)} />
                           <Tab label="Statistics" {...tabProps(1)} />
                           <Tab label="Lineups" {...tabProps(2)} />
                       </Tabs>
