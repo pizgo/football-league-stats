@@ -71,20 +71,23 @@ body {
   color: white;
 }
 
+.MuiTooltip-tooltipArrow {
+  background: #DFE3FA;
+  color: black;
+  font-size: 0.7rem;
+}
+
+.MuiTooltip-arrow {
+  color: #DFE3FA;
+}
+
 @media screen and (min-width: 768px) {
   .MuiTab-root {
     font-size: 1rem;
   }
-}
-
-.MuiTooltip-tooltipArrow {
-  background: #DFE3FA;
-  color: black;
-  font-size: 0.7rem
-}
-
-.MuiTooltip-arrow {
-  color: #DFE3FA
+  .MuiTooltip-tooltipArrow {
+    font-size: 0.875rem;
+  }
 }
 
 
