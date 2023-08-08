@@ -23,7 +23,7 @@ const SingleMatch: React.FC<SingleMatchDetailsProps> = ({singleMatchSummary, ove
         <>
             <Container className="max-w-3xl">
                 {singleMatchSummary}
-                  <div className="mt-4">
+                  <div className="mt-4 md:mt-6">
                       <Tabs value={value}
                             onChange={handleTabChange}
                             aria-label="single match tabs"
