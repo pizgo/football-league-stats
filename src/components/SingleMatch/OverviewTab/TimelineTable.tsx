@@ -12,10 +12,10 @@ interface TimelineEventProps {
     timeline: SingleMatchTimelineSchema[]
 }
 
-const TimelineEventRow: React.FC<TimelineEventProps> = ({timeline}) => {
+const TimelineTable: React.FC<TimelineEventProps> = ({timeline}) => {
 
     return (
-        <Table className="mb-4">
+        <Table>
             <tbody>
             {timeline.map((el, key) => (
                 <TableRow sx={{ "& td": { border: 0 } }}>
@@ -34,4 +34,4 @@ const TimelineEventRow: React.FC<TimelineEventProps> = ({timeline}) => {
         </Table>
     )
 }
-export default TimelineEventRow;
+export default TimelineTable;

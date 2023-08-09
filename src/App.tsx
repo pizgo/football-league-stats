@@ -10,7 +10,7 @@ import { Container } from "@mui/material";
 import SingleMatchSummary from "./components/SingleMatch/SingleMatchSummary/SingleMatchSummary";
 import HighlightsTab from "./components/SingleMatch/OverviewTab/HighlightsTab";
 import Scores from "./components/SingleMatch/SingleMatchSummary/Scores";
-import TimelineEventRow from "./components/SingleMatch/OverviewTab/TimelineEventRow";
+import TimelineTable from "./components/SingleMatch/OverviewTab/TimelineTable";
 
 const App: React.FC = () => {
   const [chosenMatch, setChosenMatch] = useState<SingleMatchSchema>();
@@ -43,7 +43,7 @@ const App: React.FC = () => {
                                             <Scores timeline={timeline} competitorType="away" stylesContainer="items-start" stylesIcon="mr-2" iconSize="20"/>
                                         </SingleMatchSummary>}
                                         overviewTab={<HighlightsTab chosenMatch={chosenMatch}>
-                                          <TimelineEventRow timeline={timeline}/>
+                                          <TimelineTable timeline={timeline}/>
                                         </HighlightsTab>}/>}
             />)}
         </Routes>
