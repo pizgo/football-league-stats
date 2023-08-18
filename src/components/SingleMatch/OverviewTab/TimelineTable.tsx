@@ -41,7 +41,7 @@ const TimelineTable: React.FC<TimelineEventProps> = ({timeline}) => {
             <div className="overflow-x-scroll">
                 <div className="relative w-[800px] h-1 bg-primary-100 m-12">
                     {timeline.map((el, key) => (
-                        <div className={`absolute bottom-1/2 translate-y-1/2 z-30 bg-white h-6 w-8 md:text-base`}
+                        <div className={`absolute bottom-1/2 translate-y-1/2 z-30 bg-light-100 h-6 w-8 md:text-base`}
                              style={{left: `${el.matchTime}%`}}>
                             <p className="text-center">{changeMatchTimeFormat(el.matchTime)}</p>
                         </div>
