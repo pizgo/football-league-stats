@@ -14,6 +14,11 @@ interface TimelineEventProps {
 
 const TimelineTable: React.FC<TimelineEventProps> = ({timeline}) => {
 
+    const position = (matchTime: number | undefined) => {
+        let left = "left-["+ matchTime + "%]"
+        console.log(matchTime, left)
+        return left
+    }
     return (
         <>
             <Table className="mb-12">
@@ -34,16 +39,17 @@ const TimelineTable: React.FC<TimelineEventProps> = ({timeline}) => {
                 </tbody>
             </Table>
             <div className="overflow-x-scroll">
-                <div className="relative w-96 h-1 bg-primary-100 m-12">
-                    <div className="absolute bottom-1/2 left-4 translate-y-1/2 z-30 bg-white h-5 w-6">
-                        <p className="text-center">20</p>
-                    </div>
+                <div className="relative w-[800px] h-1 bg-primary-100 m-12">
+                    {timeline.map((el, key) => (
+                        <div className={`absolute bottom-1/2 translate-y-1/2 z-30 bg-white h-6 w-8 md:text-base`}
+                             style={{left: `${el.matchTime}%`}}>
+                            <p className="text-center">{changeMatchTimeFormat(el.matchTime)}</p>
+                        </div>
+                    ))}
                 </div>
             </div>
 
         </>
-
-
     )
 }
 export default TimelineTable;
