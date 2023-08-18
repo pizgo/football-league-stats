@@ -77,3 +77,33 @@ export interface SingleMatchTimelineSchema {
   matchTime?: number;
 }
 
+export interface APIStatistics {
+  qualifier: string,
+  statistics: APISingleStatistics
+}
+
+export interface StatisticsSchema {
+    qualifier: string,
+    statistics: APISingleStatistics
+}
+
+interface APISingleStatistics {
+  ball_possession: number;
+  cards_given: number;
+  corner_kicks: number;
+  fouls: number;
+  free_kicks: number;
+  goal_kicks: number;
+  injuries: number;
+  offsides: number;
+  red_cards: number;
+  shots_blocked: number;
+  shots_off_target: number;
+  shots_on_target: number;
+  shots_saved: number;
+  shots_total: number;
+  substitutions: number;
+  throw_ins: number;
+  yellow_card: number;
+  yellow_red_cards: number;
+}

@@ -1,8 +1,9 @@
 import {
   APISchedule,
   APISeasons,
+  APIStatistics,
   APITimeline,
-  CompetitorInfo, SingleMatchTimelineSchema
+  CompetitorInfo,
 } from "../types/types";
 
 const buildCompetitorInfo = (schedule: APISchedule, isHome: boolean): CompetitorInfo => {
@@ -89,3 +90,16 @@ export const extractingTimelineData = (array: APITimeline[]) => {
   let filteredArrayOfResults = arrayOfResults.filter((el) => eventsForTimeline((el)))
   return filteredArrayOfResults;
 };
+
+export const extractingStatisticsData = (array: APIStatistics[]) => {
+  let arrayOfResults = array.map((el) => {
+    let qualifier = el.qualifier;
+    let statistics = el.statistics
+    return {
+      qualifier: qualifier,
+      statistics: statistics
+    }
+  })
+  return arrayOfResults
+}
+

@@ -15,7 +15,7 @@ import TimelineTable from "./components/SingleMatch/OverviewTab/TimelineTable";
 const App: React.FC = () => {
   const [chosenMatch, setChosenMatch] = useState<SingleMatchSchema>();
   const [chosenSeasonID, setChosenSeasonID] = useState<string>(firstSeason);
-  const { timeline, callForMatchTimeline } = useGetMatchTimeline();
+  const { timeline, statistics, callForMatchTimeline } = useGetMatchTimeline();
   const redirectToSingleMatchPage = useNavigateSearch();
 
   const handleChooseMatch = (singleMatch: SingleMatchSchema): void => {
