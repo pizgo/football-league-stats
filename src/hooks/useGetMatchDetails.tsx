@@ -8,7 +8,7 @@ export const useGetMatchDetails = () => {
   const [timeline, setTimeline] = useState<SingleMatchTimelineSchema[]>([]);
   const [statistics, setStatistics] = useState<StatisticsSchema[]>([]);
 
-  const callForMatchTimeline = (singleMatchId : string) => {
+  const callForMatchDetails = (singleMatchId : string) => {
     getMatchTimeline(singleMatchId)
       .then(checkError)
       .then((response) => {
@@ -26,5 +26,5 @@ export const useGetMatchDetails = () => {
       return response.json();
     }
   };
-  return { timeline, statistics, callForMatchTimeline };
+  return { timeline, statistics, callForMatchDetails };
 };

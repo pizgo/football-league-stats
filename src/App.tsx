@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import SingleMatch from "./pages/SingleMatch";
 import Home from "./pages/Home";
 import { useNavigateSearch } from "./hooks/useNavigateSearch";
-import { useGetMatchTimeline } from "./hooks/useGetMatchTimeline";
+import { useGetMatchDetails } from "./hooks/useGetMatchDetails";
 import { SingleMatchSchema } from "./types/types";
 import { firstSeason} from "./utils/api";
 import { Container } from "@mui/material";
@@ -15,13 +15,13 @@ import TimelineTable from "./components/SingleMatch/OverviewTab/TimelineTable";
 const App: React.FC = () => {
   const [chosenMatch, setChosenMatch] = useState<SingleMatchSchema>();
   const [chosenSeasonID, setChosenSeasonID] = useState<string>(firstSeason);
-  const { timeline, statistics, callForMatchTimeline } = useGetMatchTimeline();
+  const { timeline, statistics, callForMatchDetails } = useGetMatchDetails();
   const redirectToSingleMatchPage = useNavigateSearch();
 
   const handleChooseMatch = (singleMatch: SingleMatchSchema): void => {
     setChosenMatch(singleMatch);
     redirectToSingleMatchPage(singleMatch.matchID);
-    callForMatchTimeline(singleMatch.matchID)
+    callForMatchDetails(singleMatch.matchID)
   };
 
   return (
