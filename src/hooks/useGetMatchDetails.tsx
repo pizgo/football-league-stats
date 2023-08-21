@@ -6,7 +6,7 @@ import { errorMessage } from "../utils/consts";
 
 export const useGetMatchDetails = () => {
   const [timeline, setTimeline] = useState<SingleMatchTimelineSchema[]>([]);
-  const [statistics, setStatistics] = useState<StatisticsSchema[]>([]);
+  const [statistics, setStatistics] = useState<StatisticsSchema>({});
 
   const callForMatchDetails = (singleMatchId : string) => {
     getMatchTimeline(singleMatchId)
@@ -16,6 +16,7 @@ export const useGetMatchDetails = () => {
         const resultsStatistics = extractingStatisticsData(response.statistics.totals.competitors);
         setTimeline(resultsTimeline);
         setStatistics(resultsStatistics);
+        console.log(resultsTimeline)
         console.log(resultsStatistics)
       });
   };

@@ -7,8 +7,9 @@ import CustomTabPanel from "../components/Layout/CustomTabPanel";
 interface SingleMatchDetailsProps {
   singleMatchSummary: React.ReactNode,
   overviewTab: React.ReactNode;
+  statisticsTab: React.ReactNode;
 }
-const SingleMatch: React.FC<SingleMatchDetailsProps> = ({singleMatchSummary, overviewTab}) => {
+const SingleMatch: React.FC<SingleMatchDetailsProps> = ({singleMatchSummary, overviewTab, statisticsTab}) => {
     const [value, setValue] = React.useState(0)
     const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
         setValue(newValue);
@@ -37,7 +38,7 @@ const SingleMatch: React.FC<SingleMatchDetailsProps> = ({singleMatchSummary, ove
                       {overviewTab}
                   </CustomTabPanel>
                   <CustomTabPanel value={value} index={1}>
-                      Item Two
+                      {statisticsTab}
                   </CustomTabPanel>
                   <CustomTabPanel value={value} index={2}>
                       Item Three

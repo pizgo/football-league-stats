@@ -79,31 +79,15 @@ export interface SingleMatchTimelineSchema {
 
 export interface APIStatistics {
   qualifier: string,
-  statistics: APISingleStatistics
+  statistics: { }
 }
+
+// export interface StatisticsSchema {
+//     qualifier: string,
+//     statistics: {[index : string] : number};
+// }
 
 export interface StatisticsSchema {
-    qualifier: string,
-    statistics: APISingleStatistics
+  [index:string] : any
 }
 
-interface APISingleStatistics {
-  ball_possession: number;
-  cards_given: number;
-  corner_kicks: number;
-  fouls: number;
-  free_kicks: number;
-  goal_kicks: number;
-  injuries: number;
-  offsides: number;
-  red_cards: number;
-  shots_blocked: number;
-  shots_off_target: number;
-  shots_on_target: number;
-  shots_saved: number;
-  shots_total: number;
-  substitutions: number;
-  throw_ins: number;
-  yellow_card: number;
-  yellow_red_cards: number;
-}

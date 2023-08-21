@@ -5,6 +5,7 @@ import {
   APITimeline,
   CompetitorInfo,
 } from "../types/types";
+import {changeStatsNameFormat} from "./changeStatsNameFormat";
 
 const buildCompetitorInfo = (schedule: APISchedule, isHome: boolean): CompetitorInfo => {
   let index = isHome ? schedule.sport_event.competitors[0].qualifier === "home" ? 0 : 1
@@ -95,11 +96,27 @@ export const extractingStatisticsData = (array: APIStatistics[]) => {
   let arrayOfResults = array.map((el) => {
     let qualifier = el.qualifier;
     let statistics = el.statistics
+
     return {
       qualifier: qualifier,
-      statistics: statistics
+      statistics: statistics,
     }
   })
-  return arrayOfResults
+  let finalStats : {[index:string] : any} = {}
+  const transformStats = (stats: {[index:string] : any }, statsForOneSide : any) : {[index:string] : any} => {
+    let teamSide = statsForOneSide.qualifier === 'home' ? 'home' : 'away'
+    let statsNames = Object.keys(statsForOneSide.statistics)
+    statsNames.forEach( (el) => {
+      if (!stats[el]){
+        stats[el] = {}
+      }
+      stats[el][teamSide] = statsForOneSide.statistics[el]
+    })
+    return stats
+  }
+  finalStats = transformStats(finalStats, arrayOfResults[0])
+  finalStats = transformStats(finalStats, arrayOfResults[1])
+
+  return finalStats
 }
 
