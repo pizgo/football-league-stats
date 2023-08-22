@@ -14,7 +14,7 @@ interface StatisticsProps {
 }
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
-    '&:nth-of-type(odd)': {
+    '&:nth-of-type(even)': {
         backgroundColor: "#DFE3FA",
     },
 }));

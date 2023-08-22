@@ -8,7 +8,6 @@ import { SingleMatchSchema } from "./types/types";
 import { firstSeason} from "./utils/api";
 import { Container } from "@mui/material";
 import SingleMatchSummary from "./components/SingleMatch/SingleMatchSummary/SingleMatchSummary";
-import HighlightsTab from "./components/SingleMatch/OverviewTab/HighlightsTab";
 import Scores from "./components/SingleMatch/SingleMatchSummary/Scores";
 import TimelineTable from "./components/SingleMatch/OverviewTab/TimelineTable";
 import Statistics from "./components/SingleMatch/StatisticsTab/Statistics";
@@ -43,10 +42,7 @@ const App: React.FC = () => {
                                             <Scores timeline={timeline} competitorType="home" stylesContainer="items-end" stylesIcon="mr-2" iconSize="20"/>
                                             <Scores timeline={timeline} competitorType="away" stylesContainer="items-start" stylesIcon="mr-2" iconSize="20"/>
                                         </SingleMatchSummary>}
-                                        overviewTab={
-                                            <HighlightsTab chosenMatch={chosenMatch}>
-                                                <TimelineTable timeline={timeline}/>
-                                            </HighlightsTab>}
+                                        overviewTab={<TimelineTable timeline={timeline}/>}
                                         statisticsTab={<Statistics statistics={statistics}/>}
                   />}
             />)}

@@ -20,10 +20,11 @@ const CustomTabPanel: React.FC<TabPanelProps> = ({chosenMatch, children, value, 
             {value === index && (
                 <Box>
                     <div className="grid grid-cols-12 py-4 font-bold text-primary-200 text-center">
-                        <div className="col-span-6">
+                        <div className="col-span-5">
                             <p>{chosenMatch.homeCompetitor.name}</p>
                         </div>
-                        <div className="col-span-6">
+                        <div className="col-span-2"></div>
+                        <div className="col-span-5">
                             <p>{chosenMatch.awayCompetitor.name}</p>
                         </div>
                     </div>

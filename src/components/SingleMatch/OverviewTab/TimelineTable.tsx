@@ -4,12 +4,12 @@ import {
     TableCell,
     TableRow
 } from "@mui/material";
-import {changeMatchTimeFormat} from "../../../utils/changeMatchTimeFormat";
+import { changeMatchTimeFormat } from "../../../utils/changeMatchTimeFormat";
 import SingleTimelineEvent from "./SingleTimelineEvent";
-import {SingleMatchTimelineSchema} from "../../../types/types";
+import { SingleMatchTimelineSchema } from "../../../types/types";
 
 interface TimelineEventProps {
-    timeline: SingleMatchTimelineSchema[]
+    timeline: SingleMatchTimelineSchema[],
 }
 
 const TimelineTable: React.FC<TimelineEventProps> = ({timeline}) => {
