@@ -1,12 +1,14 @@
 import React from "react";
 import {Box} from "@mui/material";
+import {SingleMatchSchema} from "../../types/types";
 
 interface TabPanelProps {
     children?: React.ReactNode;
     index: number;
     value: number;
+    chosenMatch: SingleMatchSchema
 }
-const CustomTabPanel: React.FC<TabPanelProps> = ({children, value, index, ...other}) => {
+const CustomTabPanel: React.FC<TabPanelProps> = ({chosenMatch, children, value, index, ...other}) => {
 
     return (
         <div role="tabpanel"
@@ -16,7 +18,17 @@ const CustomTabPanel: React.FC<TabPanelProps> = ({children, value, index, ...oth
              aria-labelledby={`tab-${index}`}
              {...other}>
             {value === index && (
-                <Box>{children}</Box>
+                <Box>
+                    <div className="grid grid-cols-12 py-4 font-bold text-primary-200 text-center">
+                        <div className="col-span-6">
+                            <p>{chosenMatch.homeCompetitor.name}</p>
+                        </div>
+                        <div className="col-span-6">
+                            <p>{chosenMatch.awayCompetitor.name}</p>
+                        </div>
+                    </div>
+                    {children}
+                </Box>
             )}
         </div>
     );

@@ -38,14 +38,15 @@ const App: React.FC = () => {
           {chosenMatch && (
             <Route
                   path="/singleMatch"
-                  element={<SingleMatch singleMatchSummary={
+                  element={<SingleMatch chosenMatch={chosenMatch} singleMatchSummary={
                                         <SingleMatchSummary chosenMatch={chosenMatch}>
                                             <Scores timeline={timeline} competitorType="home" stylesContainer="items-end" stylesIcon="mr-2" iconSize="20"/>
                                             <Scores timeline={timeline} competitorType="away" stylesContainer="items-start" stylesIcon="mr-2" iconSize="20"/>
                                         </SingleMatchSummary>}
-                                        overviewTab={<HighlightsTab chosenMatch={chosenMatch}>
-                                          <TimelineTable timeline={timeline}/>
-                                        </HighlightsTab>}
+                                        overviewTab={
+                                            <HighlightsTab chosenMatch={chosenMatch}>
+                                                <TimelineTable timeline={timeline}/>
+                                            </HighlightsTab>}
                                         statisticsTab={<Statistics statistics={statistics}/>}
                   />}
             />)}

@@ -4,12 +4,15 @@ import { Box,
         Tab,
         Tabs} from "@mui/material";
 import CustomTabPanel from "../components/Layout/CustomTabPanel";
+import {SingleMatchSchema} from "../types/types";
+
 interface SingleMatchDetailsProps {
+  chosenMatch: SingleMatchSchema
   singleMatchSummary: React.ReactNode,
   overviewTab: React.ReactNode;
   statisticsTab: React.ReactNode;
 }
-const SingleMatch: React.FC<SingleMatchDetailsProps> = ({singleMatchSummary, overviewTab, statisticsTab}) => {
+const SingleMatch: React.FC<SingleMatchDetailsProps> = ({chosenMatch, singleMatchSummary, overviewTab, statisticsTab}) => {
     const [value, setValue] = React.useState(0)
     const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
         setValue(newValue);
@@ -34,13 +37,13 @@ const SingleMatch: React.FC<SingleMatchDetailsProps> = ({singleMatchSummary, ove
                           <Tab label="Lineups" {...tabProps(2)} />
                       </Tabs>
                   </div>
-                  <CustomTabPanel value={value} index={0}>
+                  <CustomTabPanel chosenMatch={chosenMatch} value={value} index={0}>
                       {overviewTab}
                   </CustomTabPanel>
-                  <CustomTabPanel value={value} index={1}>
+                  <CustomTabPanel chosenMatch={chosenMatch} value={value} index={1}>
                       {statisticsTab}
                   </CustomTabPanel>
-                  <CustomTabPanel value={value} index={2}>
+                  <CustomTabPanel chosenMatch={chosenMatch} value={value} index={2}>
                       Item Three
                   </CustomTabPanel>
              </Container>
