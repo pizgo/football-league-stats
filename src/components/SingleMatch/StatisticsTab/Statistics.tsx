@@ -3,14 +3,15 @@ import {
     Paper,
     styled,
     Table,
-    TableCell, TableContainer,
+    TableCell, TableContainer, TableHead,
     TableRow
 } from "@mui/material";
-import { StatisticsSchema } from "../../../types/types";
+import {SingleMatchSchema, StatisticsSchema} from "../../../types/types";
 import TeamStatistics from "./TeamStatistics";
 import {changeStatsNameFormat} from "../../../utils/changeStatsNameFormat";
 
 interface StatisticsProps {
+    chosenMatch: SingleMatchSchema
     statistics: StatisticsSchema
 }
 
@@ -23,7 +24,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     },
 }));
 
-const Statistics: React.FC<StatisticsProps> = ({statistics}) => {
+const Statistics: React.FC<StatisticsProps> = ({chosenMatch, statistics}) => {
 
     const checkWhoWon = (thisResult: number, resultToCompare: number) => {
         if (thisResult > resultToCompare) {
@@ -35,11 +36,16 @@ const Statistics: React.FC<StatisticsProps> = ({statistics}) => {
         <div className="flex justify-center">
             <TableContainer component={Paper} className="sm:w-4/5">
                 <Table>
+                    <TableHead>
+                        <TableCell className="text-center font-bold w-1/3">{chosenMatch.homeCompetitor.name}</TableCell>
+                        <TableCell>&nbsp;</TableCell>
+                        <TableCell className="text-center font-bold w-1/3">{chosenMatch.awayCompetitor.name}</TableCell>
+                    </TableHead>
                     <tbody>
                     {Object.keys(statistics).map((el, key) => (
                         <StyledTableRow>
                             <TableCell className={`text-center px-0 sm:px-3 py-3 ${checkWhoWon(statistics[el].home, statistics[el].away)}`}>{statistics[el].home ? statistics[el].home : '0'}</TableCell>
-                            <TableCell className="text-center px-0 sm:px-3 py-3 w-2/5">{changeStatsNameFormat(el)}</TableCell>
+                            <TableCell className="text-center px-0 sm:px-3 py-3">{changeStatsNameFormat(el)}</TableCell>
                             <TableCell className={`text-center px-0 sm:px-3 py-3 ${checkWhoWon(statistics[el].away, statistics[el].home)}`}>{statistics[el].away ? statistics[el].away : '0'}</TableCell>
                         </StyledTableRow>
                     ))}

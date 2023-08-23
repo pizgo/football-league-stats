@@ -22,6 +22,9 @@ module.exports = {
       height: {
         '50screen': '50vh',
         '60screen': '60vh',
+      },
+      width: {
+        '45/100': '45%',
       }
     },
   },
