@@ -7,7 +7,6 @@ import {
     TableRow
 } from "@mui/material";
 import {SingleMatchSchema, StatisticsSchema} from "../../../types/types";
-import TeamStatistics from "./TeamStatistics";
 import {changeStatsNameFormat} from "../../../utils/changeStatsNameFormat";
 
 interface StatisticsProps {
@@ -37,13 +36,15 @@ const Statistics: React.FC<StatisticsProps> = ({chosenMatch, statistics}) => {
             <TableContainer component={Paper} className="sm:w-4/5">
                 <Table>
                     <TableHead>
-                        <TableCell className="text-center font-bold w-1/3">{chosenMatch.homeCompetitor.name}</TableCell>
-                        <TableCell>&nbsp;</TableCell>
-                        <TableCell className="text-center font-bold w-1/3">{chosenMatch.awayCompetitor.name}</TableCell>
+                        <TableRow>
+                            <TableCell className="text-center font-bold w-1/3">{chosenMatch.homeCompetitor.name}</TableCell>
+                            <TableCell>&nbsp;</TableCell>
+                            <TableCell className="text-center font-bold w-1/3">{chosenMatch.awayCompetitor.name}</TableCell>
+                        </TableRow>
                     </TableHead>
                     <tbody>
-                    {Object.keys(statistics).map((el, key) => (
-                        <StyledTableRow>
+                    {Object.keys(statistics).map((el, index) => (
+                        <StyledTableRow key={index}>
                             <TableCell className={`text-center px-0 sm:px-3 py-3 ${checkWhoWon(statistics[el].home, statistics[el].away)}`}>{statistics[el].home ? statistics[el].home : '0'}</TableCell>
                             <TableCell className="text-center px-0 sm:px-3 py-3">{changeStatsNameFormat(el)}</TableCell>
                             <TableCell className={`text-center px-0 sm:px-3 py-3 ${checkWhoWon(statistics[el].away, statistics[el].home)}`}>{statistics[el].away ? statistics[el].away : '0'}</TableCell>

@@ -14,9 +14,9 @@ export interface ScoresProps {
 const Scores: React.FC<ScoresProps> = ({timeline, competitorType, stylesContainer, stylesIcon, iconSize}) => {
 
     return (
-        <div className="col-span-6">{timeline.map((el) => (
+        <div className="col-span-6">{timeline.map((el, index) => (
             (el.type === "score_change") && (el.competitor === competitorType) ?
-            <div className={`flex flex-col ${stylesContainer} mb-2`}>
+            <div key={index} className={`flex flex-col ${stylesContainer} mb-2`}>
                 <div className="flex items-center font-bold">
                     <BiFootball className={stylesIcon} size={iconSize}/>
                     <p className="m-0"> {changeMatchTimeFormat(el.matchTime)}</p>

@@ -16,8 +16,6 @@ export const useGetMatchDetails = () => {
         const resultsStatistics = extractingStatisticsData(response.statistics.totals.competitors);
         setTimeline(resultsTimeline);
         setStatistics(resultsStatistics);
-        console.log(resultsTimeline)
-        console.log(resultsStatistics)
       });
   };
   const checkError = (response: Response) => {

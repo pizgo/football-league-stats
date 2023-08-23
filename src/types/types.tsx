@@ -82,12 +82,22 @@ export interface APIStatistics {
   statistics: { }
 }
 
-// export interface StatisticsSchema {
-//     qualifier: string,
-//     statistics: {[index : string] : number};
-// }
-
 export interface StatisticsSchema {
   [index:string] : any
+}
+
+export interface LineupsTwo {
+  competitor: string,
+  players: [{
+    name: string,
+    jersey_number: string,
+    type: string,
+    position?: string,
+    starter?: boolean,
+    stats?: {
+      [index:string] : any
+    }
+  }
+  ]
 }
 

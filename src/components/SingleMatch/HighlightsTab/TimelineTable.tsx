@@ -21,13 +21,15 @@ const TimelineTable: React.FC<TimelineEventProps> = ({chosenMatch, timeline}) =>
             <TableContainer component={Paper} className="sm:w-4/5">
                 <Table>
                     <TableHead className="">
-                        <TableCell className="text-center font-bold w-45/100 border-0">{chosenMatch.homeCompetitor.name}</TableCell>
-                        <TableCell className="border-0">&nbsp;</TableCell>
-                        <TableCell className="text-center font-bold w-45/100 border-0">{chosenMatch.awayCompetitor.name}</TableCell>
+                        <TableRow>
+                            <TableCell className="text-center font-bold w-45/100 border-0">{chosenMatch.homeCompetitor.name}</TableCell>
+                            <TableCell className="border-0">&nbsp;</TableCell>
+                            <TableCell className="text-center font-bold w-45/100 border-0">{chosenMatch.awayCompetitor.name}</TableCell>
+                        </TableRow>
                     </TableHead>
                     <tbody>
-                    {timeline.map((el, key) => (
-                        <TableRow sx={{ "& td": { border: 0 } }}>
+                    {timeline.map((el, index) => (
+                        <TableRow key={index} sx={{ "& td": { border: 0 } }}>
                             <SingleTimelineEvent timelineEvent = {el}
                                                  competitorType="home"
                                                  homeCompetitorStyle="justify-end"

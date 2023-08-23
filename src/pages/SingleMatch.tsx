@@ -9,10 +9,10 @@ import {SingleMatchSchema} from "../types/types";
 interface SingleMatchDetailsProps {
   chosenMatch: SingleMatchSchema
   singleMatchSummary: React.ReactNode,
-  overviewTab: React.ReactNode;
+  highlightsTab: React.ReactNode;
   statisticsTab: React.ReactNode;
 }
-const SingleMatch: React.FC<SingleMatchDetailsProps> = ({chosenMatch, singleMatchSummary, overviewTab, statisticsTab}) => {
+const SingleMatch: React.FC<SingleMatchDetailsProps> = ({chosenMatch, singleMatchSummary, highlightsTab, statisticsTab}) => {
     const [value, setValue] = React.useState(0)
     const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
         setValue(newValue);
@@ -38,7 +38,7 @@ const SingleMatch: React.FC<SingleMatchDetailsProps> = ({chosenMatch, singleMatc
                       </Tabs>
                   </div>
                   <CustomTabPanel chosenMatch={chosenMatch} value={value} index={0}>
-                      {overviewTab}
+                      {highlightsTab}
                   </CustomTabPanel>
                   <CustomTabPanel chosenMatch={chosenMatch} value={value} index={1}>
                       {statisticsTab}

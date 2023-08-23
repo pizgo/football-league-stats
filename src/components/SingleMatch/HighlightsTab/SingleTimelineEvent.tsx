@@ -77,8 +77,8 @@ const SingleTimelineEvent: React.FC<SingleTimelineEvent> = ({ timelineEvent,
         if(players) {
             if(timelineEvent.type === "substitution") {
                 return (
-                    players.map((el) => (
-                        <div>{formattedEventType(el.type)} {changePlayerNameFormat(el.name)}</div>
+                    players.map((el, index) => (
+                        <div key={index}>{formattedEventType(el.type)} {changePlayerNameFormat(el.name)}</div>
                     ))
                 )
             } else return (changePlayerNameFormat(players[0].name))
