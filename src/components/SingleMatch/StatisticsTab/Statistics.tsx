@@ -1,8 +1,9 @@
 import React from "react";
 import {
+    Paper,
     styled,
     Table,
-    TableCell,
+    TableCell, TableContainer,
     TableRow
 } from "@mui/material";
 import { StatisticsSchema } from "../../../types/types";
@@ -17,6 +18,9 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     '&:nth-of-type(even)': {
         backgroundColor: "#DFE3FA",
     },
+    '&:nth-of-type(odd)': {
+        backgroundColor: "#F8F8FB",
+    },
 }));
 
 const Statistics: React.FC<StatisticsProps> = ({statistics}) => {
@@ -28,17 +32,23 @@ const Statistics: React.FC<StatisticsProps> = ({statistics}) => {
     }
 
     return (
-        <Table>
-            <tbody>
-            {Object.keys(statistics).map((el, key) => (
-                <StyledTableRow>
-                    <TableCell className={`text-center ${checkWhoWon(statistics[el].home, statistics[el].away)}`}>{statistics[el].home ? statistics[el].home : '0'}</TableCell>
-                    <TableCell className="text-center">{changeStatsNameFormat(el)}</TableCell>
-                    <TableCell className={`text-center ${checkWhoWon(statistics[el].away, statistics[el].home)}`}>{statistics[el].away ? statistics[el].away : '0'}</TableCell>
-                </StyledTableRow>
-            ))}
-            </tbody>
-        </Table>
+        <div className="flex justify-center">
+            <TableContainer component={Paper} className="sm:w-4/5">
+                <Table>
+                    <tbody>
+                    {Object.keys(statistics).map((el, key) => (
+                        <StyledTableRow>
+                            <TableCell className={`text-center px-0 sm:px-3 py-3 ${checkWhoWon(statistics[el].home, statistics[el].away)}`}>{statistics[el].home ? statistics[el].home : '0'}</TableCell>
+                            <TableCell className="text-center px-0 sm:px-3 py-3 w-2/5">{changeStatsNameFormat(el)}</TableCell>
+                            <TableCell className={`text-center px-0 sm:px-3 py-3 ${checkWhoWon(statistics[el].away, statistics[el].home)}`}>{statistics[el].away ? statistics[el].away : '0'}</TableCell>
+                        </StyledTableRow>
+                    ))}
+                    </tbody>
+                </Table>
+            </TableContainer>
+        </div>
+
+
     )
 }
 export default Statistics;

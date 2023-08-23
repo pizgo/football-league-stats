@@ -7,7 +7,7 @@ import { Box,
         Container,
         Paper } from "@mui/material";
 import LegendItem from "../components/SeasonOverview/LegendItem";
-import Timetable from "../components/SeasonOverview/Timetable";
+import ScheduleTable from "../components/SeasonOverview/ScheduleTable";
 
 interface MatchesSchedulesProps {
     choosingSingleMatch: (singleMatch: SingleMatchSchema) => void;
@@ -41,7 +41,7 @@ const Home: React.FC<MatchesSchedulesProps> = ({choosingSingleMatch, chosenSeaso
                     <LegendItem status={"tie"}/>
                 </div>
             </Box>
-            <Timetable
+            <ScheduleTable
                 matchesResults={matchesState}
                 onChooseMatch={choosingSingleMatch}/>
         </Container>

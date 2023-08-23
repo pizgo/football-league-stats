@@ -17,7 +17,7 @@ interface MatchesResultsTableProps {
     onChooseMatch: (singleMatch: SingleMatchSchema) => void;
 }
 
-const Timetable: React.FC<MatchesResultsTableProps> = ({ matchesResults, onChooseMatch}) => {
+const ScheduleTable: React.FC<MatchesResultsTableProps> = ({ matchesResults, onChooseMatch}) => {
 
     const handleOnClick = ( e: React.MouseEvent, clickedMatch: SingleMatchSchema) => {
         if(clickedMatch.status === "closed") {
@@ -31,8 +31,8 @@ const Timetable: React.FC<MatchesResultsTableProps> = ({ matchesResults, onChoos
                 <TableHead className="mt-10">
                     <TableRow className="bg-primary-200">
                         <HeaderCell style="sm:hidden" headerCell={mobileHeadersContent}/>
-                        <HeaderCell style="hidden sm:table-cell text-base lg:hidden" headerCell={tabletHeadersContent}/>
-                        <HeaderCell style="hidden lg:table-cell text-base" headerCell={desktopHeadersContent}/>
+                        <HeaderCell style="hidden sm:table-cell text-base xl:hidden" headerCell={tabletHeadersContent}/>
+                        <HeaderCell style="hidden xl:table-cell text-base" headerCell={desktopHeadersContent}/>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -70,7 +70,7 @@ const Timetable: React.FC<MatchesResultsTableProps> = ({ matchesResults, onChoos
                                 {displayWhenStatusNotClosed(singleMatch.status)}
                             </TableCell>)}
                         <TableCell className="px-2 py-4 text-center">{singleMatch.matchDate}</TableCell>
-                        <TableCell className="hidden lg:table-cell text-start px-3 py-4">{singleMatch.stadiumName}</TableCell>
+                        <TableCell className="hidden xl:table-cell text-start px-3 py-4">{singleMatch.stadiumName}</TableCell>
                     </TableRow>
                 ))}
                 </TableBody>
@@ -79,4 +79,4 @@ const Timetable: React.FC<MatchesResultsTableProps> = ({ matchesResults, onChoos
     );
 };
 
-export default Timetable;
+export default ScheduleTable;
