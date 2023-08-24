@@ -122,13 +122,7 @@ export interface PlayersInfoAPI {
 export interface PlayersStatisticsSchema {
   qualifier: string,
   players: {
-    statistics: {
-      goals_scored: number,
-      red_cards: number,
-      substituted_in: number,
-      substituted_out: number,
-      yellow_cards: number
-    },
+    statistics: string[]
     name: string
   }[]
 }

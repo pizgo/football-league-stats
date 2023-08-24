@@ -131,9 +131,15 @@ const buildPlayerInfo = (playersArray: PlayersInfoAPI[]) => {
       substituted_out: el.statistics.substituted_out,
       yellow_cards: el.statistics.yellow_cards
     }
+
+    let actions = Object.entries(statistics).filter((el) => {
+      return el[1] > 0
+    }).map((el) => {
+      return el[0]
+    })
     return {
       name: name,
-      statistics: statistics
+      statistics: actions
     }
   })
   return playersResults
@@ -150,7 +156,6 @@ export const extractingPlayersStatisticsData = (array: APIPlayersStatistics[]) =
       players: players
     }
   })
-
   return arrayOfResults
 }
 
