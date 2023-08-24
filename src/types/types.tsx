@@ -79,25 +79,68 @@ export interface SingleMatchTimelineSchema {
 
 export interface APIStatistics {
   qualifier: string,
-  statistics: { }
+  statistics: { },
 }
 
 export interface StatisticsSchema {
   [index:string] : any
 }
 
-export interface LineupsTwo {
-  competitor: string,
-  players: [{
-    name: string,
-    jersey_number: string,
-    type: string,
-    position?: string,
-    starter?: boolean,
-    stats?: {
-      [index:string] : any
+export interface APIPlayersStatistics {
+  qualifier: string,
+  players: {
+    statistics: {
+      assists: number,
+      goals_scored: number,
+      offsides: number,
+      own_goals: number,
+      red_cards: number,
+      substituted_in: number,
+      substituted_out: number,
+      yellow_cards: number,
+      yellow_red_cards: number
     }
+    name: string
+  }[]
+}
+
+export interface PlayersInfoAPI {
+  statistics: {
+    assists: number,
+    goals_scored: number,
+    offsides: number,
+    own_goals: number,
+    red_cards: number,
+    substituted_in: number,
+    substituted_out: number,
+    yellow_cards: number,
+    yellow_red_cards: number
+  },
+  name: string
+}
+
+export interface PlayersStatisticsSchema {
+  qualifier: string,
+  players: {
+    statistics: {
+      goals_scored: number,
+      red_cards: number,
+      substituted_in: number,
+      substituted_out: number,
+      yellow_cards: number
+    },
+    name: string
+  }[]
+}
+
+export interface LineupsAPI {
+  competitor: string,
+  players: {
+    name: string,
+    type: string,
+    jersey_number: string,
+    starter?: boolean,
+    position?: string,
   }
-  ]
 }
 

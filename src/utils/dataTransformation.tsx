@@ -1,9 +1,10 @@
 import {
+  APIPlayersStatistics,
   APISchedule,
   APISeasons,
   APIStatistics,
   APITimeline,
-  CompetitorInfo,
+  CompetitorInfo, PlayersInfoAPI,
 } from "../types/types";
 import {changeStatsNameFormat} from "./changeStatsNameFormat";
 
@@ -118,5 +119,38 @@ export const extractingStatisticsData = (array: APIStatistics[]) => {
   finalStats = transformStats(finalStats, arrayOfResults[1])
 
   return finalStats
+}
+
+const buildPlayerInfo = (playersArray: PlayersInfoAPI[]) => {
+  let playersResults = playersArray.map((el) => {
+    let name = el.name
+    let statistics = {
+      goals_scored: el.statistics.goals_scored,
+      red_cards: el.statistics.red_cards,
+      substituted_in: el.statistics.substituted_in,
+      substituted_out: el.statistics.substituted_out,
+      yellow_cards: el.statistics.yellow_cards
+    }
+    return {
+      name: name,
+      statistics: statistics
+    }
+  })
+  return playersResults
+}
+
+export const extractingPlayersStatisticsData = (array: APIPlayersStatistics[]) => {
+
+  let arrayOfResults = array.map((el) => {
+    let qualifier = el.qualifier;
+    let players = buildPlayerInfo(el.players)
+
+    return {
+      qualifier: qualifier,
+      players: players
+    }
+  })
+
+  return arrayOfResults
 }
 
