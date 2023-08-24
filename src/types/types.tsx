@@ -127,8 +127,8 @@ export interface PlayersStatisticsSchema {
   }[]
 }
 
-export interface LineupsAPI {
-  competitor: string,
+export interface APILineups {
+  qualifier: string,
   players: {
     name: string,
     type: string,

@@ -1,4 +1,5 @@
 import {
+  APILineups,
   APIPlayersStatistics,
   APISchedule,
   APISeasons,
@@ -151,6 +152,24 @@ export const extractingPlayersStatisticsData = (array: APIPlayersStatistics[]) =
     let qualifier = el.qualifier;
     let players = buildPlayerInfo(el.players)
 
+    return {
+      qualifier: qualifier,
+      players: players
+    }
+  })
+  return arrayOfResults
+}
+
+export const extractingLineupsData = (array: APILineups[]) => {
+  let arrayOfResults = array.map((el) => {
+    let qualifier = el.qualifier;
+    let players = {
+      name: el.players.name,
+      type: el.players.type,
+      jersey_number: el.players.jersey_number,
+      starter: el.players.starter,
+      position: el.players.position,
+    }
     return {
       qualifier: qualifier,
       players: players
