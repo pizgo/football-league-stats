@@ -12,7 +12,6 @@ import {
     PlayersStatisticsSchema,
     SingleMatchSchema
 } from "../../../types/types";
-import {changeStatsNameFormat} from "../../../utils/changeStatsNameFormat";
 import TeamLineup from "./TeamLineup";
 
 interface StatisticsProps {
@@ -21,8 +20,6 @@ interface StatisticsProps {
 }
 
 const Lineups: React.FC<StatisticsProps> = ({chosenMatch, lineupsPlayersStatistics}) => {
-
-    console.log(lineupsPlayersStatistics)
 
     const [lineupHomeToggle, setLineupHomeToggle] = useState(true)
     const [lineupAwayToggle, setLineupAwayToggle] = useState(false)
@@ -37,7 +34,6 @@ const Lineups: React.FC<StatisticsProps> = ({chosenMatch, lineupsPlayersStatisti
         setLineupAwayToggle(true)
     }
 
-    let combinedPlayers
     return (
         <div className="flex justify-center">
             <div>

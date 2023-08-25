@@ -37,10 +37,8 @@ export const useGetMatchDetails = () => {
           .then(checkError)
           const resultsLineups = extractingLineupsData(requestLineups.lineups.competitors)
 
-      let finalResult =  transformLineupsData(resultsLineups, resultsPlayersStatistics))
+      let finalResult = transformLineupsData(resultsLineups, resultsPlayersStatistics)
       setLineupsPlayersStatistics(finalResult)
-      console.log(lineupsPlayersStatistics)
-
   };
   const checkError = (response: Response) : any  => {
     if (response.status >= 400) {
@@ -49,7 +47,5 @@ export const useGetMatchDetails = () => {
       return response.json();
     }
   };
-
-
   return { timeline, statistics, lineupsPlayersStatistics, callForMatchDetails };
 };

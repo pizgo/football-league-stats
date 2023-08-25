@@ -198,7 +198,6 @@ export const transformLineupsData = (arrayLineups: LineupsSchema[], arrayStatist
       player.statistics = playerStat[player.name]
     }
   })
-
   return result
 }
 
