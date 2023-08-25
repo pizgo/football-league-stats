@@ -11,11 +11,12 @@ import SingleMatchSummary from "./components/SingleMatch/SingleMatchSummary/Sing
 import Scores from "./components/SingleMatch/SingleMatchSummary/Scores";
 import TimelineTable from "./components/SingleMatch/HighlightsTab/TimelineTable";
 import Statistics from "./components/SingleMatch/StatisticsTab/Statistics";
+import Lineups from "./components/SingleMatch/LineupsTab/Lineups";
 
 const App: React.FC = () => {
   const [chosenMatch, setChosenMatch] = useState<SingleMatchSchema>();
   const [chosenSeasonID, setChosenSeasonID] = useState<string>(firstSeason);
-  const { timeline, statistics, callForMatchDetails } = useGetMatchDetails();
+  const { timeline, statistics, lineupsPlayersStatistics, callForMatchDetails } = useGetMatchDetails();
   const redirectToSingleMatchPage = useNavigateSearch();
 
   const handleChooseMatch = (singleMatch: SingleMatchSchema): void => {
@@ -44,6 +45,7 @@ const App: React.FC = () => {
                                         </SingleMatchSummary>}
                                         highlightsTab={<TimelineTable chosenMatch={chosenMatch} timeline={timeline}/>}
                                         statisticsTab={<Statistics chosenMatch={chosenMatch} statistics={statistics}/>}
+                                        lineupsTab={<Lineups chosenMatch={chosenMatch} lineupsPlayersStatistics={lineupsPlayersStatistics}/>}
                   />}
             />)}
         </Routes>

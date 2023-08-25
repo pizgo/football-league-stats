@@ -4,16 +4,21 @@ import {
     extractingLineupsData,
     extractingPlayersStatisticsData,
     extractingStatisticsData,
-    extractingTimelineData
+    extractingTimelineData, transformLineupsData
 } from "../utils/dataTransformation";
-import {LineupsSchema, PlayersStatisticsSchema, SingleMatchTimelineSchema, StatisticsSchema} from "../types/types";
+import {
+    LineupsPlayersStatistics,
+    LineupsSchema,
+    PlayersStatisticsSchema,
+    SingleMatchTimelineSchema,
+    StatisticsSchema
+} from "../types/types";
 import { errorMessage } from "../utils/consts";
 
 export const useGetMatchDetails = () => {
   const [timeline, setTimeline] = useState<SingleMatchTimelineSchema[]>([]);
   const [statistics, setStatistics] = useState<StatisticsSchema>({});
-  const [playersStatistics, setPlayersStatistics] = useState<PlayersStatisticsSchema[]>([]);
-  const [lineups, setLineups] = useState<LineupsSchema[]>([]);
+  const [lineupsPlayersStatistics, setLineupsPlayersStatistics] = useState<LineupsPlayersStatistics>({});
 
   const callForMatchDetails = async (singleMatchId: string) => {
       //pierwszy call
@@ -24,8 +29,6 @@ export const useGetMatchDetails = () => {
             const resultsPlayersStatistics = extractingPlayersStatisticsData(requestTimeLine.statistics.totals.competitors);
             setTimeline(resultsTimeline);
             setStatistics(resultsStatistics);
-            setPlayersStatistics(resultsPlayersStatistics);
-            console.log(resultsPlayersStatistics)
 
       //delay zrobiony zgodnie z https://stackoverflow.com/questions/71319011/how-to-set-timeout-for-a-fetch-in-promise-all
       await new Promise((resolve) => setTimeout(resolve, 1001));
@@ -33,7 +36,11 @@ export const useGetMatchDetails = () => {
       const requestLineups = await getLineups(singleMatchId)
           .then(checkError)
           const resultsLineups = extractingLineupsData(requestLineups.lineups.competitors)
-          console.log(resultsLineups)
+
+      let finalResult =  transformLineupsData(resultsLineups, resultsPlayersStatistics))
+      setLineupsPlayersStatistics(finalResult)
+      console.log(lineupsPlayersStatistics)
+
   };
   const checkError = (response: Response) : any  => {
     if (response.status >= 400) {
@@ -44,5 +51,5 @@ export const useGetMatchDetails = () => {
   };
 
 
-  return { timeline, statistics, callForMatchDetails };
+  return { timeline, statistics, lineupsPlayersStatistics, callForMatchDetails };
 };

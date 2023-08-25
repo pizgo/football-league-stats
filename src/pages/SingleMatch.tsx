@@ -11,8 +11,9 @@ interface SingleMatchDetailsProps {
   singleMatchSummary: React.ReactNode,
   highlightsTab: React.ReactNode;
   statisticsTab: React.ReactNode;
+  lineupsTab: React.ReactNode;
 }
-const SingleMatch: React.FC<SingleMatchDetailsProps> = ({chosenMatch, singleMatchSummary, highlightsTab, statisticsTab}) => {
+const SingleMatch: React.FC<SingleMatchDetailsProps> = ({chosenMatch, singleMatchSummary, highlightsTab, statisticsTab, lineupsTab}) => {
     const [value, setValue] = React.useState(0)
     const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
         setValue(newValue);
@@ -44,7 +45,7 @@ const SingleMatch: React.FC<SingleMatchDetailsProps> = ({chosenMatch, singleMatc
                       {statisticsTab}
                   </CustomTabPanel>
                   <CustomTabPanel chosenMatch={chosenMatch} value={value} index={2}>
-                      Item Three
+                      {lineupsTab}
                   </CustomTabPanel>
              </Container>
         </>

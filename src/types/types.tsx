@@ -127,6 +127,7 @@ export interface PlayersStatisticsSchema {
   }[]
 }
 
+
 export interface APILineups {
   qualifier: string,
   players: {
@@ -156,4 +157,19 @@ export interface LineupsSchema {
     position?: string,
   }[]
 }
+
+export interface PlayerStatistics {
+  name: string,
+  type: string,
+  jersey_number: string,
+  starter?: boolean,
+  position?: string,
+  statistics: string[]
+}
+
+export interface LineupsPlayersStatistics {
+  home?: PlayerStatistics[],
+  away? : PlayerStatistics[]
+}
+
 

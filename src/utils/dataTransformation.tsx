@@ -6,8 +6,8 @@ import {
   APISeasons,
   APIStatistics,
   APITimeline,
-  CompetitorInfo,
-  PlayersStatisticsAPI,
+  CompetitorInfo, LineupsPlayersStatistics, LineupsSchema,
+  PlayersStatisticsAPI, PlayersStatisticsSchema, PlayerStatistics,
 } from "../types/types";
 import {changeStatsNameFormat} from "./changeStatsNameFormat";
 
@@ -166,5 +166,39 @@ export const extractingLineupsData = (array: APILineups[]) => {
     }
   })
   return arrayOfResults
+}
+
+export const transformLineupsData = (arrayLineups: LineupsSchema[], arrayStatistics: PlayersStatisticsSchema[]) => {
+
+  let result: {[index:string] : any[]} =  {}
+  console.log(arrayLineups)
+  console.log(arrayStatistics)
+
+  let indexOfHomeInLineup = arrayLineups[0].qualifier === "home" ? 0 : 1
+  let indexOfAwayInLineup = 1 - indexOfHomeInLineup
+
+  result.away = arrayLineups[indexOfAwayInLineup].players
+  result.home = arrayLineups[indexOfHomeInLineup].players
+
+  //convert second array arrayStatistics to dict
+  let playerStat: {[index:string]: any[]} = {}
+  arrayStatistics.forEach( (el) => {
+    el.players.forEach( (player) => {
+      playerStat[player.name] = player.statistics
+    })
+  })
+
+  result.away.forEach((player) => {
+    if(!player.statistics) {
+      player.statistics = playerStat[player.name]
+    }
+  })
+  result.home.forEach((player) => {
+    if(!player.statistics) {
+      player.statistics = playerStat[player.name]
+    }
+  })
+
+  return result
 }
 
