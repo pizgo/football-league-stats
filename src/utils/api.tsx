@@ -19,3 +19,9 @@ export const getMatchTimeline = (singleMatchID: string): Promise<Response> => {
     `soccer/trial/v4/en/sport_events/${singleMatchID}/timeline.json?api_key=${APIKey}`
   );
 };
+
+export const getLineups = (singleMatchID: string): Promise<Response> => {
+  return fetch(
+      `soccer/trial/v4/en/sport_events/${singleMatchID}/lineups.json?api_key=${APIKey}`
+  );
+};

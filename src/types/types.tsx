@@ -104,7 +104,7 @@ export interface APIPlayersStatistics {
   }[]
 }
 
-export interface PlayersInfoAPI {
+export interface PlayersStatisticsAPI {
   statistics: {
     assists: number,
     goals_scored: number,
@@ -135,6 +135,25 @@ export interface APILineups {
     jersey_number: string,
     starter?: boolean,
     position?: string,
-  }
+  }[]
+}
+
+export interface APIPlayersLineups {
+  name: string,
+  type: string,
+  jersey_number: string,
+  starter?: boolean,
+  position?: string
+}
+
+export interface LineupsSchema {
+  qualifier: string,
+  players: {
+    name: string,
+    type: string,
+    jersey_number: string,
+    starter?: boolean,
+    position?: string,
+  }[]
 }
 

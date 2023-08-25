@@ -1,11 +1,13 @@
 import {
   APILineups,
+  APIPlayersLineups,
   APIPlayersStatistics,
   APISchedule,
   APISeasons,
   APIStatistics,
   APITimeline,
-  CompetitorInfo, PlayersInfoAPI,
+  CompetitorInfo,
+  PlayersStatisticsAPI,
 } from "../types/types";
 import {changeStatsNameFormat} from "./changeStatsNameFormat";
 
@@ -122,7 +124,7 @@ export const extractingStatisticsData = (array: APIStatistics[]) => {
   return finalStats
 }
 
-const buildPlayerInfo = (playersArray: PlayersInfoAPI[]) => {
+const buildPlayerInfo = (playersArray: PlayersStatisticsAPI[]) => {
   let playersResults = playersArray.map((el) => {
     let name = el.name
     let statistics = {
@@ -133,11 +135,7 @@ const buildPlayerInfo = (playersArray: PlayersInfoAPI[]) => {
       yellow_cards: el.statistics.yellow_cards
     }
 
-    let actions = Object.entries(statistics).filter((el) => {
-      return el[1] > 0
-    }).map((el) => {
-      return el[0]
-    })
+    let actions = Object.entries(statistics).filter((el) => el[1] > 0).map((el) => el[0])
     return {
       name: name,
       statistics: actions
@@ -160,16 +158,23 @@ export const extractingPlayersStatisticsData = (array: APIPlayersStatistics[]) =
   return arrayOfResults
 }
 
+const buildLineupInfo = (playersArray: APIPlayersLineups[]) => {
+  let playersResults = playersArray.map((el) => {
+    return {
+      name: el.name,
+      type: el.type,
+      jersey_number: el.jersey_number,
+      starter: el.starter,
+      position: el.position
+    }
+  })
+  return playersResults
+}
+
 export const extractingLineupsData = (array: APILineups[]) => {
   let arrayOfResults = array.map((el) => {
     let qualifier = el.qualifier;
-    let players = {
-      name: el.players.name,
-      type: el.players.type,
-      jersey_number: el.players.jersey_number,
-      starter: el.players.starter,
-      position: el.players.position,
-    }
+    let players = buildLineupInfo(el.players)
     return {
       qualifier: qualifier,
       players: players
