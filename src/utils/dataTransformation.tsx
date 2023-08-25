@@ -40,19 +40,14 @@ export const extractingMatchesResults = (array: APISchedule[]) => {
     let homeCompetitor = buildCompetitorInfo(el, true);
     let awayCompetitor = buildCompetitorInfo(el, false);
 
-    let matchID = el.sport_event.id;
-    let matchDate = el.sport_event.start_time.slice(0, 10);
-    let venue = el.sport_event.venue.name;
-    let winnerID = el.sport_event_status.winner_id;
-    let status = el.sport_event_status.status;
     return {
       homeCompetitor: homeCompetitor,
       awayCompetitor: awayCompetitor,
-      matchID: matchID,
-      matchDate: matchDate,
-      stadiumName: venue,
-      winnerID: winnerID,
-      status: status,
+      matchID: el.sport_event.id,
+      matchDate: el.sport_event.start_time.slice(0, 10),
+      stadiumName: el.sport_event.venue.name,
+      winnerID: el.sport_event_status.winner_id,
+      status: el.sport_event_status.status,
     };
   });
   return arrayOfResults;
@@ -60,11 +55,9 @@ export const extractingMatchesResults = (array: APISchedule[]) => {
 
 export const extractingSeasonsDetails = (array: APISeasons[]) => {
   let arrayOfResults = array.map((el) => {
-    let seasonID = el.id;
-    let seasonName = el.name;
     return {
-      seasonID: seasonID,
-      seasonName: seasonName,
+      seasonID: el.id,
+      seasonName: el.name,
     };
   });
   return arrayOfResults;
@@ -81,29 +74,23 @@ const eventsForTimeline = (el: APITimeline) => {
 
 export const extractingTimelineData = (array: APITimeline[]) => {
   let arrayOfResults = array.map((el) => {
-    let competitor = el.competitor;
-    let players = el.players;
-    let type = el.type
-    let matchTime = el.match_time
     return {
-      competitor: competitor,
-      players: players,
-      type: type,
-      matchTime: matchTime,
+      competitor: el.competitor,
+      players: el.players,
+      type: el.type,
+      matchTime: el.match_time,
     };
   });
-  let filteredArrayOfResults = arrayOfResults.filter((el) => eventsForTimeline((el)))
-  return filteredArrayOfResults;
+
+  return arrayOfResults.filter((el) => eventsForTimeline((el)));
+
 };
 
 export const extractingStatisticsData = (array: APIStatistics[]) => {
   let arrayOfResults = array.map((el) => {
-    let qualifier = el.qualifier;
-    let statistics = el.statistics
-
     return {
-      qualifier: qualifier,
-      statistics: statistics,
+      qualifier: el.qualifier,
+      statistics: el.statistics,
     }
   })
   let finalStats : {[index:string] : any} = {}
@@ -121,12 +108,11 @@ export const extractingStatisticsData = (array: APIStatistics[]) => {
   finalStats = transformStats(finalStats, arrayOfResults[0])
   finalStats = transformStats(finalStats, arrayOfResults[1])
 
-  return finalStats
+  return finalStats;
 }
 
 const buildPlayerInfo = (playersArray: PlayersStatisticsAPI[]) => {
   let playersResults = playersArray.map((el) => {
-    let name = el.name
     let statistics = {
       goals_scored: el.statistics.goals_scored,
       red_cards: el.statistics.red_cards,
@@ -137,7 +123,7 @@ const buildPlayerInfo = (playersArray: PlayersStatisticsAPI[]) => {
 
     let actions = Object.entries(statistics).filter((el) => el[1] > 0).map((el) => el[0])
     return {
-      name: name,
+      name: el.name,
       statistics: actions
     }
   })
@@ -147,11 +133,10 @@ const buildPlayerInfo = (playersArray: PlayersStatisticsAPI[]) => {
 export const extractingPlayersStatisticsData = (array: APIPlayersStatistics[]) => {
 
   let arrayOfResults = array.map((el) => {
-    let qualifier = el.qualifier;
     let players = buildPlayerInfo(el.players)
 
     return {
-      qualifier: qualifier,
+      qualifier: el.qualifier,
       players: players
     }
   })
@@ -173,10 +158,10 @@ const buildLineupInfo = (playersArray: APIPlayersLineups[]) => {
 
 export const extractingLineupsData = (array: APILineups[]) => {
   let arrayOfResults = array.map((el) => {
-    let qualifier = el.qualifier;
+
     let players = buildLineupInfo(el.players)
     return {
-      qualifier: qualifier,
+      qualifier: el.qualifier,
       players: players
     }
   })
