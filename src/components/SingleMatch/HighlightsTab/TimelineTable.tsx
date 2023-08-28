@@ -18,8 +18,8 @@ const TimelineTable: React.FC<TimelineEventProps> = ({chosenMatch, timeline}) =>
 
     return (
         <div className="flex justify-center">
-            <TableContainer component={Paper} className="sm:w-4/5">
-                <Table>
+            <TableContainer component={Paper} className="h-60screen sm:w-4/5">
+                <Table stickyHeader>
                     <TableHead className="">
                         <TableRow>
                             <TableCell className="text-center font-bold w-45/100 border-0">{chosenMatch.homeCompetitor.name}</TableCell>

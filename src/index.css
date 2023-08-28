@@ -44,9 +44,9 @@ body {
   background: transparent;
 }
 
-.MuiTableCell-stickyHeader{
-  background: #7C5DFA
-}
+/*.MuiTableCell-stickyHeader{*/
+/*  background: #7C5DFA*/
+/*}*/
 
 .MuiTabs-indicator {
   display: none;

@@ -33,8 +33,8 @@ const Statistics: React.FC<StatisticsProps> = ({chosenMatch, statistics}) => {
 
     return (
         <div className="flex justify-center">
-            <TableContainer component={Paper} className="sm:w-4/5">
-                <Table>
+            <TableContainer component={Paper} className="h-60screen sm:w-4/5">
+                <Table stickyHeader>
                     <TableHead>
                         <TableRow>
                             <TableCell className="text-center font-bold w-1/3">{chosenMatch.homeCompetitor.name}</TableCell>

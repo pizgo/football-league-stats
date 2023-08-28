@@ -29,10 +29,10 @@ const ScheduleTable: React.FC<MatchesResultsTableProps> = ({ matchesResults, onC
         <TableContainer component={Paper} className="h-60screen">
             <Table stickyHeader>
                 <TableHead className="mt-10">
-                    <TableRow className="bg-primary-200">
-                        <HeaderCell style="sm:hidden" headerCell={mobileHeadersContent}/>
-                        <HeaderCell style="hidden sm:table-cell text-base xl:hidden" headerCell={tabletHeadersContent}/>
-                        <HeaderCell style="hidden xl:table-cell text-base" headerCell={desktopHeadersContent}/>
+                    <TableRow>
+                        <HeaderCell style="sm:hidden bg-primary-200" headerCell={mobileHeadersContent}/>
+                        <HeaderCell style="hidden sm:table-cell text-base xl:hidden bg-primary-200" headerCell={tabletHeadersContent}/>
+                        <HeaderCell style="hidden xl:table-cell text-base bg-primary-200" headerCell={desktopHeadersContent}/>
                     </TableRow>
                 </TableHead>
                 <TableBody>
