@@ -11,7 +11,7 @@ import SingleMatchSummary from "./components/SingleMatch/SingleMatchSummary/Sing
 import Scores from "./components/SingleMatch/SingleMatchSummary/Scores";
 import TimelineTable from "./components/SingleMatch/HighlightsTab/TimelineTable";
 import Statistics from "./components/SingleMatch/StatisticsTab/Statistics";
-import Lineups from "./components/SingleMatch/LineupsTab/Lineups";
+import LineupsMobile from "./components/SingleMatch/LineupsTab/LineupsMobile";
 
 const App: React.FC = () => {
   const [chosenMatch, setChosenMatch] = useState<SingleMatchSchema>();
@@ -45,7 +45,7 @@ const App: React.FC = () => {
                                         </SingleMatchSummary>}
                                         highlightsTab={<TimelineTable chosenMatch={chosenMatch} timeline={timeline}/>}
                                         statisticsTab={<Statistics chosenMatch={chosenMatch} statistics={statistics}/>}
-                                        lineupsTab={<Lineups chosenMatch={chosenMatch} lineupsPlayersStatistics={lineupsPlayersStatistics}/>}
+                                        lineupsTab={<LineupsMobile chosenMatch={chosenMatch} lineupsPlayersStatistics={lineupsPlayersStatistics}/>}
                   />}
             />)}
         </Routes>
