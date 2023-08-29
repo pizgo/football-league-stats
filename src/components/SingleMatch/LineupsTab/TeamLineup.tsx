@@ -31,9 +31,11 @@ const TeamLineup: React.FC<StatisticsProps> = ({ competitorType, chosenMatch, li
     const substitutes = lineups?.filter((player) => !player.starter)
 
     return (
-        <Container className="grid grid-cols-12">
+        <Container className="grid grid-cols-12 overflow-scroll h-60screen">
             <div className="col-span-12">
-                {competitorType === 'home' ? <h1 className="text-base">{chosenMatch.homeCompetitor.name}</h1> : <h1 className="text-base">{chosenMatch.awayCompetitor.name}</h1>}
+                {competitorType === 'home' ?
+                    <h1 className="text-base text-center font-bold py-3">{chosenMatch.homeCompetitor.name}</h1> :
+                    <h1 className="text-base text center font-bold py-3">{chosenMatch.awayCompetitor.name}</h1>}
             </div>
             <div className="col-span-12">
                 <LineupItem playerType="Goalkeeper"  lineups={goalkeeper}/>

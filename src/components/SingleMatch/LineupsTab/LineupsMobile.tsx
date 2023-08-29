@@ -37,7 +37,7 @@ const LineupsMobile: React.FC<StatisticsProps> = ({chosenMatch, lineups}) => {
 
     return (
         <div className="sm:hidden">
-                <div className="flex justify-around px-3 py-4">
+                <div className="flex justify-around px-3 pt-4 pb-6">
                     <button role="button"
                          className="py-3 px-4 font-bold text-center shadow-md hover:bg-neutral-200 active:bg-neutral-200 rounded border"
                          onClick={handleLineupHomeToggle}>

@@ -25,13 +25,13 @@ interface StatisticsProps {
 const LineupItem: React.FC<StatisticsProps> = ({ playerType, lineups}) => {
     const formattedStatistics =  (type:string)  => {
         if (type === goalsScoredLineup) {
-            return <BiFootball size={20}/>
+            return <BiFootball size={18}/>
         }
         if (type === redCardsLineup) {
-            return <div className="bg-red-700 w-4 h-5 rounded"/>
+            return <span className="bg-red-700 w-4 h-5 rounded"/>
         }
        if (type === yellowCardsLineup) {
-            return <div className="bg-yellow-500 w-4 h-5 rounded"/>
+            return <span className="bg-yellow-500 w-4 h-5 rounded"/>
         }
        if (type === substitutedInLineup) {
             return <span className="text-winner">&#8593;</span>
@@ -43,15 +43,21 @@ const LineupItem: React.FC<StatisticsProps> = ({ playerType, lineups}) => {
 
     return (
         <div className="col-span-12">
-            <div>{playerType}</div>
-            {lineups?.map((player) => (
-                <div key={player.name}>
-                    <p>{player.jersey_number}</p>
-                    <p>{player.name}</p>
-                    {player.statistics.map((el) => (
-                        <p>{formattedStatistics(el)}</p>))}
-                </div>
-            ))}
+            <div className="row-auto font-bold text-base text-primary-200 border-b mb-3">{playerType}</div>
+            <ul>
+                {lineups?.map((player) => (
+                    <li key={player.name}>
+                        <div className="flex w-full flex-row mb-1">
+                            <span className="w-4 text-end">{player.jersey_number}</span>
+                            <div className="flex flex-row ml-3 items-center">
+                                <span className="mr-2">{player.name}</span>
+                                {player.statistics.map((el) => (
+                                    <span className="align-center">{formattedStatistics(el)}</span>))}
+                            </div>
+                        </div>
+                    </li>
+                ))}
+            </ul>
         </div>
     )
 }
