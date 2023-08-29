@@ -10,8 +10,6 @@ import {
 } from "@mui/material";
 import {
     LineupsPlayersStatistics,
-    LineupsSchema,
-    PlayersStatisticsSchema,
     SingleMatchSchema
 } from "../../../types/types";
 import TeamLineup from "./TeamLineup";
@@ -26,6 +24,8 @@ const LineupsMobile: React.FC<StatisticsProps> = ({chosenMatch, lineupsPlayersSt
     const [lineupHomeToggle, setLineupHomeToggle] = useState(true)
     const [lineupAwayToggle, setLineupAwayToggle] = useState(false)
 
+    console.log(lineupsPlayersStatistics)
+
     const handleLineupHomeToggle = () => {
         setLineupHomeToggle(true)
         setLineupAwayToggle(false)
@@ -37,17 +37,17 @@ const LineupsMobile: React.FC<StatisticsProps> = ({chosenMatch, lineupsPlayersSt
 
     return (
         <div className="sm:hidden">
-                <div className="flex justify-around p-3">
-                    <Box component={Paper} role="button"
-                         className="p-3 font-bold w-2/5 pointer text-center hover:bg-neutral-200 active:bg-neutral-200"
+                <div className="flex justify-around px-3 py-4">
+                    <button role="button"
+                         className="py-3 px-4 font-bold text-center shadow-md hover:bg-neutral-200 active:bg-neutral-200 rounded border"
                          onClick={handleLineupHomeToggle}>
-                         Home Team
-                    </Box>
-                    <Box component={Paper} role="button"
-                         className="p-3 font-bold w-2/5 pointer text-center hover:bg-neutral-200 active:bg-neutral-200"
+                        {chosenMatch.homeCompetitor.abbreviation}
+                    </button>
+                    <button role="button"
+                         className="py-3 px-4 font-bold text-center shadow-md hover:bg-neutral-200 active:bg-neutral-200 rounded border"
                          onClick={handleLineupAwayToggle}>
-                        Away Team
-                    </Box>
+                        {chosenMatch.awayCompetitor.abbreviation}
+                    </button>
                 </div>
                 {lineupHomeToggle && <TeamLineup qualifier='home'/>}
                 {lineupAwayToggle && <TeamLineup qualifier='away'/>}
