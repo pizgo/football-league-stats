@@ -45,7 +45,7 @@ const App: React.FC = () => {
                                         </SingleMatchSummary>}
                                         highlightsTab={<TimelineTable chosenMatch={chosenMatch} timeline={timeline}/>}
                                         statisticsTab={<Statistics chosenMatch={chosenMatch} statistics={statistics}/>}
-                                        lineupsTab={<LineupsMobile chosenMatch={chosenMatch} lineupsPlayersStatistics={lineupsPlayersStatistics}/>}
+                                        lineupsTab={<LineupsMobile chosenMatch={chosenMatch} lineups={lineupsPlayersStatistics}/>}
                   />}
             />)}
         </Routes>

@@ -31,5 +31,11 @@ export const substitutedIn = "substituted_in"
 export const substitutedOut = "substituted_out"
 export const scorer = "scorer"
 export const assist = "assist"
+export const goalsScoredLineup = "goals_scored"
+export const redCardsLineup = "red_cards"
+export const yellowCardsLineup = "yellow_cards"
+export const substitutedInLineup = "substituted_in"
+export const substitutedOutLineup = "substituted_out"
+
 
 

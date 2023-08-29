@@ -16,15 +16,13 @@ import TeamLineup from "./TeamLineup";
 
 interface StatisticsProps {
     chosenMatch: SingleMatchSchema
-    lineupsPlayersStatistics: LineupsPlayersStatistics
+    lineups: LineupsPlayersStatistics
 }
 
-const LineupsMobile: React.FC<StatisticsProps> = ({chosenMatch, lineupsPlayersStatistics}) => {
+const LineupsMobile: React.FC<StatisticsProps> = ({chosenMatch, lineups}) => {
 
     const [lineupHomeToggle, setLineupHomeToggle] = useState(true)
     const [lineupAwayToggle, setLineupAwayToggle] = useState(false)
-
-    console.log(lineupsPlayersStatistics)
 
     const handleLineupHomeToggle = () => {
         setLineupHomeToggle(true)
@@ -34,6 +32,8 @@ const LineupsMobile: React.FC<StatisticsProps> = ({chosenMatch, lineupsPlayersSt
         setLineupHomeToggle(false)
         setLineupAwayToggle(true)
     }
+
+    console.log(lineups)
 
     return (
         <div className="sm:hidden">
@@ -49,8 +49,8 @@ const LineupsMobile: React.FC<StatisticsProps> = ({chosenMatch, lineupsPlayersSt
                         {chosenMatch.awayCompetitor.abbreviation}
                     </button>
                 </div>
-                {lineupHomeToggle && <TeamLineup qualifier='home'/>}
-                {lineupAwayToggle && <TeamLineup qualifier='away'/>}
+                {lineupHomeToggle && <TeamLineup chosenMatch={chosenMatch} lineups={lineups.home} competitorType='home'/>}
+                {lineupAwayToggle && <TeamLineup chosenMatch={chosenMatch} lineups={lineups.away} competitorType='away'/>}
         </div>
 
     )
