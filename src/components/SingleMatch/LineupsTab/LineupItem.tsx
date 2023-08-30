@@ -1,12 +1,4 @@
 import React from "react";
-import {
-    Container,
-    Paper,
-    styled,
-    Table,
-    TableCell, TableContainer, TableHead,
-    TableRow
-} from "@mui/material";
 import { PlayerStatistics } from "../../../types/types";
 import {
     redCardsLineup,
@@ -43,7 +35,7 @@ const LineupItem: React.FC<StatisticsProps> = ({ playerType, lineups}) => {
 
     return (
         <div className="col-span-12">
-            <div className="row-auto font-bold text-base text-primary-200 border-b mb-3">{playerType}</div>
+            <div className="row-auto font-bold text-base text-primary-200 border-b  my-3">{playerType}</div>
             <ul>
                 {lineups?.map((player) => (
                     <li key={player.name}>
