@@ -34,6 +34,19 @@ const LeftSideItem: React.FC<SideItem> = ({player}) => {
     )
 }
 
+const RightSideItem: React.FC<SideItem> = ({ player }) => {
+    return (
+        <div className="flex w-full flex-row mb-1 justify-end">
+            <div className="flex flex-row mr-3 items-center">
+                {player.statistics.map((el) => (
+                    <span className="align-center">{formatStatisticsLineups(el)}</span>))}
+                <span className="ml-2">{player.name}</span>
+            </div>
+            <span className="w-4 text-end">{player.jersey_number}</span>
+        </div>
+    )
+}
+
 const LineupItem: React.FC<LineupItem> = ({lineups, type, competitorType}) => {
 
     const typeToRender = (lineups: PlayerStatistics[] | undefined, type: string) => {
@@ -51,38 +64,13 @@ const LineupItem: React.FC<LineupItem> = ({lineups, type, competitorType}) => {
     }
 
     const players = typeToRender(lineups, type)
-    // const formattedStatistics =  (type:string)  => {
-    //     if (type === goalsScoredLineup) {
-    //         return <BiFootball size={18}/>
-    //     }
-    //     if (type === redCardsLineup) {
-    //         return <span className="bg-red-700 w-4 h-5 rounded"/>``
-    //     }
-    //    if (type === yellowCardsLineup) {
-    //         return <span className="bg-yellow-500 w-4 h-5 rounded"/>
-    //     }
-    //    if (type === substitutedInLineup) {
-    //         return <span className="text-winner">&#8593;</span>
-    //     }
-    //    if (type === substitutedOutLineup) {
-    //         return <span className="text-lost">&#8595;</span>
-    //    }
-    // }
-
 
     return (
         <>
             <ul className="sm:hidden">
                 {players?.map((player) => (
                     <li key={player.name}>
-                        <div className="flex w-full flex-row mb-1">
-                            <span className="w-4 text-end">{player.jersey_number}</span>
-                            <div className="flex flex-row ml-3 items-center">
-                                <span className="mr-2">{player.name}</span>
-                                {player.statistics.map((el) => (
-                                    <span className="align-center">{formatStatisticsLineups(el)}</span>))}
-                            </div>
-                        </div>
+                        <LeftSideItem player={player}/>
                     </li>
                 ))}
             </ul>
@@ -91,23 +79,9 @@ const LineupItem: React.FC<LineupItem> = ({lineups, type, competitorType}) => {
                     <li key={player.name}>
                         {(competitorType === "home")
                             ?
-                            <div className="flex w-full flex-row mb-1">
-                                <span className="w-4 text-end">{player.jersey_number}</span>
-                                <div className="flex flex-row ml-3 items-center">
-                                    <span className="mr-2">{player.name}</span>
-                                    {player.statistics.map((el) => (
-                                        <span className="align-center">{formatStatisticsLineups(el)}</span>))}
-                                </div>
-                            </div>
+                            <LeftSideItem player={player}/>
                             :
-                            <div className="flex w-full flex-row mb-1 justify-end">
-                                <div className="flex flex-row mr-3 items-center">
-                                    {player.statistics.map((el) => (
-                                        <span className="align-center">{formatStatisticsLineups(el)}</span>))}
-                                    <span className="ml-2">{player.name}</span>
-                                </div>
-                                <span className="w-4 text-end">{player.jersey_number}</span>
-                            </div>
+                            <RightSideItem player={player}/>
                         }
                     </li>
                 ))}
