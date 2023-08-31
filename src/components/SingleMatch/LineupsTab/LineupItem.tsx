@@ -9,13 +9,13 @@ import {
 import {BiFootball} from "react-icons/bi";
 import {goalsScoredLineup} from "../../../utils/consts";
 
-interface StatisticsProps {
+interface LineupItem {
     lineups?: PlayerStatistics[]
     type: string,
     competitorType: string
 }
 
-const LineupItem: React.FC<StatisticsProps> = ({lineups, type, competitorType}) => {
+const LineupItem: React.FC<LineupItem> = ({lineups, type, competitorType}) => {
 
     const typeToRender = (lineups: PlayerStatistics[] | undefined, type: string) => {
         if (type === "goalkeeper") {
@@ -32,7 +32,6 @@ const LineupItem: React.FC<StatisticsProps> = ({lineups, type, competitorType}) 
     }
 
     const players = typeToRender(lineups, type)
-
     const formattedStatistics =  (type:string)  => {
         if (type === goalsScoredLineup) {
             return <BiFootball size={18}/>
