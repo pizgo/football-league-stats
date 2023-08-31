@@ -7,6 +7,7 @@ import {
 import PlayerTypeName from "./PlayerTypeName";
 import PlayersRow from "./PlayersRow";
 import ToggleTeamNameButtons from "./ToggleTeamNameButton";
+import LineupTeamName from "./LineupTeamName";
 
 interface Lineups {
     chosenMatch: SingleMatchSchema
@@ -27,21 +28,20 @@ const Lineups: React.FC<Lineups> = ({chosenMatch, lineups}) => {
     }
     return (
         <>
-            {/*BUTTONS FOR MOBILE*/}
             <div className="sm:hidden flex justify-around px-3 pt-4 pb-6">
                 <ToggleTeamNameButtons onToggle={handleLineupHomeToggle} teamName={chosenMatch.homeCompetitor.abbreviation}/>
                 <ToggleTeamNameButtons onToggle={handleLineupAwayToggle} teamName={chosenMatch.awayCompetitor.abbreviation}/>
             </div>
-            {/*MAIN CONTAINER*/}
             <Container>
                 <div className="sm:hidden col-span-12">
-                    {lineupHomeToggle ?
-                        <h1 className="text-base text-center font-bold py-3">{chosenMatch.homeCompetitor.name}</h1> :
-                        <h1 className="text-base text-center font-bold py-3">{chosenMatch.awayCompetitor.name}</h1>}
+                    { lineupHomeToggle ?
+                        <LineupTeamName teamName={chosenMatch.homeCompetitor.name}/> :
+                        <LineupTeamName teamName={chosenMatch.awayCompetitor.name}/>
+                    }
                 </div>
-                <div className="hidden sm:flex flex-row justify-around m">
-                    <h1 className="text-base text-center font-bold py-3">{chosenMatch.homeCompetitor.name}</h1>
-                    <h1 className="text-base text-center font-bold py-3">{chosenMatch.awayCompetitor.name}</h1>
+                <div className="hidden sm:flex flex-row justify-around">
+                    <LineupTeamName teamName={chosenMatch.homeCompetitor.name}/>
+                    <LineupTeamName teamName={chosenMatch.awayCompetitor.name}/>
                 </div>
                 <div className=" pr-5 overflow-scroll h-50screen">
                     <PlayerTypeName name="Goalkeeper"/>
