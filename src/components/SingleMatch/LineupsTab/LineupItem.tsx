@@ -9,12 +9,31 @@ import {
 import {BiFootball} from "react-icons/bi";
 import {goalsScoredLineup} from "../../../utils/consts";
 
+
 interface StatisticsProps {
-    playerType: string,
     lineups?: PlayerStatistics[]
+    type: string,
+    qualifier: string
 }
 
-const LineupItem: React.FC<StatisticsProps> = ({ playerType, lineups}) => {
+const LineupItem: React.FC<StatisticsProps> = ({lineups, type, qualifier}) => {
+
+    const typeToRender = (lineups: PlayerStatistics[] | undefined, type: string) => {
+        if (type === "goalkeeper") {
+            return lineups?.filter((player) => (player.type === type) && player.starter)
+        } else if (type === "defender") {
+            return lineups?.filter((player) => (player.type === "defender") && player.starter)
+        } else if (type === "midfielder") {
+            return lineups?.filter((player) => (player.type === "midfielder") && player.starter)
+        } else if (type === "forwards") {
+            return lineups?.filter((player) => (player.type === "forward") && player.starter)
+        } else if (type === "substitutes") {
+            return lineups?.filter((player) => !player.starter)
+        }
+    }
+
+    const players = typeToRender(lineups, type)
+
     const formattedStatistics =  (type:string)  => {
         if (type === goalsScoredLineup) {
             return <BiFootball size={18}/>
@@ -34,23 +53,49 @@ const LineupItem: React.FC<StatisticsProps> = ({ playerType, lineups}) => {
     }
 
     return (
-        <div className="col-span-12">
-            <div className="row-auto font-bold text-base text-primary-200 border-b  my-3">{playerType}</div>
-            <ul>
-                {lineups?.map((player) => (
-                    <li key={player.name}>
-                        <div className="flex w-full flex-row mb-1">
-                            <span className="w-4 text-end">{player.jersey_number}</span>
-                            <div className="flex flex-row ml-3 items-center">
-                                <span className="mr-2">{player.name}</span>
+        <ul>
+            {players?.map((player) => (
+                <li key={player.name}>
+                    {(qualifier === "home")
+                        ?
+                    <div className="flex w-full flex-row mb-1">
+                        <span className="w-4 text-end">{player.jersey_number}</span>
+                        <div className="flex flex-row ml-3 items-center">
+                            <span className="mr-2">{player.name}</span>
+                            {player.statistics.map((el) => (
+                                <span className="align-center">{formattedStatistics(el)}</span>))}
+                        </div>
+                    </div>
+                        :
+                        <div className="flex w-full flex-row mb-1 justify-end">
+                            <div className="flex flex-row mr-3 items-center">
                                 {player.statistics.map((el) => (
                                     <span className="align-center">{formattedStatistics(el)}</span>))}
+                                <span className="ml-2">{player.name}</span>
                             </div>
+                            <span className="w-4 text-start">{player.jersey_number}</span>
                         </div>
-                    </li>
-                ))}
-            </ul>
-        </div>
+                    }
+                </li>
+            ))}
+        </ul>
     )
+
+    // return (
+    //     <ul>
+    //         {players?.map((player) => (
+    //             <li key={player.name}>
+    //                 <div className="flex w-full flex-row mb-1">
+    //                     <span className="w-4 text-end">{player.jersey_number}</span>
+    //                     <div className="flex flex-row ml-3 items-center">
+    //                         <span className="mr-2">{player.name}</span>
+    //                         {player.statistics.map((el) => (
+    //                             <span className="align-center">{formattedStatistics(el)}</span>))}
+    //                     </div>
+    //                 </div>
+    //             </li>
+    //         ))}
+    //     </ul>
+    // )
 }
 export default LineupItem;

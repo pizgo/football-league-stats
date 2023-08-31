@@ -12,14 +12,15 @@ import {
     LineupsPlayersStatistics,
     SingleMatchSchema
 } from "../../../types/types";
-import TeamLineup from "./TeamLineup";
+import TeamLineupMobile from "./TeamLineupMobile";
+import LineupsDesktop from "./LineupsDesktop";
 
-interface StatisticsProps {
+interface LineupsMobile {
     chosenMatch: SingleMatchSchema
     lineups: LineupsPlayersStatistics
 }
 
-const LineupsMobile: React.FC<StatisticsProps> = ({chosenMatch, lineups}) => {
+const LineupsMobile: React.FC<LineupsMobile> = ({chosenMatch, lineups}) => {
 
     const [lineupHomeToggle, setLineupHomeToggle] = useState(true)
     const [lineupAwayToggle, setLineupAwayToggle] = useState(false)
@@ -36,23 +37,24 @@ const LineupsMobile: React.FC<StatisticsProps> = ({chosenMatch, lineups}) => {
     console.log(lineups)
 
     return (
-        <div className="sm:hidden">
+        <>
+            <div className="sm:hidden">
                 <div className="flex justify-around px-3 pt-4 pb-6">
                     <button role="button"
-                         className="py-3 px-4 font-bold text-center shadow-md hover:bg-neutral-200 active:bg-neutral-200 rounded border"
-                         onClick={handleLineupHomeToggle}>
+                            className="py-3 px-4 font-bold text-center shadow-md hover:bg-neutral-200 active:bg-neutral-200 rounded border"
+                            onClick={handleLineupHomeToggle}>
                         {chosenMatch.homeCompetitor.abbreviation}
                     </button>
                     <button role="button"
-                         className="py-3 px-4 font-bold text-center shadow-md hover:bg-neutral-200 active:bg-neutral-200 rounded border"
-                         onClick={handleLineupAwayToggle}>
+                            className="py-3 px-4 font-bold text-center shadow-md hover:bg-neutral-200 active:bg-neutral-200 rounded border"
+                            onClick={handleLineupAwayToggle}>
                         {chosenMatch.awayCompetitor.abbreviation}
                     </button>
                 </div>
-                {lineupHomeToggle && <TeamLineup chosenMatch={chosenMatch} lineups={lineups.home} competitorType='home'/>}
-                {lineupAwayToggle && <TeamLineup chosenMatch={chosenMatch} lineups={lineups.away} competitorType='away'/>}
-        </div>
-
+                {lineupHomeToggle && <TeamLineupMobile chosenMatch={chosenMatch} lineups={lineups.home} competitorType='home'/>}
+                {lineupAwayToggle && <TeamLineupMobile chosenMatch={chosenMatch} lineups={lineups.away} competitorType='away'/>}
+            </div>
+        </>
     )
 }
 export default LineupsMobile;

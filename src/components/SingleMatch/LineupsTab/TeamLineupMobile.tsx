@@ -1,28 +1,19 @@
 import React from "react";
+import { Container } from "@mui/material";
 import {
-    Container,
-    Paper,
-    styled,
-    Table,
-    TableCell, TableContainer, TableHead,
-    TableRow
-} from "@mui/material";
-import {
-    LineupsPlayersStatistics,
-    LineupsSchema,
-    PlayersStatisticsSchema, PlayerStatistics,
+    PlayerStatistics,
     SingleMatchSchema
 } from "../../../types/types";
-import {changeStatsNameFormat} from "../../../utils/changeStatsNameFormat";
 import LineupItem from "./LineupItem";
+import PlayerTypeName from "./PlayerTypeName";
 
-interface StatisticsProps {
+interface TeamLineupMobile {
     competitorType: string
     chosenMatch: SingleMatchSchema
     lineups?: PlayerStatistics[]
 }
 
-const TeamLineup: React.FC<StatisticsProps> = ({ competitorType, chosenMatch, lineups}) => {
+const TeamLineupMobile: React.FC<TeamLineupMobile> = ({ competitorType, chosenMatch, lineups}) => {
 
     const goalkeeper = lineups?.filter((player) => (player.type === "goalkeeper") && player.starter)
     const defenders = lineups?.filter((player) => (player.type === "defender") && player.starter)
@@ -31,21 +22,25 @@ const TeamLineup: React.FC<StatisticsProps> = ({ competitorType, chosenMatch, li
     const substitutes = lineups?.filter((player) => !player.starter)
 
     return (
-        <Container className="grid grid-cols-12 overflow-scroll sm:overflow-hidden h-60screen">
+        <Container className="sm:hidden grid grid-cols-12 overflow-scroll h-60screen">
             <div className="col-span-12">
                 {competitorType === 'home' ?
                     <h1 className="text-base text-center font-bold py-3">{chosenMatch.homeCompetitor.name}</h1> :
                     <h1 className="text-base text-center font-bold py-3">{chosenMatch.awayCompetitor.name}</h1>}
             </div>
-            <div className="col-span-12">
-                <LineupItem playerType="Goalkeeper"  lineups={goalkeeper}/>
-                <LineupItem playerType="Defenders"  lineups={defenders}/>
-                <LineupItem playerType="Midfielders"  lineups={midfielders}/>
-                <LineupItem playerType="Forwards" lineups={forwards}/>
-                <LineupItem playerType="Substitutes" lineups={substitutes}/>
-            </div>
+            {/*<div className="col-span-12">*/}
+            {/*     <PlayerTypeName name="Goalkeeper"/>*/}
+            {/*     <LineupItem lineups={goalkeeper}/>*/}
+            {/*     <PlayerTypeName name="Defenders"/>*/}
+            {/*     <LineupItem lineups={defenders}/>*/}
+            {/*     <PlayerTypeName name="Midfielders"/>*/}
+            {/*     <LineupItem lineups={midfielders}/>*/}
+            {/*     <PlayerTypeName name="Forwards"/>*/}
+            {/*     <LineupItem lineups={forwards}/>*/}
+            {/*     <PlayerTypeName name="Substitutes"/>*/}
+            {/*     <LineupItem lineups={substitutes}/>*/}
+            {/*</div>*/}
         </Container>
-
     )
 }
-export default TeamLineup;
+export default TeamLineupMobile;
