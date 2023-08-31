@@ -18,7 +18,7 @@ const TimelineTable: React.FC<TimelineEventProps> = ({chosenMatch, timeline}) =>
 
     return (
         <div className="flex justify-center">
-            <TableContainer component={Paper} className="h-60screen sm:w-4/5">
+            <TableContainer component={Paper} className="h-50screen sm:w-4/5">
                 <Table stickyHeader>
                     <TableHead className="">
                         <TableRow>
