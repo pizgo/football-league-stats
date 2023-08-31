@@ -46,7 +46,7 @@ const Lineups: React.FC<Lineups> = ({chosenMatch, lineups}) => {
                         <h1 className="text-base text-center font-bold py-3">{chosenMatch.homeCompetitor.name}</h1> :
                         <h1 className="text-base text-center font-bold py-3">{chosenMatch.awayCompetitor.name}</h1>}
                 </div>
-                <div className="hidden sm:flex flex-row justify-around">
+                <div className="hidden sm:flex flex-row justify-around m">
                     <h1 className="text-base text-center font-bold py-3">{chosenMatch.homeCompetitor.name}</h1>
                     <h1 className="text-base text-center font-bold py-3">{chosenMatch.awayCompetitor.name}</h1>
                 </div>
