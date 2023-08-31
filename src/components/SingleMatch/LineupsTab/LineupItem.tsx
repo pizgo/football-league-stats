@@ -9,14 +9,13 @@ import {
 import {BiFootball} from "react-icons/bi";
 import {goalsScoredLineup} from "../../../utils/consts";
 
-
 interface StatisticsProps {
     lineups?: PlayerStatistics[]
     type: string,
-    qualifier: string
+    competitorType: string
 }
 
-const LineupItem: React.FC<StatisticsProps> = ({lineups, type, qualifier}) => {
+const LineupItem: React.FC<StatisticsProps> = ({lineups, type, competitorType}) => {
 
     const typeToRender = (lineups: PlayerStatistics[] | undefined, type: string) => {
         if (type === "goalkeeper") {
@@ -53,49 +52,48 @@ const LineupItem: React.FC<StatisticsProps> = ({lineups, type, qualifier}) => {
     }
 
     return (
-        <ul>
-            {players?.map((player) => (
-                <li key={player.name}>
-                    {(qualifier === "home")
-                        ?
-                    <div className="flex w-full flex-row mb-1">
-                        <span className="w-4 text-end">{player.jersey_number}</span>
-                        <div className="flex flex-row ml-3 items-center">
-                            <span className="mr-2">{player.name}</span>
-                            {player.statistics.map((el) => (
-                                <span className="align-center">{formattedStatistics(el)}</span>))}
-                        </div>
-                    </div>
-                        :
-                        <div className="flex w-full flex-row mb-1 justify-end">
-                            <div className="flex flex-row mr-3 items-center">
+        <>
+            <ul className="hidden sm:block">
+                {players?.map((player) => (
+                    <li key={player.name}>
+                        {(competitorType === "home")
+                            ?
+                            <div className="flex w-full flex-row mb-1">
+                                <span className="w-4 text-end">{player.jersey_number}</span>
+                                <div className="flex flex-row ml-3 items-center">
+                                    <span className="mr-2">{player.name}</span>
+                                    {player.statistics.map((el) => (
+                                        <span className="align-center">{formattedStatistics(el)}</span>))}
+                                </div>
+                            </div>
+                            :
+                            <div className="flex w-full flex-row mb-1 justify-end">
+                                <div className="flex flex-row mr-3 items-center">
+                                    {player.statistics.map((el) => (
+                                        <span className="align-center">{formattedStatistics(el)}</span>))}
+                                    <span className="ml-2">{player.name}</span>
+                                </div>
+                                <span className="w-4 text-end">{player.jersey_number}</span>
+                            </div>
+                        }
+                    </li>
+                ))}
+            </ul>
+            <ul className="sm:hidden">
+                {players?.map((player) => (
+                    <li key={player.name}>
+                        <div className="flex w-full flex-row mb-1">
+                            <span className="w-4 text-end">{player.jersey_number}</span>
+                            <div className="flex flex-row ml-3 items-center">
+                                <span className="mr-2">{player.name}</span>
                                 {player.statistics.map((el) => (
                                     <span className="align-center">{formattedStatistics(el)}</span>))}
-                                <span className="ml-2">{player.name}</span>
                             </div>
-                            <span className="w-4 text-start">{player.jersey_number}</span>
                         </div>
-                    }
-                </li>
-            ))}
-        </ul>
+                    </li>
+                ))}
+            </ul>
+        </>
     )
-
-    // return (
-    //     <ul>
-    //         {players?.map((player) => (
-    //             <li key={player.name}>
-    //                 <div className="flex w-full flex-row mb-1">
-    //                     <span className="w-4 text-end">{player.jersey_number}</span>
-    //                     <div className="flex flex-row ml-3 items-center">
-    //                         <span className="mr-2">{player.name}</span>
-    //                         {player.statistics.map((el) => (
-    //                             <span className="align-center">{formattedStatistics(el)}</span>))}
-    //                     </div>
-    //                 </div>
-    //             </li>
-    //         ))}
-    //     </ul>
-    // )
 }
 export default LineupItem;

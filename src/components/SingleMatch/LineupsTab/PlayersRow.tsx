@@ -1,23 +1,28 @@
 import LineupItem from "./LineupItem";
 import React from "react";
-import {LineupsPlayersStatistics, PlayerStatistics} from "../../../types/types";
-import LineupsDesktop from "./LineupsDesktop";
+import {LineupsPlayersStatistics} from "../../../types/types";
 
 interface PlayersRow {
     lineups: LineupsPlayersStatistics,
-    type: string
+    type: string,
+    qualifier: string
 }
-const PlayersRow: React.FC<PlayersRow>  = ({lineups, type}) => {
+const PlayersRow: React.FC<PlayersRow>  = ({lineups, type, qualifier}) => {
 
     return (
-        <div className="flex flex-row justify-between">
-            <div className="col-span-6">
-                <LineupItem lineups={lineups.home} type={type} qualifier="home"/>
+        <>
+            <div className="sm:hidden">
+                <LineupItem lineups={qualifier === "home" ? lineups.home : lineups.away} type={type} competitorType={qualifier}/>
             </div>
-            <div className="col-span-6">
-                <LineupItem lineups={lineups.away} type={type} qualifier="away"/>
+            <div className="hidden sm:flex flex-row justify-between">
+                <div className="col-span-6">
+                    <LineupItem lineups={lineups.home} type={type} competitorType="home"/>
+                </div>
+                <div className="col-span-6">
+                    <LineupItem lineups={lineups.away} type={type} competitorType="away"/>
+                </div>
             </div>
-        </div>
+        </>
     )
 }
 
