@@ -40,7 +40,7 @@ const Lineups: React.FC<Lineups> = ({chosenMatch, lineups}) => {
                 </button>
             </div>
             {/*MAIN CONTAINER*/}
-            <Container className="overflow-scroll h-50screen sm:w-4/5">
+            <Container className="overflow-scroll h-50screen">
                 <div className="sm:hidden col-span-12">
                     {lineupHomeToggle ?
                         <h1 className="text-base text-center font-bold py-3">{chosenMatch.homeCompetitor.name}</h1> :
