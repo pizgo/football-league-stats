@@ -6,6 +6,7 @@ import {
 } from "../../../types/types";
 import PlayerTypeName from "./PlayerTypeName";
 import PlayersRow from "./PlayersRow";
+import ToggleTeamNameButtons from "./ToggleTeamNameButton";
 
 interface Lineups {
     chosenMatch: SingleMatchSchema
@@ -28,16 +29,8 @@ const Lineups: React.FC<Lineups> = ({chosenMatch, lineups}) => {
         <>
             {/*BUTTONS FOR MOBILE*/}
             <div className="sm:hidden flex justify-around px-3 pt-4 pb-6">
-                <button role="button"
-                        className="py-3 px-4 font-bold text-center shadow-md hover:bg-neutral-200 active:bg-neutral-200 rounded border"
-                        onClick={handleLineupHomeToggle}>
-                    {chosenMatch.homeCompetitor.abbreviation}
-                </button>
-                <button role="button"
-                        className="py-3 px-4 font-bold text-center shadow-md hover:bg-neutral-200 active:bg-neutral-200 rounded border"
-                        onClick={handleLineupAwayToggle}>
-                    {chosenMatch.awayCompetitor.abbreviation}
-                </button>
+                <ToggleTeamNameButtons onToggle={handleLineupHomeToggle} teamName={chosenMatch.homeCompetitor.abbreviation}/>
+                <ToggleTeamNameButtons onToggle={handleLineupAwayToggle} teamName={chosenMatch.awayCompetitor.abbreviation}/>
             </div>
             {/*MAIN CONTAINER*/}
             <Container>
