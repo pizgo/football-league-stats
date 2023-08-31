@@ -40,7 +40,7 @@ const Lineups: React.FC<Lineups> = ({chosenMatch, lineups}) => {
                 </button>
             </div>
             {/*MAIN CONTAINER*/}
-            <Container className="overflow-scroll h-50screen">
+            <Container>
                 <div className="sm:hidden col-span-12">
                     {lineupHomeToggle ?
                         <h1 className="text-base text-center font-bold py-3">{chosenMatch.homeCompetitor.name}</h1> :
@@ -50,7 +50,7 @@ const Lineups: React.FC<Lineups> = ({chosenMatch, lineups}) => {
                     <h1 className="text-base text-center font-bold py-3">{chosenMatch.homeCompetitor.name}</h1>
                     <h1 className="text-base text-center font-bold py-3">{chosenMatch.awayCompetitor.name}</h1>
                 </div>
-                <div>
+                <div className=" pr-5 overflow-scroll h-50screen">
                     <PlayerTypeName name="Goalkeeper"/>
                     <PlayersRow lineups={lineups} type="goalkeeper" qualifier={lineupHomeToggle ? "home" : "away"}/>
                     <PlayerTypeName name="Defenders"/>
