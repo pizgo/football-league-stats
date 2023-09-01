@@ -7,12 +7,14 @@ import {
 import PlayerTypeName from "./PlayerTypeName";
 import PlayersRow from "./PlayersRow";
 import ToggleTeamNameButtons from "./ToggleTeamNameButton";
-import LineupTeamName from "./LineupTeamName";
 
 interface Lineups {
     chosenMatch: SingleMatchSchema
     lineups: LineupsPlayersStatistics
 }
+
+const teamNameStyles = "text-base text-center font-bold py-3"
+const playerTypeStyles = "row-auto font-bold text-sm sm:text-base text-primary-200 border-b my-3 sm:mt-5 sm:mb-4"
 
 const Lineups: React.FC<Lineups> = ({chosenMatch, lineups}) => {
     const [lineupHomeToggle, setLineupHomeToggle] = useState(true)
@@ -35,13 +37,13 @@ const Lineups: React.FC<Lineups> = ({chosenMatch, lineups}) => {
             <Container>
                 <div className="sm:hidden col-span-12">
                     { lineupHomeToggle ?
-                        <LineupTeamName teamName={chosenMatch.homeCompetitor.name}/> :
-                        <LineupTeamName teamName={chosenMatch.awayCompetitor.name}/>
+                        <h1 className={teamNameStyles}>{chosenMatch.homeCompetitor.name}</h1> :
+                        <h1 className={teamNameStyles}>{chosenMatch.awayCompetitor.name}</h1>
                     }
                 </div>
                 <div className="hidden sm:flex flex-row justify-around">
-                    <LineupTeamName teamName={chosenMatch.homeCompetitor.name}/>
-                    <LineupTeamName teamName={chosenMatch.awayCompetitor.name}/>
+                    <h1 className={teamNameStyles}>{chosenMatch.homeCompetitor.name}</h1>
+                    <h1 className={teamNameStyles}>{chosenMatch.awayCompetitor.name}</h1>
                 </div>
                 <div className=" pr-5 overflow-scroll h-50screen">
                     <PlayerTypeName name="Goalkeeper"/>
