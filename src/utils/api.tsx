@@ -1,4 +1,5 @@
-const APIKey = process.env.REACT_APP_API_KEY;
+import {APIKey} from "../apiCalls/APIKey";
+
 const APISeasonsID : string = "sr:competition:202";
 export const firstSeason : string = "sr:season:84320"
 

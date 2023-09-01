@@ -12,6 +12,7 @@ import Scores from "./components/SingleMatch/SingleMatchSummary/Scores";
 import TimelineTable from "./components/SingleMatch/HighlightsTab/TimelineTable";
 import Statistics from "./components/SingleMatch/StatisticsTab/Statistics";
 import Lineups from "./components/SingleMatch/LineupsTab/Lineups";
+import {useQuery, useQueryClient} from "react-query";
 
 const App: React.FC = () => {
   const [chosenMatch, setChosenMatch] = useState<SingleMatchSchema>();
@@ -24,6 +25,10 @@ const App: React.FC = () => {
     redirectToSingleMatchPage(singleMatch.matchID);
     callForMatchDetails(singleMatch.matchID)
   };
+
+  const queryClient = useQueryClient();
+
+
 
   return (
     <Container className="bg-light-100 py-8 font-sans">
@@ -38,7 +43,9 @@ const App: React.FC = () => {
           {chosenMatch && (
             <Route
                   path="/singleMatch"
-                  element={<SingleMatch chosenMatch={chosenMatch} singleMatchSummary={
+                  element={<SingleMatch
+                              chosenMatch={chosenMatch}
+                              singleMatchSummary={
                                         <SingleMatchSummary chosenMatch={chosenMatch}>
                                             <Scores timeline={timeline} competitorType="home" stylesContainer="items-end" stylesIcon="mr-2" iconSize="20"/>
                                             <Scores timeline={timeline} competitorType="away" stylesContainer="items-start" stylesIcon="mr-2" iconSize="20"/>
