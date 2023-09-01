@@ -1,7 +1,17 @@
 import React from "react";
-import {LineupsPlayersStatistics, PlayerStatistics} from "../../../types/types";
+import {
+    LineupsPlayersStatistics,
+    PlayerStatistics
+} from "../../../types/types";
 import LeftSideItem from "./LeftSideItem";
 import RightSideItem from "./RightSideItem";
+import {
+    defenderType,
+    forwardType,
+    goalkeeperType,
+    midfielderType,
+    substituteType
+} from "../../../utils/consts";
 
 interface PlayersRow {
     lineups: LineupsPlayersStatistics,
@@ -11,15 +21,15 @@ interface PlayersRow {
 const PlayersRow: React.FC<PlayersRow>  = ({lineups, type, qualifier}) => {
 
     const typeToRender = (playersOfOneTeam: PlayerStatistics[] | undefined, type: string) => {
-        if (type === "goalkeeper") {
+        if (type === goalkeeperType) {
             return playersOfOneTeam?.filter((player) => (player.type === type) && player.starter)
-        } else if (type === "defender") {
-            return playersOfOneTeam?.filter((player) => (player.type === "defender") && player.starter)
-        } else if (type === "midfielder") {
-            return playersOfOneTeam?.filter((player) => (player.type === "midfielder") && player.starter)
-        } else if (type === "forwards") {
-            return playersOfOneTeam?.filter((player) => (player.type === "forward") && player.starter)
-        } else if (type === "substitutes") {
+        } else if (type === defenderType) {
+            return playersOfOneTeam?.filter((player) => (player.type === defenderType) && player.starter)
+        } else if (type === midfielderType) {
+            return playersOfOneTeam?.filter((player) => (player.type === midfielderType) && player.starter)
+        } else if (type === forwardType) {
+            return playersOfOneTeam?.filter((player) => (player.type === forwardType) && player.starter)
+        } else if (type === substituteType) {
             return playersOfOneTeam?.filter((player) => !player.starter)
         }
     }
