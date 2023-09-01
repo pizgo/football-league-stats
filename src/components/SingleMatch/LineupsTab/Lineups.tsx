@@ -6,7 +6,14 @@ import {
 } from "../../../types/types";
 import PlayersRow from "./PlayersRow";
 import ToggleTeamNameButtons from "./ToggleTeamNameButton";
-import {defendersName, forwardsName, goalkeeperName, midfieldersName, substitutesName} from "../../../utils/consts";
+import {
+    defendersName, defenderType,
+    forwardsName, forwardType,
+    goalkeeperName,
+    goalkeeperType,
+    midfieldersName, midfielderType,
+    substitutesName, substituteType
+} from "../../../utils/consts";
 
 interface Lineups {
     chosenMatch: SingleMatchSchema
@@ -47,15 +54,15 @@ const Lineups: React.FC<Lineups> = ({chosenMatch, lineups}) => {
                 </div>
                 <div className=" pr-5 overflow-scroll h-50screen">
                     <h1 className={playerTypeStyles}>{goalkeeperName}</h1>
-                    <PlayersRow lineups={lineups} type="goalkeeper" qualifier={lineupHomeToggle ? "home" : "away"}/>
+                    <PlayersRow lineups={lineups} type={goalkeeperType} qualifier={lineupHomeToggle ? "home" : "away"}/>
                     <h1 className={playerTypeStyles}>{defendersName}</h1>
-                    <PlayersRow lineups={lineups} type="defender" qualifier={lineupHomeToggle ? "home" : "away"}/>
+                    <PlayersRow lineups={lineups} type={defenderType} qualifier={lineupHomeToggle ? "home" : "away"}/>
                     <h1 className={playerTypeStyles}>{midfieldersName}</h1>
-                    <PlayersRow lineups={lineups} type="midfielder" qualifier={lineupHomeToggle ? "home" : "away"}/>
+                    <PlayersRow lineups={lineups} type={midfielderType} qualifier={lineupHomeToggle ? "home" : "away"}/>
                     <h1 className={playerTypeStyles}>{forwardsName}</h1>
-                    <PlayersRow lineups={lineups} type="forwards" qualifier={lineupHomeToggle ? "home" : "away"}/>
+                    <PlayersRow lineups={lineups} type={forwardType} qualifier={lineupHomeToggle ? "home" : "away"}/>
                     <h1 className={playerTypeStyles}>{substitutesName}</h1>
-                    <PlayersRow lineups={lineups} type="substitutes" qualifier={lineupHomeToggle ? "home" : "away"}/>
+                    <PlayersRow lineups={lineups} type={substituteType} qualifier={lineupHomeToggle ? "home" : "away"}/>
                 </div>
             </Container>
         </>
