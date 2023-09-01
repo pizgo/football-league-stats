@@ -4,9 +4,9 @@ import {
     LineupsPlayersStatistics,
     SingleMatchSchema
 } from "../../../types/types";
-import PlayerTypeName from "./PlayerTypeName";
 import PlayersRow from "./PlayersRow";
 import ToggleTeamNameButtons from "./ToggleTeamNameButton";
+import {defendersName, forwardsName, goalkeeperName, midfieldersName, substitutesName} from "../../../utils/consts";
 
 interface Lineups {
     chosenMatch: SingleMatchSchema
@@ -46,15 +46,15 @@ const Lineups: React.FC<Lineups> = ({chosenMatch, lineups}) => {
                     <h1 className={teamNameStyles}>{chosenMatch.awayCompetitor.name}</h1>
                 </div>
                 <div className=" pr-5 overflow-scroll h-50screen">
-                    <PlayerTypeName name="Goalkeeper"/>
+                    <h1 className={playerTypeStyles}>{goalkeeperName}</h1>
                     <PlayersRow lineups={lineups} type="goalkeeper" qualifier={lineupHomeToggle ? "home" : "away"}/>
-                    <PlayerTypeName name="Defenders"/>
+                    <h1 className={playerTypeStyles}>{defendersName}</h1>
                     <PlayersRow lineups={lineups} type="defender" qualifier={lineupHomeToggle ? "home" : "away"}/>
-                    <PlayerTypeName name="Midfielders"/>
+                    <h1 className={playerTypeStyles}>{midfieldersName}</h1>
                     <PlayersRow lineups={lineups} type="midfielder" qualifier={lineupHomeToggle ? "home" : "away"}/>
-                    <PlayerTypeName name="Forwards"/>
+                    <h1 className={playerTypeStyles}>{forwardsName}</h1>
                     <PlayersRow lineups={lineups} type="forwards" qualifier={lineupHomeToggle ? "home" : "away"}/>
-                    <PlayerTypeName name="Substitutes"/>
+                    <h1 className={playerTypeStyles}>{substitutesName}</h1>
                     <PlayersRow lineups={lineups} type="substitutes" qualifier={lineupHomeToggle ? "home" : "away"}/>
                 </div>
             </Container>

@@ -1,5 +1,3 @@
-import {BiFootball} from "react-icons/bi";
-import {HiOutlineSwitchHorizontal} from "react-icons/hi";
 import React from "react";
 
 export const errorMessage: string = "Something went wrong. Try again later";
@@ -36,6 +34,13 @@ export const redCardsLineup = "red_cards"
 export const yellowCardsLineup = "yellow_cards"
 export const substitutedInLineup = "substituted_in"
 export const substitutedOutLineup = "substituted_out"
+
+
+export const goalkeeperName = "Goalkeeper"
+export const defendersName = "Defenders"
+export const midfieldersName = "Midfielders"
+export const forwardsName = "Forwards"
+export const substitutesName = "Substitutes"
 
 
 
