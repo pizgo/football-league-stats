@@ -10,17 +10,17 @@ interface PlayersRow {
 }
 const PlayersRow: React.FC<PlayersRow>  = ({lineups, type, qualifier}) => {
 
-    const typeToRender = (lineups: PlayerStatistics[] | undefined, type: string) => {
+    const typeToRender = (playersOfOneTeam: PlayerStatistics[] | undefined, type: string) => {
         if (type === "goalkeeper") {
-            return lineups?.filter((player) => (player.type === type) && player.starter)
+            return playersOfOneTeam?.filter((player) => (player.type === type) && player.starter)
         } else if (type === "defender") {
-            return lineups?.filter((player) => (player.type === "defender") && player.starter)
+            return playersOfOneTeam?.filter((player) => (player.type === "defender") && player.starter)
         } else if (type === "midfielder") {
-            return lineups?.filter((player) => (player.type === "midfielder") && player.starter)
+            return playersOfOneTeam?.filter((player) => (player.type === "midfielder") && player.starter)
         } else if (type === "forwards") {
-            return lineups?.filter((player) => (player.type === "forward") && player.starter)
+            return playersOfOneTeam?.filter((player) => (player.type === "forward") && player.starter)
         } else if (type === "substitutes") {
-            return lineups?.filter((player) => !player.starter)
+            return playersOfOneTeam?.filter((player) => !player.starter)
         }
     }
     const playersHome = typeToRender(lineups.home, type)
