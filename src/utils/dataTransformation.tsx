@@ -6,8 +6,10 @@ import {
   APISeasons,
   APIStatistics,
   APITimeline,
-  CompetitorInfo, LineupsPlayersStatistics, LineupsSchema,
-  PlayersStatisticsAPI, PlayersStatisticsSchema, PlayerStatistics,
+  CompetitorInfo,
+  LineupsSchema,
+  PlayersStatisticsAPI,
+  PlayersStatisticsSchema
 } from "../types/types";
 import {changeStatsNameFormat} from "./changeStatsNameFormat";
 
