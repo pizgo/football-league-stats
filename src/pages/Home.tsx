@@ -8,6 +8,8 @@ import { Box,
         Paper } from "@mui/material";
 import LegendItem from "../components/SeasonOverview/LegendItem";
 import ScheduleTable from "../components/SeasonOverview/ScheduleTable";
+import {useQuery, useQueryClient} from "react-query";
+import {getSchedules} from "../apiCalls/getSchedules";
 
 interface MatchesSchedulesProps {
     choosingSingleMatch: (singleMatch: SingleMatchSchema) => void;
@@ -19,6 +21,13 @@ const Home: React.FC<MatchesSchedulesProps> = ({choosingSingleMatch, chosenSeaso
 
     const { seasonsDetails } = useGetSeasonsID();
     const { matchesState, callForSchedulesData } = useGetMatchesSchedules(chosenSeasonId);
+
+    const queryClient = useQueryClient();
+
+    const { data: matches, isLoading, isError } = useQuery({
+        queryKey: ["matches"],
+        queryFn: () => getSchedules(chosenSeasonId)
+    })
 
     const handleSelectSeasonID = (clickedChosenSeasonID: string): void => {
         setChosenSeasonId?.(clickedChosenSeasonID);
@@ -42,7 +51,7 @@ const Home: React.FC<MatchesSchedulesProps> = ({choosingSingleMatch, chosenSeaso
                 </div>
             </Box>
             <ScheduleTable
-                matchesResults={matchesState}
+                matchesResults={matches}
                 onChooseMatch={choosingSingleMatch}/>
         </Container>
     );

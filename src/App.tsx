@@ -13,6 +13,7 @@ import TimelineTable from "./components/SingleMatch/HighlightsTab/TimelineTable"
 import Statistics from "./components/SingleMatch/StatisticsTab/Statistics";
 import Lineups from "./components/SingleMatch/LineupsTab/Lineups";
 import {useQuery, useQueryClient} from "react-query";
+import {getSchedules} from "./apiCalls/getSchedules";
 
 const App: React.FC = () => {
   const [chosenMatch, setChosenMatch] = useState<SingleMatchSchema>();
@@ -25,9 +26,6 @@ const App: React.FC = () => {
     redirectToSingleMatchPage(singleMatch.matchID);
     callForMatchDetails(singleMatch.matchID)
   };
-
-  const queryClient = useQueryClient();
-
 
 
   return (
