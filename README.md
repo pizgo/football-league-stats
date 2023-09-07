@@ -2,10 +2,10 @@
 
 Application displays detailed data about Ekstraklasa (polish footall league) matches: results, timeline, statistics and lineups.
 
-The app is using the sportradar.com API. Due to CORS policy of Sportradar's API, the project cannot be deployed and hosted. I'm aware that I could work on some intermediary backend service to make it work, yet it's outside of scope of this project. 
+The app is using the ![Sportradar API](https://developer.sportradar.com/). Due to CORS policy of Sportradar's API, the project cannot be deployed and hosted. I'm aware that I could work on some intermediary backend service to make it work, yet it's outside of scope of this project. 
 ## Features
 
-On the main page the user is be able to:
+On the main page the user is able to:
 -   see table with all matches from the selected season. User is provided with information about team names, match date, final scores and the stadium name
 -   quickly identified who won and lost the match or whether the match ended with tie
 -   if the match was finished (ergo not postponed or closed), the user is able to click on the match he/she is interested in and see it's details

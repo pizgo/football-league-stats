@@ -45,7 +45,7 @@ export const substitutesName = "Substitutes"
 export const goalkeeperType = "goalkeeper"
 export const defenderType = "defender"
 export const midfielderType = "midfielder"
-export const forwardType = "forwards"
+export const forwardType = "forward"
 export const substituteType = "substitutes"
 
 
