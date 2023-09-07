@@ -31,7 +31,7 @@ The app design is fully responsive and adjusted to mobile devices
 
 Because of inability to host the project, I decided to record a short video, presenting how the app looks and behaves. It's available here:
 
-https://github.com/pizgo/football-league-stats/assets/22580400/455116f0-eb79-4aa1-8f00-d70bb156bd4e
+https://github.com/pizgo/football-league-stats/assets/22580400/379ce267-fc0c-4fe9-a4ac-0e6b3cc4b14b
 
 ## Screenshots
 
