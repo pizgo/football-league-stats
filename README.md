@@ -29,7 +29,7 @@ The app design is fully responsive and adjusted to mobile devices
 
 ## Live Demo
 
-Because of inability to host the project, I decided to record a short video, presenting how the app looks and behaves. It's available here:
+Because the app cannot be deployed, I decided to record a short video, presenting how the app looks and behaves. It's available here:
 
 https://github.com/pizgo/football-league-stats/assets/22580400/b67ba9fa-62e3-4ecf-a402-f3fce93f0d92
 
